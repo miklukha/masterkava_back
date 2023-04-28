@@ -1,16 +1,8 @@
 [
     {
-        "id": "1cb7f88df343480c",
+        "id": "6d691e6d89cccf80",
         "type": "tab",
-        "label": "Flow 1",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
-        "id": "5625818d4797c40c",
-        "type": "tab",
-        "label": "Mongo linking",
+        "label": "Flow 4",
         "disabled": false,
         "info": "",
         "env": []
@@ -24,9 +16,25 @@
         "env": []
     },
     {
+        "id": "5625818d4797c40c",
+        "type": "tab",
+        "label": "Mongo linking",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "572dfaa9458e5333",
         "type": "tab",
         "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "27e958a26f8b472d",
+        "type": "tab",
+        "label": "Help",
         "disabled": false,
         "info": "",
         "env": []
@@ -97,6 +105,157 @@
         "meta": {},
         "color": "#DDAA99",
         "icon": "font-awesome/fa-check-square"
+    },
+    {
+        "id": "9f43ceecbe5c8618",
+        "type": "group",
+        "z": "27e958a26f8b472d",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "02867b04f323983e",
+            "41ce73f80f967f2c",
+            "7d745f91f4ac681a",
+            "4f6b79dc7a07448b"
+        ],
+        "x": 34,
+        "y": 19,
+        "w": 532,
+        "h": 122
+    },
+    {
+        "id": "10f169318ad1a329",
+        "type": "group",
+        "z": "27e958a26f8b472d",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "1fd66a7ed16cf866",
+            "1eb1841fc3df6a8e",
+            "af9e5bccd86b36de",
+            "cc98cb3f9f3ee8d6",
+            "5b2452df50fbf1b9",
+            "89c2e450b846c7c9"
+        ],
+        "x": 34,
+        "y": 179,
+        "w": 712,
+        "h": 162
+    },
+    {
+        "id": "b7f4d86114a55d70",
+        "type": "group",
+        "z": "27e958a26f8b472d",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "07525484e994f095",
+            "28f6603d256eb461",
+            "88df837133eddd5d",
+            "9497ff1729fe73e6"
+        ],
+        "x": 34,
+        "y": 379,
+        "w": 792,
+        "h": 122
+    },
+    {
+        "id": "1c2202b3413ad6f7",
+        "type": "group",
+        "z": "27e958a26f8b472d",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "dcac4fe4170f8a1a",
+            "b4519518901a3b1b",
+            "ad62655d84b9aff1",
+            "9b18d0692c3da728"
+        ],
+        "x": 34,
+        "y": 539,
+        "w": 612,
+        "h": 122
+    },
+    {
+        "id": "024c1ba1dc39c40d",
+        "type": "group",
+        "z": "27e958a26f8b472d",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "331eaafb44d0fdc5",
+            "a129d65a5e8a09de",
+            "eb3ac15f633f1fc7",
+            "024dd4cd90e32b52",
+            "8e604cd11c5a9dcb",
+            "716ef4768a93e2e0",
+            "a691858b679166fa",
+            "ea801f1f8aa87cf7",
+            "0edd863d78f53e53"
+        ],
+        "x": 34,
+        "y": 699,
+        "w": 792,
+        "h": 202
+    },
+    {
+        "id": "2e23327e0aa0042c",
+        "type": "group",
+        "z": "27e958a26f8b472d",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "29fd809dc62fe637",
+            "ae82a760f512d716",
+            "36073d925a2cd8ef",
+            "ab7126da435ada47"
+        ],
+        "x": 34,
+        "y": 939,
+        "w": 592,
+        "h": 142
     },
     {
         "id": "2272c92dc80bcb38",
@@ -215,9 +374,26 @@
         "wires": []
     },
     {
-        "id": "dcac4fe4170f8a1a",
+        "id": "5eca8e34fd7a81e2",
+        "type": "debug",
+        "z": "6d691e6d89cccf80",
+        "name": "debug 214",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 490,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "a7b2de8a31f331f6",
         "type": "inject",
-        "z": "1cb7f88df343480c",
+        "z": "6d691e6d89cccf80",
         "name": "",
         "props": [
             {
@@ -235,553 +411,37 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 240,
-        "y": 280,
+        "x": 120,
+        "y": 160,
         "wires": [
             [
-                "ad62655d84b9aff1"
+                "766c91956daf3df8"
             ]
         ]
     },
     {
-        "id": "b4519518901a3b1b",
-        "type": "debug",
-        "z": "1cb7f88df343480c",
-        "name": "debug 4",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 640,
-        "y": 280,
-        "wires": []
-    },
-    {
-        "id": "07525484e994f095",
+        "id": "766c91956daf3df8",
         "type": "function",
-        "z": "1cb7f88df343480c",
-        "name": "function 2",
-        "func": "// const objectId = global.get('objectid');\n// const newId = objectId().toString();\n\nmsg.payload = {\n    _id: objectid(), \n    name: 'test4', \n    deleted: false\n};\n\nreturn msg;\n",
+        "z": "6d691e6d89cccf80",
+        "name": "function 14",
+        "func": "msg.payload = path.dirname(__filename);\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [
             {
-                "var": "objectid",
-                "module": "objectid"
+                "var": "path",
+                "module": "path"
             }
         ],
-        "x": 260,
-        "y": 380,
+        "x": 290,
+        "y": 160,
         "wires": [
             [
-                "88df837133eddd5d"
+                "5eca8e34fd7a81e2"
             ]
         ]
-    },
-    {
-        "id": "28f6603d256eb461",
-        "type": "inject",
-        "z": "1cb7f88df343480c",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 100,
-        "y": 380,
-        "wires": [
-            [
-                "07525484e994f095"
-            ]
-        ]
-    },
-    {
-        "id": "db1dcaa3510c7adc",
-        "type": "debug",
-        "z": "1cb7f88df343480c",
-        "name": "debug 5",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 900,
-        "y": 380,
-        "wires": []
-    },
-    {
-        "id": "88df837133eddd5d",
-        "type": "mongodb out",
-        "z": "1cb7f88df343480c",
-        "mongodb": "2272c92dc80bcb38",
-        "name": "",
-        "collection": "products",
-        "payonly": false,
-        "upsert": false,
-        "multi": false,
-        "operation": "insert",
-        "x": 660,
-        "y": 460,
-        "wires": []
-    },
-    {
-        "id": "ad62655d84b9aff1",
-        "type": "subflow:a097c62b59a93fa5",
-        "z": "1cb7f88df343480c",
-        "name": "",
-        "x": 430,
-        "y": 280,
-        "wires": [
-            [
-                "b4519518901a3b1b"
-            ]
-        ]
-    },
-    {
-        "id": "6b6d7dc0d3956f46",
-        "type": "inject",
-        "z": "1cb7f88df343480c",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 200,
-        "y": 200,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "5a5133610ec31c34",
-        "type": "debug",
-        "z": "1cb7f88df343480c",
-        "name": "debug 8",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 560,
-        "y": 200,
-        "wires": []
-    },
-    {
-        "id": "a9fb567ad07dc66a",
-        "type": "link in",
-        "z": "5625818d4797c40c",
-        "name": "PROD find",
-        "links": [],
-        "x": 125,
-        "y": 60,
-        "wires": [
-            [
-                "2cbd6b0583706522"
-            ]
-        ]
-    },
-    {
-        "id": "82a088390a0e13bb",
-        "type": "link out",
-        "z": "5625818d4797c40c",
-        "name": "",
-        "mode": "return",
-        "links": [],
-        "x": 435,
-        "y": 60,
-        "wires": []
-    },
-    {
-        "id": "2cbd6b0583706522",
-        "type": "mongodb in",
-        "z": "5625818d4797c40c",
-        "mongodb": "2272c92dc80bcb38",
-        "name": "PROD find",
-        "collection": "",
-        "operation": "find",
-        "x": 260,
-        "y": 60,
-        "wires": [
-            [
-                "82a088390a0e13bb"
-            ]
-        ]
-    },
-    {
-        "id": "d66b320450918147",
-        "type": "link in",
-        "z": "5625818d4797c40c",
-        "name": "PROD aggregate",
-        "links": [],
-        "x": 125,
-        "y": 120,
-        "wires": [
-            [
-                "d1982e39382e3370"
-            ]
-        ]
-    },
-    {
-        "id": "be6649ec5b1c6c0e",
-        "type": "link out",
-        "z": "5625818d4797c40c",
-        "name": "",
-        "mode": "return",
-        "links": [],
-        "x": 435,
-        "y": 120,
-        "wires": []
-    },
-    {
-        "id": "d1982e39382e3370",
-        "type": "mongodb in",
-        "z": "5625818d4797c40c",
-        "mongodb": "2272c92dc80bcb38",
-        "name": "PROD aggregate",
-        "collection": "",
-        "operation": "aggregate",
-        "x": 280,
-        "y": 120,
-        "wires": [
-            [
-                "be6649ec5b1c6c0e"
-            ]
-        ]
-    },
-    {
-        "id": "1b4a93743b4cb585",
-        "type": "mongodb out",
-        "z": "5625818d4797c40c",
-        "mongodb": "2272c92dc80bcb38",
-        "name": "PROD insert",
-        "collection": "",
-        "payonly": true,
-        "upsert": false,
-        "multi": false,
-        "operation": "insert",
-        "x": 270,
-        "y": 200,
-        "wires": []
-    },
-    {
-        "id": "11c9729c152a736b",
-        "type": "link in",
-        "z": "5625818d4797c40c",
-        "name": "PROD insert",
-        "links": [],
-        "x": 125,
-        "y": 200,
-        "wires": [
-            [
-                "1b4a93743b4cb585",
-                "78487177228b9424"
-            ]
-        ]
-    },
-    {
-        "id": "78487177228b9424",
-        "type": "link out",
-        "z": "5625818d4797c40c",
-        "name": "",
-        "mode": "return",
-        "links": [],
-        "x": 235,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "37fd6e76c8c5cf02",
-        "type": "mongodb out",
-        "z": "5625818d4797c40c",
-        "mongodb": "2272c92dc80bcb38",
-        "name": "PROD update",
-        "collection": "",
-        "payonly": true,
-        "upsert": false,
-        "multi": false,
-        "operation": "update",
-        "x": 280,
-        "y": 300,
-        "wires": []
-    },
-    {
-        "id": "6e02acf20c7c434c",
-        "type": "link in",
-        "z": "5625818d4797c40c",
-        "name": "PROD update",
-        "links": [
-            "159f20af26b27591"
-        ],
-        "x": 125,
-        "y": 300,
-        "wires": [
-            [
-                "37fd6e76c8c5cf02",
-                "a9bea4a92fcfa3c1"
-            ]
-        ]
-    },
-    {
-        "id": "a9bea4a92fcfa3c1",
-        "type": "link out",
-        "z": "5625818d4797c40c",
-        "name": "",
-        "mode": "return",
-        "links": [],
-        "x": 235,
-        "y": 340,
-        "wires": []
-    },
-    {
-        "id": "1893ba3cf8670b46",
-        "type": "link in",
-        "z": "5625818d4797c40c",
-        "name": "PROD count",
-        "links": [],
-        "x": 135,
-        "y": 400,
-        "wires": [
-            [
-                "522c4fea30675a88"
-            ]
-        ]
-    },
-    {
-        "id": "f6f164110b64c323",
-        "type": "link out",
-        "z": "5625818d4797c40c",
-        "name": "",
-        "mode": "return",
-        "links": [],
-        "x": 445,
-        "y": 400,
-        "wires": []
-    },
-    {
-        "id": "522c4fea30675a88",
-        "type": "mongodb in",
-        "z": "5625818d4797c40c",
-        "mongodb": "2272c92dc80bcb38",
-        "name": "PROD count",
-        "collection": "",
-        "operation": "count",
-        "x": 270,
-        "y": 400,
-        "wires": [
-            [
-                "f6f164110b64c323"
-            ]
-        ]
-    },
-    {
-        "id": "331eaafb44d0fdc5",
-        "type": "inject",
-        "z": "5625818d4797c40c",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 160,
-        "y": 500,
-        "wires": [
-            [
-                "a129d65a5e8a09de"
-            ]
-        ]
-    },
-    {
-        "id": "a129d65a5e8a09de",
-        "type": "function",
-        "z": "5625818d4797c40c",
-        "name": "function 3",
-        "func": "msg.payload = {\n    $set: { name: \"updadfsdgsdte\" }\n};\n\nmsg.query = { \n    _id: objectid('64308f9153446dfc20000013') \n};\n\n// msg.payload = {\n//     query: { _id: objectid('64308f9153446dfc20000013') },\n//     update: { $set: { name: \"update\" } }\n// };\n\nmsg.collection = \"products\";\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "objectid",
-                "module": "objectid"
-            }
-        ],
-        "x": 340,
-        "y": 500,
-        "wires": [
-            [
-                "eb3ac15f633f1fc7"
-            ]
-        ]
-    },
-    {
-        "id": "eb3ac15f633f1fc7",
-        "type": "link call",
-        "z": "5625818d4797c40c",
-        "name": "",
-        "links": [
-            "6e02acf20c7c434c"
-        ],
-        "linkType": "static",
-        "timeout": "30",
-        "x": 540,
-        "y": 500,
-        "wires": [
-            [
-                "024dd4cd90e32b52"
-            ]
-        ]
-    },
-    {
-        "id": "024dd4cd90e32b52",
-        "type": "debug",
-        "z": "5625818d4797c40c",
-        "name": "debug 6",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 740,
-        "y": 500,
-        "wires": []
-    },
-    {
-        "id": "8e604cd11c5a9dcb",
-        "type": "inject",
-        "z": "5625818d4797c40c",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 160,
-        "y": 560,
-        "wires": [
-            [
-                "716ef4768a93e2e0"
-            ]
-        ]
-    },
-    {
-        "id": "716ef4768a93e2e0",
-        "type": "function",
-        "z": "5625818d4797c40c",
-        "name": "function 4",
-        "func": "msg.payload = {\n    _id: objectid(),\n    name: 'test4',\n    deleted: false\n};\n\nmsg.collection = \"products\";\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "objectid",
-                "module": "objectid"
-            }
-        ],
-        "x": 340,
-        "y": 560,
-        "wires": [
-            [
-                "a691858b679166fa"
-            ]
-        ]
-    },
-    {
-        "id": "a691858b679166fa",
-        "type": "link call",
-        "z": "5625818d4797c40c",
-        "name": "",
-        "links": [
-            "11c9729c152a736b"
-        ],
-        "linkType": "static",
-        "timeout": "30",
-        "x": 530,
-        "y": 560,
-        "wires": [
-            [
-                "ea801f1f8aa87cf7"
-            ]
-        ]
-    },
-    {
-        "id": "ea801f1f8aa87cf7",
-        "type": "debug",
-        "z": "5625818d4797c40c",
-        "name": "debug 7",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 740,
-        "y": 560,
-        "wires": []
     },
     {
         "id": "1b608ea8d239dee8",
@@ -2772,6 +2432,213 @@
         "wires": []
     },
     {
+        "id": "a9fb567ad07dc66a",
+        "type": "link in",
+        "z": "5625818d4797c40c",
+        "name": "PROD find",
+        "links": [],
+        "x": 125,
+        "y": 60,
+        "wires": [
+            [
+                "2cbd6b0583706522"
+            ]
+        ]
+    },
+    {
+        "id": "82a088390a0e13bb",
+        "type": "link out",
+        "z": "5625818d4797c40c",
+        "name": "",
+        "mode": "return",
+        "links": [],
+        "x": 435,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "2cbd6b0583706522",
+        "type": "mongodb in",
+        "z": "5625818d4797c40c",
+        "mongodb": "2272c92dc80bcb38",
+        "name": "PROD find",
+        "collection": "",
+        "operation": "find",
+        "x": 260,
+        "y": 60,
+        "wires": [
+            [
+                "82a088390a0e13bb"
+            ]
+        ]
+    },
+    {
+        "id": "d66b320450918147",
+        "type": "link in",
+        "z": "5625818d4797c40c",
+        "name": "PROD aggregate",
+        "links": [],
+        "x": 125,
+        "y": 120,
+        "wires": [
+            [
+                "d1982e39382e3370"
+            ]
+        ]
+    },
+    {
+        "id": "be6649ec5b1c6c0e",
+        "type": "link out",
+        "z": "5625818d4797c40c",
+        "name": "",
+        "mode": "return",
+        "links": [],
+        "x": 435,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "d1982e39382e3370",
+        "type": "mongodb in",
+        "z": "5625818d4797c40c",
+        "mongodb": "2272c92dc80bcb38",
+        "name": "PROD aggregate",
+        "collection": "",
+        "operation": "aggregate",
+        "x": 280,
+        "y": 120,
+        "wires": [
+            [
+                "be6649ec5b1c6c0e"
+            ]
+        ]
+    },
+    {
+        "id": "1b4a93743b4cb585",
+        "type": "mongodb out",
+        "z": "5625818d4797c40c",
+        "mongodb": "2272c92dc80bcb38",
+        "name": "PROD insert",
+        "collection": "",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 270,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "11c9729c152a736b",
+        "type": "link in",
+        "z": "5625818d4797c40c",
+        "name": "PROD insert",
+        "links": [],
+        "x": 125,
+        "y": 200,
+        "wires": [
+            [
+                "1b4a93743b4cb585",
+                "78487177228b9424"
+            ]
+        ]
+    },
+    {
+        "id": "78487177228b9424",
+        "type": "link out",
+        "z": "5625818d4797c40c",
+        "name": "",
+        "mode": "return",
+        "links": [],
+        "x": 235,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "37fd6e76c8c5cf02",
+        "type": "mongodb out",
+        "z": "5625818d4797c40c",
+        "mongodb": "2272c92dc80bcb38",
+        "name": "PROD update",
+        "collection": "",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "update",
+        "x": 280,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "6e02acf20c7c434c",
+        "type": "link in",
+        "z": "5625818d4797c40c",
+        "name": "PROD update",
+        "links": [
+            "159f20af26b27591"
+        ],
+        "x": 125,
+        "y": 300,
+        "wires": [
+            [
+                "37fd6e76c8c5cf02",
+                "a9bea4a92fcfa3c1"
+            ]
+        ]
+    },
+    {
+        "id": "a9bea4a92fcfa3c1",
+        "type": "link out",
+        "z": "5625818d4797c40c",
+        "name": "",
+        "mode": "return",
+        "links": [],
+        "x": 235,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "1893ba3cf8670b46",
+        "type": "link in",
+        "z": "5625818d4797c40c",
+        "name": "PROD count",
+        "links": [],
+        "x": 135,
+        "y": 400,
+        "wires": [
+            [
+                "522c4fea30675a88"
+            ]
+        ]
+    },
+    {
+        "id": "f6f164110b64c323",
+        "type": "link out",
+        "z": "5625818d4797c40c",
+        "name": "",
+        "mode": "return",
+        "links": [],
+        "x": 445,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "522c4fea30675a88",
+        "type": "mongodb in",
+        "z": "5625818d4797c40c",
+        "mongodb": "2272c92dc80bcb38",
+        "name": "PROD count",
+        "collection": "",
+        "operation": "count",
+        "x": 270,
+        "y": 400,
+        "wires": [
+            [
+                "f6f164110b64c323"
+            ]
+        ]
+    },
+    {
         "id": "56fe8f7960bcea2a",
         "type": "inject",
         "z": "572dfaa9458e5333",
@@ -3028,5 +2895,641 @@
             [],
             []
         ]
+    },
+    {
+        "id": "02867b04f323983e",
+        "type": "inject",
+        "z": "27e958a26f8b472d",
+        "g": "9f43ceecbe5c8618",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 100,
+        "wires": [
+            [
+                "41ce73f80f967f2c"
+            ]
+        ]
+    },
+    {
+        "id": "41ce73f80f967f2c",
+        "type": "file in",
+        "z": "27e958a26f8b472d",
+        "g": "9f43ceecbe5c8618",
+        "name": "read file",
+        "filename": ".node-red\\projects\\masterkava_back\\file.txt",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 300,
+        "y": 100,
+        "wires": [
+            [
+                "7d745f91f4ac681a"
+            ]
+        ]
+    },
+    {
+        "id": "7d745f91f4ac681a",
+        "type": "debug",
+        "z": "27e958a26f8b472d",
+        "g": "9f43ceecbe5c8618",
+        "name": "debug 211",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 450,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "1fd66a7ed16cf866",
+        "type": "file",
+        "z": "27e958a26f8b472d",
+        "g": "10f169318ad1a329",
+        "name": "append file",
+        "filename": ".node-red\\projects\\masterkava_back\\file1.txt",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 470,
+        "y": 260,
+        "wires": [
+            [
+                "af9e5bccd86b36de"
+            ]
+        ]
+    },
+    {
+        "id": "1eb1841fc3df6a8e",
+        "type": "inject",
+        "z": "27e958a26f8b472d",
+        "g": "10f169318ad1a329",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 260,
+        "wires": [
+            [
+                "89c2e450b846c7c9"
+            ]
+        ]
+    },
+    {
+        "id": "af9e5bccd86b36de",
+        "type": "debug",
+        "z": "27e958a26f8b472d",
+        "g": "10f169318ad1a329",
+        "name": "debug 212",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "cc98cb3f9f3ee8d6",
+        "type": "function",
+        "z": "27e958a26f8b472d",
+        "g": "10f169318ad1a329",
+        "name": "set msg.payload",
+        "func": "msg.payload = \"add\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4f6b79dc7a07448b",
+        "type": "comment",
+        "z": "27e958a26f8b472d",
+        "g": "9f43ceecbe5c8618",
+        "name": "Read Files",
+        "info": "Path: set a path from \"C:/Users/DELL/\"\n",
+        "x": 120,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "5b2452df50fbf1b9",
+        "type": "comment",
+        "z": "27e958a26f8b472d",
+        "g": "10f169318ad1a329",
+        "name": "Append/Create/Delete Files",
+        "info": "msg.payload = \"a text that you want to add\";\n",
+        "x": 180,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "89c2e450b846c7c9",
+        "type": "change",
+        "z": "27e958a26f8b472d",
+        "g": "10f169318ad1a329",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "set",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 260,
+        "wires": [
+            [
+                "1fd66a7ed16cf866"
+            ]
+        ]
+    },
+    {
+        "id": "07525484e994f095",
+        "type": "function",
+        "z": "27e958a26f8b472d",
+        "g": "b7f4d86114a55d70",
+        "name": "function 2",
+        "func": "// const objectId = global.get('objectid');\n// const newId = objectId().toString();\n\nmsg.payload = {\n    _id: objectid(), \n    name: 'test4', \n    deleted: false\n};\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "objectid",
+                "module": "objectid"
+            }
+        ],
+        "x": 300,
+        "y": 460,
+        "wires": [
+            [
+                "88df837133eddd5d"
+            ]
+        ]
+    },
+    {
+        "id": "28f6603d256eb461",
+        "type": "inject",
+        "z": "27e958a26f8b472d",
+        "g": "b7f4d86114a55d70",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 460,
+        "wires": [
+            [
+                "07525484e994f095"
+            ]
+        ]
+    },
+    {
+        "id": "88df837133eddd5d",
+        "type": "mongodb out",
+        "z": "27e958a26f8b472d",
+        "g": "b7f4d86114a55d70",
+        "mongodb": "2272c92dc80bcb38",
+        "name": "",
+        "collection": "products",
+        "payonly": false,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 600,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "9497ff1729fe73e6",
+        "type": "comment",
+        "z": "27e958a26f8b472d",
+        "g": "b7f4d86114a55d70",
+        "name": "Work with MongoDB",
+        "info": "",
+        "x": 150,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "dcac4fe4170f8a1a",
+        "type": "inject",
+        "z": "27e958a26f8b472d",
+        "g": "1c2202b3413ad6f7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 620,
+        "wires": [
+            [
+                "ad62655d84b9aff1"
+            ]
+        ]
+    },
+    {
+        "id": "b4519518901a3b1b",
+        "type": "debug",
+        "z": "27e958a26f8b472d",
+        "g": "1c2202b3413ad6f7",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "ad62655d84b9aff1",
+        "type": "subflow:a097c62b59a93fa5",
+        "z": "27e958a26f8b472d",
+        "g": "1c2202b3413ad6f7",
+        "name": "",
+        "x": 330,
+        "y": 620,
+        "wires": [
+            [
+                "b4519518901a3b1b"
+            ]
+        ]
+    },
+    {
+        "id": "9b18d0692c3da728",
+        "type": "comment",
+        "z": "27e958a26f8b472d",
+        "g": "1c2202b3413ad6f7",
+        "name": "Subflows",
+        "info": "",
+        "x": 120,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "331eaafb44d0fdc5",
+        "type": "inject",
+        "z": "27e958a26f8b472d",
+        "g": "024c1ba1dc39c40d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 800,
+        "wires": [
+            [
+                "a129d65a5e8a09de"
+            ]
+        ]
+    },
+    {
+        "id": "a129d65a5e8a09de",
+        "type": "function",
+        "z": "27e958a26f8b472d",
+        "g": "024c1ba1dc39c40d",
+        "name": "function 3",
+        "func": "msg.payload = {\n    $set: { name: \"updadfsdgsdte\" }\n};\n\nmsg.query = { \n    _id: objectid('64308f9153446dfc20000013') \n};\n\n// msg.payload = {\n//     query: { _id: objectid('64308f9153446dfc20000013') },\n//     update: { $set: { name: \"update\" } }\n// };\n\nmsg.collection = \"products\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "objectid",
+                "module": "objectid"
+            }
+        ],
+        "x": 320,
+        "y": 800,
+        "wires": [
+            [
+                "eb3ac15f633f1fc7"
+            ]
+        ]
+    },
+    {
+        "id": "eb3ac15f633f1fc7",
+        "type": "link call",
+        "z": "27e958a26f8b472d",
+        "g": "024c1ba1dc39c40d",
+        "name": "",
+        "links": [
+            "6e02acf20c7c434c"
+        ],
+        "linkType": "static",
+        "timeout": "30",
+        "x": 520,
+        "y": 800,
+        "wires": [
+            [
+                "024dd4cd90e32b52"
+            ]
+        ]
+    },
+    {
+        "id": "024dd4cd90e32b52",
+        "type": "debug",
+        "z": "27e958a26f8b472d",
+        "g": "024c1ba1dc39c40d",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "8e604cd11c5a9dcb",
+        "type": "inject",
+        "z": "27e958a26f8b472d",
+        "g": "024c1ba1dc39c40d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 860,
+        "wires": [
+            [
+                "716ef4768a93e2e0"
+            ]
+        ]
+    },
+    {
+        "id": "716ef4768a93e2e0",
+        "type": "function",
+        "z": "27e958a26f8b472d",
+        "g": "024c1ba1dc39c40d",
+        "name": "function 4",
+        "func": "msg.payload = {\n    _id: objectid(),\n    name: 'test4',\n    deleted: false\n};\n\nmsg.collection = \"products\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "objectid",
+                "module": "objectid"
+            }
+        ],
+        "x": 320,
+        "y": 860,
+        "wires": [
+            [
+                "a691858b679166fa"
+            ]
+        ]
+    },
+    {
+        "id": "a691858b679166fa",
+        "type": "link call",
+        "z": "27e958a26f8b472d",
+        "g": "024c1ba1dc39c40d",
+        "name": "",
+        "links": [
+            "11c9729c152a736b"
+        ],
+        "linkType": "static",
+        "timeout": "30",
+        "x": 510,
+        "y": 860,
+        "wires": [
+            [
+                "ea801f1f8aa87cf7"
+            ]
+        ]
+    },
+    {
+        "id": "ea801f1f8aa87cf7",
+        "type": "debug",
+        "z": "27e958a26f8b472d",
+        "g": "024c1ba1dc39c40d",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "0edd863d78f53e53",
+        "type": "comment",
+        "z": "27e958a26f8b472d",
+        "g": "024c1ba1dc39c40d",
+        "name": "MongoDB ",
+        "info": "",
+        "x": 120,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "29fd809dc62fe637",
+        "type": "inject",
+        "z": "27e958a26f8b472d",
+        "g": "2e23327e0aa0042c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 1040,
+        "wires": [
+            [
+                "36073d925a2cd8ef"
+            ]
+        ]
+    },
+    {
+        "id": "ae82a760f512d716",
+        "type": "debug",
+        "z": "27e958a26f8b472d",
+        "g": "2e23327e0aa0042c",
+        "name": "debug 213",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "36073d925a2cd8ef",
+        "type": "function",
+        "z": "27e958a26f8b472d",
+        "g": "2e23327e0aa0042c",
+        "name": "get path",
+        "func": "// Get the absolute path of the current directory\nconst currentDir = path.resolve('');\n\n// Log the current directory to the Node-RED console\nnode.warn(currentDir);\n\n// Return the current directory as the output message\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "path",
+                "module": "path"
+            }
+        ],
+        "x": 320,
+        "y": 1040,
+        "wires": [
+            [
+                "ae82a760f512d716"
+            ]
+        ]
+    },
+    {
+        "id": "ab7126da435ada47",
+        "type": "comment",
+        "z": "27e958a26f8b472d",
+        "g": "2e23327e0aa0042c",
+        "name": "Get a path of current directory",
+        "info": "",
+        "x": 180,
+        "y": 980,
+        "wires": []
     }
 ]
