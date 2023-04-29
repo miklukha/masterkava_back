@@ -462,6 +462,7 @@ module.exports = {
     // env: process.env,
     // myDir: __dirname,
     path: require('path'),
+    multer: require('multer'),
     // env: require(env),
     // os:require('os'),
   },

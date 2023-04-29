@@ -126,9 +126,7 @@
             "4f6b79dc7a07448b"
         ],
         "x": 34,
-        "y": 19,
-        "w": 532,
-        "h": 122
+        "y": 19
     },
     {
         "id": "10f169318ad1a329",
@@ -152,9 +150,7 @@
             "89c2e450b846c7c9"
         ],
         "x": 34,
-        "y": 179,
-        "w": 712,
-        "h": 162
+        "y": 179
     },
     {
         "id": "b7f4d86114a55d70",
@@ -176,9 +172,7 @@
             "9497ff1729fe73e6"
         ],
         "x": 34,
-        "y": 379,
-        "w": 792,
-        "h": 122
+        "y": 379
     },
     {
         "id": "1c2202b3413ad6f7",
@@ -200,9 +194,7 @@
             "9b18d0692c3da728"
         ],
         "x": 34,
-        "y": 539,
-        "w": 612,
-        "h": 122
+        "y": 539
     },
     {
         "id": "024c1ba1dc39c40d",
@@ -229,9 +221,7 @@
             "0edd863d78f53e53"
         ],
         "x": 34,
-        "y": 699,
-        "w": 792,
-        "h": 202
+        "y": 699
     },
     {
         "id": "2e23327e0aa0042c",
@@ -253,9 +243,30 @@
             "ab7126da435ada47"
         ],
         "x": 34,
-        "y": 939,
-        "w": 592,
-        "h": 142
+        "y": 939
+    },
+    {
+        "id": "46754a6258cacf85",
+        "type": "group",
+        "z": "27e958a26f8b472d",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "a310f231786a1a62",
+            "d3ce801aa9c8eae8",
+            "8639587e5b6a68a8",
+            "aa246705f235df7c",
+            "458063eab4db9cad"
+        ],
+        "x": 34,
+        "y": 1119
     },
     {
         "id": "2272c92dc80bcb38",
@@ -371,6 +382,98 @@
         "statusType": "auto",
         "x": 430,
         "y": 60,
+        "wires": []
+    },
+    {
+        "id": "3c0098806f90729c",
+        "type": "http in",
+        "z": "6d691e6d89cccf80",
+        "name": "",
+        "url": "/photo",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 180,
+        "y": 920,
+        "wires": [
+            [
+                "9de426dba07efafb",
+                "647a9d87cf5fe0a4"
+            ]
+        ]
+    },
+    {
+        "id": "6e9fd355cecc207d",
+        "type": "http response",
+        "z": "6d691e6d89cccf80",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 730,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "9de426dba07efafb",
+        "type": "function",
+        "z": "6d691e6d89cccf80",
+        "name": "function 14",
+        "func": "const tempDir = path.resolve('') + \"/temp\";\nconst multerConfig = multer.diskStorage({\n    destination: tempDir,\n    filename: (req, file, cb) => {\n        cb(null, file.originalname)\n    }\n});\n\nconst upload = multer({\n    storage: multerConfig\n}).single(\"photo\");\n\nupload(msg.req, msg.res, function (err) {\n    if (err) {\n        msg.payload = \"Error uploading file: \" + err.message;\n        return node.send([null, msg]);\n    }\n\n    msg.payload = \"File uploaded successfully\";\n    return node.send([msg, null]);\n});\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "multer",
+                "module": "multer"
+            },
+            {
+                "var": "path",
+                "module": "path"
+            }
+        ],
+        "x": 370,
+        "y": 920,
+        "wires": [
+            [
+                "6e9fd355cecc207d",
+                "3b94e3d977cbb618"
+            ]
+        ]
+    },
+    {
+        "id": "3b94e3d977cbb618",
+        "type": "debug",
+        "z": "6d691e6d89cccf80",
+        "name": "debug 216",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "647a9d87cf5fe0a4",
+        "type": "debug",
+        "z": "6d691e6d89cccf80",
+        "name": "debug 219",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 350,
+        "y": 860,
         "wires": []
     },
     {
@@ -577,95 +680,6 @@
         "headers": {},
         "x": 710,
         "y": 240,
-        "wires": []
-    },
-    {
-        "id": "af9cb3fe6349abc5",
-        "type": "http in",
-        "z": "254289433a84914b",
-        "name": "",
-        "url": "/products",
-        "method": "post",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 100,
-        "y": 180,
-        "wires": [
-            [
-                "9d0d9d240fbc03be"
-            ]
-        ]
-    },
-    {
-        "id": "9d0d9d240fbc03be",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "createProduct()",
-        "func": "const { name, code, availability, sourness, bitterness, \nsturdiness, saturation, price, description, \nroastLevel, countries, image, category } = msg.req.body;\n\n// console.log(msg);\n\nmsg.payload = {\n    _id: objectid(),\n    name,\n    code, \n    availability,\n    category: objectid(category), \n    characteristics: {\n        sourness, \n        bitterness,\n        sturdiness,\n        saturation\n    },\n    price,\n    description,\n    roastLevel, \n    countries: countries.split(',').map(c => c.trim()),\n    image,\n    deleted: false\n}\nmsg.collection = \"products\";\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "objectid",
-                "module": "objectid"
-            }
-        ],
-        "x": 340,
-        "y": 180,
-        "wires": [
-            [
-                "087c5252c5f5d140"
-            ]
-        ]
-    },
-    {
-        "id": "087c5252c5f5d140",
-        "type": "link call",
-        "z": "254289433a84914b",
-        "name": "",
-        "links": [
-            "11c9729c152a736b"
-        ],
-        "linkType": "static",
-        "timeout": "60",
-        "x": 530,
-        "y": 180,
-        "wires": [
-            [
-                "32d463f5f48cd8d4"
-            ]
-        ]
-    },
-    {
-        "id": "32d463f5f48cd8d4",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "checkStatus()",
-        "func": "msg.payload = {\n    success: true,\n    message: \"Everything is OK\"\n}\n\nmsg.statusCode = 200;\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 760,
-        "y": 180,
-        "wires": [
-            [
-                "3e3630905f7c21f0"
-            ]
-        ]
-    },
-    {
-        "id": "3e3630905f7c21f0",
-        "type": "http response",
-        "z": "254289433a84914b",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 930,
-        "y": 180,
         "wires": []
     },
     {
@@ -1385,8 +1399,8 @@
         "method": "put",
         "upload": false,
         "swaggerDoc": "",
-        "x": 100,
-        "y": 1820,
+        "x": 120,
+        "y": 2160,
         "wires": [
             [
                 "0b171b8828295d57",
@@ -1401,8 +1415,8 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 630,
-        "y": 1840,
+        "x": 730,
+        "y": 2060,
         "wires": []
     },
     {
@@ -1418,8 +1432,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 500,
-        "y": 1820,
+        "x": 520,
+        "y": 2020,
         "wires": []
     },
     {
@@ -1438,8 +1452,8 @@
                 "module": "formidable"
             }
         ],
-        "x": 330,
-        "y": 1820,
+        "x": 350,
+        "y": 2160,
         "wires": [
             [
                 "490f6ccade89a327"
@@ -1459,7 +1473,6 @@
         "y": 1320,
         "wires": [
             [
-                "85e75f9.45f94a",
                 "b13b26047187de90"
             ]
         ]
@@ -1474,7 +1487,7 @@
                 "t": "set",
                 "p": "filename",
                 "pt": "msg",
-                "to": "'/data/storage/' & payload.file",
+                "to": "'/data/upload' & '2023-04-23_13-02.png'",
                 "tot": "jsonata"
             }
         ],
@@ -1486,10 +1499,7 @@
         "x": 310,
         "y": 1320,
         "wires": [
-            [
-                "ccc9150b.a8cb08",
-                "55fbb339aef9940d"
-            ]
+            []
         ]
     },
     {
@@ -1508,7 +1518,7 @@
         "y": 1320,
         "wires": [
             [
-                "9ed97723.1f95b8"
+                "55fbb339aef9940d"
             ]
         ]
     },
@@ -1656,8 +1666,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 730,
-        "y": 1280,
+        "x": 590,
+        "y": 1240,
         "wires": []
     },
     {
@@ -1985,8 +1995,8 @@
         "method": "post",
         "upload": true,
         "swaggerDoc": "",
-        "x": 150,
-        "y": 1620,
+        "x": 110,
+        "y": 1700,
         "wires": [
             [
                 "e63265bb.9c173"
@@ -2009,8 +2019,8 @@
                 "module": "multer"
             }
         ],
-        "x": 350,
-        "y": 1620,
+        "x": 310,
+        "y": 1700,
         "wires": [
             [
                 "9aeb0b0e.7d008"
@@ -2024,8 +2034,118 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 570,
-        "y": 1620,
+        "x": 530,
+        "y": 1700,
+        "wires": []
+    },
+    {
+        "id": "5a176d594bb6a57f",
+        "type": "inject",
+        "z": "254289433a84914b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 1280,
+        "wires": [
+            [
+                "b24f4e006b3f910e"
+            ]
+        ]
+    },
+    {
+        "id": "b24f4e006b3f910e",
+        "type": "function",
+        "z": "254289433a84914b",
+        "name": "Handle File Upload",
+        "func": "const currentDir = path.resolve('');\nmsg.filename = currentDir + \"/data/upload/\" + \"2023-04-23_13-02.png\";\n\nnode.warn(msg.filename);\n\nreturn  msg;\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "path",
+                "module": "path"
+            }
+        ],
+        "x": 304.89581298828125,
+        "y": 1261.6666259765625,
+        "wires": [
+            [
+                "ccc9150b.a8cb08"
+            ]
+        ]
+    },
+    {
+        "id": "fa7fc71873399e18",
+        "type": "function",
+        "z": "254289433a84914b",
+        "name": "function 15",
+        "func": "const tempDir = path.resolve('') + \"/temp\";\nconst multerConfig = multer.diskStorage({\n    destination: tempDir,\n    filename: (req, file, cb) => {\n        node.warn(file);\n        cb(null, file.originalname)\n    }\n});\n\nconst upload = multer({\n    storage: multerConfig\n}).single(\"image\");\n\nupload(msg.req, msg.res, function (err) {\n    if (err) {\n        msg.payload = \"Error uploading file: \" + err.message;\n        // return node.send([null, msg]);\n        return node.send( msg);\n\n    }\n\n    msg.payload = \"File uploaded successfully\";\n    return node.send(msg);\n});\n\n// const multerConfig = multer.memoryStorage();\n\n// const upload = multer({\n//     storage: multerConfig\n// }).single(\"image\");\n\n// upload(msg.req, msg.res, function (err) {\n//     if (err) {\n//         msg.payload = \"Error uploading file: \" + err.message;\n//         return node.send(msg);\n//     }\n\n//     // Access the uploaded file buffer\n//     const fileBuffer = msg.req.file.buffer;\n\n//     msg.payload = \"File uploaded successfully\";\n//     msg.file = {\n//         buffer: fileBuffer,\n//         mimetype: msg.req.file.mimetype,\n//         originalname: msg.req.file.originalname\n//     };\n\n//     return node.send(msg);\n// });\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "multer",
+                "module": "multer"
+            },
+            {
+                "var": "path",
+                "module": "path"
+            }
+        ],
+        "x": 750,
+        "y": 2140,
+        "wires": [
+            [
+                "a9a89c2d19c818af",
+                "4c05111f6007dd2e"
+            ]
+        ]
+    },
+    {
+        "id": "4c05111f6007dd2e",
+        "type": "http response",
+        "z": "254289433a84914b",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 990,
+        "y": 2140,
+        "wires": []
+    },
+    {
+        "id": "a9a89c2d19c818af",
+        "type": "debug",
+        "z": "254289433a84914b",
+        "name": "debug 217",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 830,
+        "y": 2180,
         "wires": []
     },
     {
@@ -2037,12 +2157,11 @@
         "method": "post",
         "upload": true,
         "swaggerDoc": "",
-        "x": 130,
-        "y": 1040,
+        "x": 90,
+        "y": 2620,
         "wires": [
             [
-                "97fcfe96.6f76c",
-                "8c8e489d5eb8d52f"
+                "97fcfe96.6f76c"
             ]
         ]
     },
@@ -2051,19 +2170,19 @@
         "type": "function",
         "z": "254289433a84914b",
         "name": "Handle File Upload",
-        "func": "const decodedFilename = msg.req.files[0].originalname;\nconst outputString = decodedFilename.replace(/י/g, '`')\n\nmsg.filename = \"/data/storage/\" + msg.req.route.path + \"/\" + outputString;;\n// msg.filename = \"/data/storage/\" + msg.req.query.path + \"/\" + outputString;;\n\n//msg.filename =\"/data/\"+msg.req.query.path+\"/\"+ msg.req.files[0].originalname;\n\nmsg.payload.file = msg.req.files[0].buffer;\nmsg.payload = msg.payload.file;\nreturn [null, msg];",
+        "func": "const currentDir = path.resolve('');\nconst decodedFilename = msg.req.files[0].originalname;\n\nmsg.filename = currentDir + \"/data\" + msg.req.route.path + \"/\" + decodedFilename;\nmsg.path = currentDir + \"/data\" + msg.req.route.path + \"/\"\nmsg.payload.file = msg.req.files[0].buffer;\nmsg.payload = msg.payload.file;\n\nreturn [null, msg];\n\n\n",
         "outputs": 2,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [
             {
-                "var": "multer",
-                "module": "multer"
+                "var": "path",
+                "module": "path"
             }
         ],
-        "x": 310,
-        "y": 1040,
+        "x": 290,
+        "y": 2620,
         "wires": [
             [
                 "4d6cfdccc34546b2"
@@ -2080,8 +2199,8 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 850,
-        "y": 1020,
+        "x": 830,
+        "y": 2600,
         "wires": []
     },
     {
@@ -2101,8 +2220,8 @@
         "mode": "777",
         "property": "payload",
         "propertyType": "msg",
-        "x": 570,
-        "y": 980,
+        "x": 510,
+        "y": 2560,
         "wires": [
             [
                 "74c6161a7d0ee640"
@@ -2120,12 +2239,11 @@
         "createDir": true,
         "overwriteFile": "true",
         "encoding": "none",
-        "x": 520,
-        "y": 1100,
+        "x": 480,
+        "y": 2680,
         "wires": [
             [
-                "6afb867fea63aacd",
-                "47cd896bdad31f69"
+                "6afb867fea63aacd"
             ]
         ]
     },
@@ -2140,8 +2258,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 790,
-        "y": 980,
+        "x": 770,
+        "y": 2560,
         "wires": [
             [
                 "5680f7958362b006"
@@ -2163,8 +2281,8 @@
         "depth": 0,
         "stat": true,
         "showWarnings": true,
-        "x": 960,
-        "y": 980,
+        "x": 940,
+        "y": 2560,
         "wires": [
             [
                 "e9552de6832c27c6"
@@ -2176,18 +2294,17 @@
         "type": "function",
         "z": "254289433a84914b",
         "name": "",
-        "func": "msg.payload.start = \"/data/storage/\"+ msg.req.route.path;\n//msg.payload.start = \"/data/\"+msg.req.query.path;\n\nreturn msg;",
+        "func": "msg.payload.start = \"/data\" + msg.req.route.path;\n//msg.payload.start = \"/data/\"+msg.req.query.path;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 740,
-        "y": 1100,
+        "x": 680,
+        "y": 2680,
         "wires": [
             [
-                "72656fb743344b5e",
-                "0285810cb5a538cb"
+                "72656fb743344b5e"
             ]
         ]
     },
@@ -2206,12 +2323,11 @@
         "depth": 0,
         "stat": true,
         "showWarnings": true,
-        "x": 900,
-        "y": 1100,
+        "x": 880,
+        "y": 2680,
         "wires": [
             [
-                "db8c30bc4bdea22b",
-                "c727ac37d91d04a2"
+                "db8c30bc4bdea22b"
             ]
         ]
     },
@@ -2222,8 +2338,8 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 1290,
-        "y": 960,
+        "x": 1270,
+        "y": 2540,
         "wires": []
     },
     {
@@ -2233,8 +2349,8 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 1290,
-        "y": 1100,
+        "x": 1270,
+        "y": 2680,
         "wires": []
     },
     {
@@ -2248,8 +2364,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1120,
-        "y": 1100,
+        "x": 1100,
+        "y": 2680,
         "wires": [
             [
                 "ccaec6ccf77fdd23",
@@ -2270,8 +2386,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1290,
-        "y": 1020,
+        "x": 1270,
+        "y": 2600,
         "wires": []
     },
     {
@@ -2285,8 +2401,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1140,
-        "y": 960,
+        "x": 1120,
+        "y": 2540,
         "wires": [
             [
                 "1faf730dc135de6d"
@@ -2294,44 +2410,102 @@
         ]
     },
     {
-        "id": "c727ac37d91d04a2",
-        "type": "debug",
+        "id": "af9cb3fe6349abc5",
+        "type": "http in",
         "z": "254289433a84914b",
-        "name": "4",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1030,
-        "y": 1160,
-        "wires": []
+        "name": "",
+        "url": "/create-product",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 2400,
+        "wires": [
+            [
+                "3e3630905f7c21f0"
+            ]
+        ]
     },
     {
-        "id": "0285810cb5a538cb",
-        "type": "debug",
+        "id": "9d0d9d240fbc03be",
+        "type": "function",
         "z": "254289433a84914b",
-        "name": "3",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
+        "name": "createProduct()",
+        "func": "const { name, code, availability, sourness, bitterness, \nsturdiness, saturation, price, description, \nroastLevel, countries, image, category } = msg.req.body;\n\nnode.warn(\"my warning\");\n\nmsg.payload = {\n    _id: objectid(),\n    name,\n    code, \n    availability: availability === \"true\",\n    category: objectid(category), \n    characteristics: {\n        sourness: parseInt(sourness), \n        bitterness: parseInt(bitterness),\n        sturdiness: parseInt(sturdiness),\n        saturation: parseInt(saturation)\n    },\n    price: parseInt(price),\n    description,\n    roastLevel, \n    countries: countries.split(',').map(c => c.trim()),\n    image,\n    deleted: false\n}\nmsg.collection = \"products\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "objectid",
+                "module": "objectid"
+            }
+        ],
+        "x": 340,
+        "y": 2400,
+        "wires": [
+            [
+                "087c5252c5f5d140",
+                "26e642865e710f71"
+            ]
+        ]
+    },
+    {
+        "id": "087c5252c5f5d140",
+        "type": "link call",
+        "z": "254289433a84914b",
+        "name": "",
+        "links": [
+            "11c9729c152a736b"
+        ],
+        "linkType": "static",
+        "timeout": "60",
+        "x": 570,
+        "y": 2400,
+        "wires": [
+            [
+                "32d463f5f48cd8d4",
+                "ec15ee196ca430c3"
+            ]
+        ]
+    },
+    {
+        "id": "32d463f5f48cd8d4",
+        "type": "function",
+        "z": "254289433a84914b",
+        "name": "checkStatus()",
+        "func": "msg.payload = {\n    success: true,\n    message: \"Everything is OK\"\n}\n\nmsg.statusCode = 200;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 2400,
+        "wires": [
+            [
+                "3e3630905f7c21f0",
+                "54d584f7311a03af"
+            ]
+        ]
+    },
+    {
+        "id": "3e3630905f7c21f0",
+        "type": "http response",
+        "z": "254289433a84914b",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
         "x": 970,
-        "y": 1040,
+        "y": 2400,
         "wires": []
     },
     {
-        "id": "47cd896bdad31f69",
+        "id": "26e642865e710f71",
         "type": "debug",
         "z": "254289433a84914b",
-        "name": "2",
+        "name": "debug 220",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -2340,15 +2514,15 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 690,
-        "y": 1040,
+        "x": 470,
+        "y": 2260,
         "wires": []
     },
     {
-        "id": "8c8e489d5eb8d52f",
+        "id": "ec15ee196ca430c3",
         "type": "debug",
         "z": "254289433a84914b",
-        "name": "debug 208",
+        "name": "debug 221",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -2357,8 +2531,25 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 270,
-        "y": 980,
+        "x": 670,
+        "y": 2280,
+        "wires": []
+    },
+    {
+        "id": "54d584f7311a03af",
+        "type": "debug",
+        "z": "254289433a84914b",
+        "name": "debug 222",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 850,
+        "y": 2300,
         "wires": []
     },
     {
@@ -3460,6 +3651,111 @@
         "info": "",
         "x": 180,
         "y": 980,
+        "wires": []
+    },
+    {
+        "id": "a310f231786a1a62",
+        "type": "fs-mkdir",
+        "z": "27e958a26f8b472d",
+        "g": "46754a6258cacf85",
+        "name": "",
+        "purpose": "reg",
+        "path": "path",
+        "pathType": "msg",
+        "foldername": "payload",
+        "foldernameType": "msg",
+        "recursive": true,
+        "exists": true,
+        "prefix": "",
+        "prefixType": "str",
+        "mode": "777",
+        "property": "payload",
+        "propertyType": "msg",
+        "x": 450,
+        "y": 1220,
+        "wires": [
+            [
+                "8639587e5b6a68a8"
+            ]
+        ]
+    },
+    {
+        "id": "d3ce801aa9c8eae8",
+        "type": "inject",
+        "z": "27e958a26f8b472d",
+        "g": "46754a6258cacf85",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "folder",
+        "payloadType": "str",
+        "x": 130,
+        "y": 1220,
+        "wires": [
+            [
+                "aa246705f235df7c"
+            ]
+        ]
+    },
+    {
+        "id": "8639587e5b6a68a8",
+        "type": "debug",
+        "z": "27e958a26f8b472d",
+        "g": "46754a6258cacf85",
+        "name": "debug 215",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "aa246705f235df7c",
+        "type": "function",
+        "z": "27e958a26f8b472d",
+        "g": "46754a6258cacf85",
+        "name": "set path",
+        "func": "const currentDir = path.resolve('');\nmsg.path = currentDir + \"/data\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "path",
+                "module": "path"
+            }
+        ],
+        "x": 260,
+        "y": 1220,
+        "wires": [
+            [
+                "a310f231786a1a62"
+            ]
+        ]
+    },
+    {
+        "id": "458063eab4db9cad",
+        "type": "comment",
+        "z": "27e958a26f8b472d",
+        "g": "46754a6258cacf85",
+        "name": "Create folder",
+        "info": "",
+        "x": 130,
+        "y": 1160,
         "wires": []
     }
 ]
