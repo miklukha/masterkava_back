@@ -126,7 +126,9 @@
             "4f6b79dc7a07448b"
         ],
         "x": 34,
-        "y": 19
+        "y": 19,
+        "w": 532,
+        "h": 122
     },
     {
         "id": "10f169318ad1a329",
@@ -150,7 +152,9 @@
             "89c2e450b846c7c9"
         ],
         "x": 34,
-        "y": 179
+        "y": 179,
+        "w": 712,
+        "h": 162
     },
     {
         "id": "b7f4d86114a55d70",
@@ -172,7 +176,9 @@
             "9497ff1729fe73e6"
         ],
         "x": 34,
-        "y": 379
+        "y": 379,
+        "w": 792,
+        "h": 122
     },
     {
         "id": "1c2202b3413ad6f7",
@@ -194,7 +200,9 @@
             "9b18d0692c3da728"
         ],
         "x": 34,
-        "y": 539
+        "y": 539,
+        "w": 612,
+        "h": 122
     },
     {
         "id": "024c1ba1dc39c40d",
@@ -221,7 +229,9 @@
             "0edd863d78f53e53"
         ],
         "x": 34,
-        "y": 699
+        "y": 699,
+        "w": 792,
+        "h": 202
     },
     {
         "id": "2e23327e0aa0042c",
@@ -243,7 +253,9 @@
             "ab7126da435ada47"
         ],
         "x": 34,
-        "y": 939
+        "y": 939,
+        "w": 592,
+        "h": 142
     },
     {
         "id": "46754a6258cacf85",
@@ -266,7 +278,9 @@
             "458063eab4db9cad"
         ],
         "x": 34,
-        "y": 1119
+        "y": 1119,
+        "w": 732,
+        "h": 142
     },
     {
         "id": "2272c92dc80bcb38",
@@ -2193,17 +2207,6 @@
         ]
     },
     {
-        "id": "746c3ba6.29a1a4",
-        "type": "http response",
-        "z": "254289433a84914b",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 830,
-        "y": 2600,
-        "wires": []
-    },
-    {
         "id": "4d6cfdccc34546b2",
         "type": "fs-mkdir",
         "z": "254289433a84914b",
@@ -2294,12 +2297,17 @@
         "type": "function",
         "z": "254289433a84914b",
         "name": "",
-        "func": "msg.payload.start = \"/data\" + msg.req.route.path;\n//msg.payload.start = \"/data/\"+msg.req.query.path;\n\nreturn msg;",
+        "func": "const currentDir = path.resolve('');\nmsg.payload.start = currentDir + \"/data\" + msg.req.route.path;\n//msg.payload.start = \"/data/\"+msg.req.query.path;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "libs": [],
+        "libs": [
+            {
+                "var": "path",
+                "module": "path"
+            }
+        ],
         "x": 680,
         "y": 2680,
         "wires": [
@@ -2339,7 +2347,7 @@
         "statusCode": "",
         "headers": {},
         "x": 1270,
-        "y": 2540,
+        "y": 2560,
         "wires": []
     },
     {
@@ -2368,27 +2376,9 @@
         "y": 2680,
         "wires": [
             [
-                "ccaec6ccf77fdd23",
-                "863941b8a161ae08"
+                "ccaec6ccf77fdd23"
             ]
         ]
-    },
-    {
-        "id": "863941b8a161ae08",
-        "type": "debug",
-        "z": "254289433a84914b",
-        "name": "5",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1270,
-        "y": 2600,
-        "wires": []
     },
     {
         "id": "e9552de6832c27c6",
@@ -2402,7 +2392,7 @@
         "finalize": "",
         "libs": [],
         "x": 1120,
-        "y": 2540,
+        "y": 2560,
         "wires": [
             [
                 "1faf730dc135de6d"
@@ -2414,40 +2404,15 @@
         "type": "http in",
         "z": "254289433a84914b",
         "name": "",
-        "url": "/create-product",
+        "url": "/products",
         "method": "post",
         "upload": false,
         "swaggerDoc": "",
-        "x": 120,
+        "x": 100,
         "y": 2400,
         "wires": [
             [
-                "3e3630905f7c21f0"
-            ]
-        ]
-    },
-    {
-        "id": "9d0d9d240fbc03be",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "createProduct()",
-        "func": "const { name, code, availability, sourness, bitterness, \nsturdiness, saturation, price, description, \nroastLevel, countries, image, category } = msg.req.body;\n\nnode.warn(\"my warning\");\n\nmsg.payload = {\n    _id: objectid(),\n    name,\n    code, \n    availability: availability === \"true\",\n    category: objectid(category), \n    characteristics: {\n        sourness: parseInt(sourness), \n        bitterness: parseInt(bitterness),\n        sturdiness: parseInt(sturdiness),\n        saturation: parseInt(saturation)\n    },\n    price: parseInt(price),\n    description,\n    roastLevel, \n    countries: countries.split(',').map(c => c.trim()),\n    image,\n    deleted: false\n}\nmsg.collection = \"products\";\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "objectid",
-                "module": "objectid"
-            }
-        ],
-        "x": 340,
-        "y": 2400,
-        "wires": [
-            [
-                "087c5252c5f5d140",
-                "26e642865e710f71"
+                "728f69733eaaceef"
             ]
         ]
     },
@@ -2461,12 +2426,11 @@
         ],
         "linkType": "static",
         "timeout": "60",
-        "x": 570,
+        "x": 510,
         "y": 2400,
         "wires": [
             [
-                "32d463f5f48cd8d4",
-                "ec15ee196ca430c3"
+                "32d463f5f48cd8d4"
             ]
         ]
     },
@@ -2481,12 +2445,11 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 760,
+        "x": 700,
         "y": 2400,
         "wires": [
             [
-                "3e3630905f7c21f0",
-                "54d584f7311a03af"
+                "3e3630905f7c21f0"
             ]
         ]
     },
@@ -2497,29 +2460,94 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 970,
+        "x": 910,
         "y": 2400,
         "wires": []
     },
     {
-        "id": "26e642865e710f71",
-        "type": "debug",
+        "id": "728f69733eaaceef",
+        "type": "function",
         "z": "254289433a84914b",
-        "name": "debug 220",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 470,
-        "y": 2260,
+        "name": "createProduct()",
+        "func": "const { name, code, availability, sourness, \n        bitterness, sturdiness, saturation, price,  \n        description, roastLevel, countries, image,\n        category } = msg.req.body;\n\nconst currentDir = path.resolve('');\nconst imgPath = currentDir + \"/data/upload/\" + image;\n\nmsg.payload = {\n    _id: objectid(),\n    name,\n    code, \n    availability: availability === \"true\",\n    category: objectid(category), \n    characteristics: {\n        sourness: parseInt(sourness), \n        bitterness: parseInt(bitterness),\n        sturdiness: parseInt(sturdiness),\n        saturation: parseInt(saturation)\n    },\n    price: parseInt(price),\n    description,\n    roastLevel, \n    countries: countries.split(',').map(c => c.trim()),\n    image: imgPath,\n    deleted: false\n}\nmsg.collection = \"products\";\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "objectid",
+                "module": "objectid"
+            },
+            {
+                "var": "path",
+                "module": "path"
+            }
+        ],
+        "x": 320,
+        "y": 2400,
+        "wires": [
+            [
+                "087c5252c5f5d140"
+            ]
+        ]
+    },
+    {
+        "id": "c9c627b0a6af71d4",
+        "type": "http in",
+        "z": "254289433a84914b",
+        "name": "",
+        "url": "/products/:id",
+        "method": "put",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 2320,
+        "wires": [
+            [
+                "fb1173e5a2210c94",
+                "20e7283747fd3738"
+            ]
+        ]
+    },
+    {
+        "id": "b7cfac732d76e1d5",
+        "type": "http response",
+        "z": "254289433a84914b",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 490,
+        "y": 2320,
         "wires": []
     },
     {
-        "id": "ec15ee196ca430c3",
+        "id": "fb1173e5a2210c94",
+        "type": "function",
+        "z": "254289433a84914b",
+        "name": "function 16",
+        "func": "const productId = msg.req.params.id;\nnode.warn(productId);\n\n// msg.payload = {\n//     $set: { deleted: true }\n// };\n\n// msg.query = {\n//     _id: objectid(productId)\n// };\n\n// msg.collection = \"products\";\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "objectid",
+                "module": "objectid"
+            }
+        ],
+        "x": 290,
+        "y": 2320,
+        "wires": [
+            [
+                "d410909f4b3e5fda",
+                "b7cfac732d76e1d5"
+            ]
+        ]
+    },
+    {
+        "id": "20e7283747fd3738",
         "type": "debug",
         "z": "254289433a84914b",
         "name": "debug 221",
@@ -2531,12 +2559,12 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 670,
-        "y": 2280,
+        "x": 290,
+        "y": 2260,
         "wires": []
     },
     {
-        "id": "54d584f7311a03af",
+        "id": "d410909f4b3e5fda",
         "type": "debug",
         "z": "254289433a84914b",
         "name": "debug 222",
@@ -2548,9 +2576,1007 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 850,
-        "y": 2300,
+        "x": 490,
+        "y": 2260,
         "wires": []
+    },
+    {
+        "id": "8914a42b4616d099",
+        "type": "http in",
+        "z": "254289433a84914b",
+        "name": "",
+        "url": "/images/:id",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 2800,
+        "wires": [
+            [
+                "25eb74a7359fcbb1"
+            ]
+        ]
+    },
+    {
+        "id": "f27612a8b6fec8a5",
+        "type": "http response",
+        "z": "254289433a84914b",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1090,
+        "y": 2820,
+        "wires": []
+    },
+    {
+        "id": "25eb74a7359fcbb1",
+        "type": "function",
+        "z": "254289433a84914b",
+        "name": "function 17",
+        "func": "const productId = msg.req.params.id;\n\nmsg.payload = {\n    _id: objectid(productId)\n}\n\nmsg.collection = \"products\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "objectid",
+                "module": "objectid"
+            }
+        ],
+        "x": 330,
+        "y": 2800,
+        "wires": [
+            [
+                "65e822e95975693e"
+            ]
+        ]
+    },
+    {
+        "id": "a2a3cb9c54ca6b3d",
+        "type": "file in",
+        "z": "254289433a84914b",
+        "name": "",
+        "filename": "filename",
+        "filenameType": "msg",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 780,
+        "y": 2880,
+        "wires": [
+            [
+                "3859ee4b701a4539",
+                "a3cb9fb4108bf528"
+            ]
+        ]
+    },
+    {
+        "id": "3859ee4b701a4539",
+        "type": "debug",
+        "z": "254289433a84914b",
+        "name": "debug 224",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 2740,
+        "wires": []
+    },
+    {
+        "id": "16ac409ab5440d3c",
+        "type": "http in",
+        "z": "254289433a84914b",
+        "name": "",
+        "url": "/fm/list/image",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 170,
+        "y": 3220,
+        "wires": [
+            [
+                "1970a145a5913938",
+                "f67441b990db69b5"
+            ]
+        ]
+    },
+    {
+        "id": "f135abaf51aa22a4",
+        "type": "http response",
+        "z": "254289433a84914b",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1230,
+        "y": 3220,
+        "wires": []
+    },
+    {
+        "id": "6f4ef0c56d5fc346",
+        "type": "function",
+        "z": "254289433a84914b",
+        "name": "",
+        "func": "// // @ts-ignore\n// NewMsg={};\n// NewMsg.payload={\n//     success:true,\n// };\n// NewMsg.payload.payload = msg.payload.map(elem=>{\n//     let patch;\n//     if(!elem.stat.isDirectory){\n//         patch = msg.req.query.path +\"/\"+elem.name;\n//     }else{\n//         patch = elem.name;\n//     }\n//     return{\n//         \"isDirectory\":elem.stat.isDirectory,\n//         \"name\":elem.name,\n//         \"path\":patch,\n//         \"size\":(elem.stat.size/1048576).toFixed(3) + \"Мb\",\n//         \"editedAt\":elem.stat.created,\n        \n//     }\n// })\n\n// msg.payload = NewMsg.payload;\n// return msg;\n\n\n// @ts-ignore\nNewMsg = {};\nNewMsg.payload = {\n    success: true,\n};\nNewMsg.payload.payload = msg.payload.map(elem => {\n    let patch;\n    if (msg.start_path) {\n        patch = msg.start_path + \"/\" + elem.name;\n    } else {\n        patch = elem.name;\n    }\n    return {\n        \"isDirectory\": elem.stat.isDirectory,\n        \"name\": elem.name,\n        \"path\": patch,\n        \"size\": (elem.stat.size / 1048576).toFixed(3) + \"Мb\",\n        \"editedAt\": elem.stat.created,\n\n    }\n})\n\nmsg.payload = NewMsg.payload;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 3220,
+        "wires": [
+            [
+                "d965f1af2b39ae56",
+                "cb71c50b00b62945"
+            ]
+        ]
+    },
+    {
+        "id": "96465254b192d73f",
+        "type": "http in",
+        "z": "254289433a84914b",
+        "name": "",
+        "url": "/img",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 3340,
+        "wires": [
+            [
+                "7a70093c0e4e5d37",
+                "a9fd31868fcc73d8"
+            ]
+        ]
+    },
+    {
+        "id": "7a70093c0e4e5d37",
+        "type": "change",
+        "z": "254289433a84914b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "filename",
+                "pt": "msg",
+                "to": "'/data/storage/' & payload.file",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 410,
+        "y": 3340,
+        "wires": [
+            [
+                "098419e3bf193c3a",
+                "5955fdc8ad4c8b75"
+            ]
+        ]
+    },
+    {
+        "id": "098419e3bf193c3a",
+        "type": "file in",
+        "z": "254289433a84914b",
+        "name": "get_file",
+        "filename": "filename",
+        "filenameType": "msg",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 620,
+        "y": 3340,
+        "wires": [
+            [
+                "1dce3851262da3de"
+            ]
+        ]
+    },
+    {
+        "id": "dd50b6678e315c99",
+        "type": "http response",
+        "z": "254289433a84914b",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1250,
+        "y": 3340,
+        "wires": []
+    },
+    {
+        "id": "1dce3851262da3de",
+        "type": "change",
+        "z": "254289433a84914b",
+        "name": "Set Headers",
+        "rules": [
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "headers.content-type",
+                "pt": "msg",
+                "to": "image/png",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers['access-control-allow-credentials']",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            },
+            {
+                "t": "set",
+                "p": "headers.accept-ranges",
+                "pt": "msg",
+                "to": "bytes",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers.x-xss-protection",
+                "pt": "msg",
+                "to": "1; mode=block",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers.x-frame-options",
+                "pt": "msg",
+                "to": "SAMEORIGIN",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers.nel",
+                "pt": "msg",
+                "to": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers.x-dns-prefetch-control",
+                "pt": "msg",
+                "to": "off",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers.x-download-options",
+                "pt": "msg",
+                "to": "noopen",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 810,
+        "y": 3340,
+        "wires": [
+            [
+                "4f4c8aea19620a14",
+                "74af9a45dbd17a05"
+            ]
+        ]
+    },
+    {
+        "id": "1970a145a5913938",
+        "type": "function",
+        "z": "254289433a84914b",
+        "name": "",
+        "func": "// msg.payload.start = \"/data/storage/\"+msg.payload.path;\n// return msg;\n\n\nmsg.payload.start = \"/data/storage/\" + msg.payload.path;\nmsg.start_path = msg.payload.path;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 3220,
+        "wires": [
+            [
+                "7846cbfed35dde26",
+                "f67441b990db69b5"
+            ]
+        ]
+    },
+    {
+        "id": "7846cbfed35dde26",
+        "type": "fs-file-lister",
+        "z": "254289433a84914b",
+        "name": "",
+        "start": "{{msg.payload.start}}",
+        "pattern": "",
+        "folders": "",
+        "hidden": true,
+        "lstype": "both",
+        "path": false,
+        "single": true,
+        "depth": 0,
+        "stat": true,
+        "showWarnings": true,
+        "x": 660,
+        "y": 3220,
+        "wires": [
+            [
+                "6f4ef0c56d5fc346",
+                "d965f1af2b39ae56"
+            ]
+        ]
+    },
+    {
+        "id": "4f4c8aea19620a14",
+        "type": "function",
+        "z": "254289433a84914b",
+        "name": "function",
+        "func": "msg.headers = {\n    ...msg.headers,\n    ['x-content-type-options']: 'nosniff',\n    ['access-control-allow-credentials']: true,\n    ['cache-control']: 'public, max-age=14400',\n    ['cf-cache-status']: 'EXPIRED',\n    ['cf-ray']: '747ece538ba590b2-FRA',\n//report - to: { \"endpoints\": [{ \"url\": \"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=6FLrusuf%2B3JD%2By2hHTtEFI4LqfbHg6hE9OshVZ%2FGZHvRuKBMMPaZtmTvqedBYxS2H4SCN2hx0ulKIF4%2FetNCOLpZzbK46BXQfKwNg05NsEn3O4Uu6Oh5sk2s1A9i87oLs0t0yHlvVjNd\" }], \"group\": \"cf-nel\", \"max_age\": 604800 }\n//server: cloudflare\n    ['strict-transport-security']: 'max-age=15552000; includeSubDomains',\n    // ['link']: 'rel=\"shortcut icon\" href=\"\"',\n    ['Content-Security-Policy']:\"img-src 'none'\",\n    ['x-xss-protection']:' 1; mode = block'\n    //rel: \"shortcut icon\",\n    //vary: 'Origin,Accept-Encoding'\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1060,
+        "y": 3340,
+        "wires": [
+            [
+                "dd50b6678e315c99"
+            ]
+        ]
+    },
+    {
+        "id": "d965f1af2b39ae56",
+        "type": "debug",
+        "z": "254289433a84914b",
+        "name": "2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 3180,
+        "wires": []
+    },
+    {
+        "id": "f67441b990db69b5",
+        "type": "debug",
+        "z": "254289433a84914b",
+        "name": "debug 110",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 390,
+        "y": 3180,
+        "wires": []
+    },
+    {
+        "id": "74af9a45dbd17a05",
+        "type": "debug",
+        "z": "254289433a84914b",
+        "name": "2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1050,
+        "y": 3300,
+        "wires": []
+    },
+    {
+        "id": "5955fdc8ad4c8b75",
+        "type": "debug",
+        "z": "254289433a84914b",
+        "name": "2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 3300,
+        "wires": []
+    },
+    {
+        "id": "738157ffa4805fd5",
+        "type": "inject",
+        "z": "254289433a84914b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 3260,
+        "wires": [
+            [
+                "1970a145a5913938"
+            ]
+        ]
+    },
+    {
+        "id": "812a7494842133c8",
+        "type": "change",
+        "z": "254289433a84914b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "filename",
+                "pt": "msg",
+                "to": "'/data/storage/' & payload.file",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 510,
+        "y": 2960,
+        "wires": [
+            [
+                "3e434ab434045856"
+            ]
+        ]
+    },
+    {
+        "id": "3e434ab434045856",
+        "type": "file in",
+        "z": "254289433a84914b",
+        "name": "get_file",
+        "filename": "filename",
+        "filenameType": "msg",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 740,
+        "y": 2960,
+        "wires": [
+            [
+                "127134d6913cb3b0"
+            ]
+        ]
+    },
+    {
+        "id": "af66c14f70c49fa0",
+        "type": "change",
+        "z": "254289433a84914b",
+        "name": "Set Headers",
+        "rules": [
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "headers.content-type",
+                "pt": "msg",
+                "to": "image/png",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers['access-control-allow-credentials']",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            },
+            {
+                "t": "set",
+                "p": "headers.accept-ranges",
+                "pt": "msg",
+                "to": "bytes",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers.x-xss-protection",
+                "pt": "msg",
+                "to": "1; mode=block",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers.x-frame-options",
+                "pt": "msg",
+                "to": "SAMEORIGIN",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers.nel",
+                "pt": "msg",
+                "to": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers.x-dns-prefetch-control",
+                "pt": "msg",
+                "to": "off",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers.x-download-options",
+                "pt": "msg",
+                "to": "noopen",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1210,
+        "y": 3000,
+        "wires": [
+            [
+                "df45f3cd1fb5a90e",
+                "7c4e2ad837076323"
+            ]
+        ]
+    },
+    {
+        "id": "df45f3cd1fb5a90e",
+        "type": "function",
+        "z": "254289433a84914b",
+        "name": "function",
+        "func": "msg.headers = {\n    ...msg.headers,\n    ['x-content-type-options']: 'nosniff',\n    ['access-control-allow-credentials']: true,\n    ['cache-control']: 'public, max-age=14400',\n    ['cf-cache-status']: 'EXPIRED',\n    ['cf-ray']: '747ece538ba590b2-FRA',\n//report - to: { \"endpoints\": [{ \"url\": \"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=6FLrusuf%2B3JD%2By2hHTtEFI4LqfbHg6hE9OshVZ%2FGZHvRuKBMMPaZtmTvqedBYxS2H4SCN2hx0ulKIF4%2FetNCOLpZzbK46BXQfKwNg05NsEn3O4Uu6Oh5sk2s1A9i87oLs0t0yHlvVjNd\" }], \"group\": \"cf-nel\", \"max_age\": 604800 }\n//server: cloudflare\n    ['strict-transport-security']: 'max-age=15552000; includeSubDomains',\n    // ['link']: 'rel=\"shortcut icon\" href=\"\"',\n    ['Content-Security-Policy']:\"img-src 'none'\",\n    ['x-xss-protection']:' 1; mode = block'\n    //rel: \"shortcut icon\",\n    //vary: 'Origin,Accept-Encoding'\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1400,
+        "y": 3000,
+        "wires": [
+            [
+                "965fdb74eeb6ebf3"
+            ]
+        ]
+    },
+    {
+        "id": "965fdb74eeb6ebf3",
+        "type": "http response",
+        "z": "254289433a84914b",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1530,
+        "y": 2960,
+        "wires": []
+    },
+    {
+        "id": "a9fd31868fcc73d8",
+        "type": "debug",
+        "z": "254289433a84914b",
+        "name": "debug 205",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 390,
+        "y": 3300,
+        "wires": []
+    },
+    {
+        "id": "6c6987a3051e515e",
+        "type": "debug",
+        "z": "254289433a84914b",
+        "name": "debug 206",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 290,
+        "y": 2960,
+        "wires": []
+    },
+    {
+        "id": "b42697de89f342bc",
+        "type": "http in",
+        "z": "254289433a84914b",
+        "name": "",
+        "url": "/files",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 3000,
+        "wires": [
+            [
+                "6c6987a3051e515e",
+                "f0b782ba88420d92"
+            ]
+        ]
+    },
+    {
+        "id": "f0b782ba88420d92",
+        "type": "function",
+        "z": "254289433a84914b",
+        "name": "function 126",
+        "func": "if (msg.payload.file.includes('.png') || msg.payload.file.includes('.jpeg') || msg.payload.file.includes('.svg') || msg.payload.file.includes('.jpg')) {\n    return [msg, null]\n} else {\n    return [null, msg]\n}\n\n",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 3000,
+        "wires": [
+            [
+                "812a7494842133c8"
+            ],
+            [
+                "3674a5f69c553307"
+            ]
+        ]
+    },
+    {
+        "id": "3674a5f69c553307",
+        "type": "change",
+        "z": "254289433a84914b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "filename",
+                "pt": "msg",
+                "to": "'/data/storage/' & payload.file",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 510,
+        "y": 3040,
+        "wires": [
+            [
+                "8ec83491727795b9"
+            ]
+        ]
+    },
+    {
+        "id": "8ec83491727795b9",
+        "type": "file in",
+        "z": "254289433a84914b",
+        "name": "get_file",
+        "filename": "filename",
+        "filenameType": "msg",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 740,
+        "y": 3040,
+        "wires": [
+            [
+                "5aa4189663588abc"
+            ]
+        ]
+    },
+    {
+        "id": "5aa4189663588abc",
+        "type": "function",
+        "z": "254289433a84914b",
+        "name": "function",
+        "func": "msg.headers = {\n    \"Content-Disposition\": \"inline\",\n    \"filename\": \"calls.pdf\",\n    'Content-Type': 'application/pdf',\n    \"charset\": 'utf-8',\n    \"content-transfer-encoding\": \"binary\"\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 920,
+        "y": 3040,
+        "wires": [
+            [
+                "781de59113c6f6ff"
+            ]
+        ]
+    },
+    {
+        "id": "781de59113c6f6ff",
+        "type": "http response",
+        "z": "254289433a84914b",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1090,
+        "y": 3040,
+        "wires": []
+    },
+    {
+        "id": "3914df8b394a2359",
+        "type": "debug",
+        "z": "254289433a84914b",
+        "name": "2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1150,
+        "y": 2920,
+        "wires": []
+    },
+    {
+        "id": "127134d6913cb3b0",
+        "type": "function",
+        "z": "254289433a84914b",
+        "name": "quality60",
+        "func": "/*const optimized = await sharp(msg.payload)\n    .toFormat(\"png\", { quality: 60 })\n    .toBuffer();\n\nmsg.payload = optimized;\n*/\nreturn msg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "sharp",
+                "module": "sharp"
+            }
+        ],
+        "x": 940,
+        "y": 2960,
+        "wires": [
+            [
+                "3914df8b394a2359",
+                "7c4e2ad837076323"
+            ]
+        ]
+    },
+    {
+        "id": "7c4e2ad837076323",
+        "type": "function",
+        "z": "254289433a84914b",
+        "name": "function 317",
+        "func": "msg.headers = {\n    // \"Content-Disposition\": \"inline\",\n    //'Content-Type': 'application/pdf',\n    'Content-Type': 'image/jpeg',\n    //\"charset\": 'utf-8',\n    //\"content-transfer-encoding\": \"binary\"\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1230,
+        "y": 2960,
+        "wires": [
+            [
+                "965fdb74eeb6ebf3",
+                "3914df8b394a2359"
+            ]
+        ]
+    },
+    {
+        "id": "cb71c50b00b62945",
+        "type": "function",
+        "z": "254289433a84914b",
+        "name": "sorting",
+        "func": "const sorted = msg.payload.payload.sort((a, b) => {\n    if (a.isDirectory && !b.isDirectory) {\n        // If a is a directory and b is not, a should come first\n        return -1;\n    } else if (!a.isDirectory && b.isDirectory) {\n        // If a is not a directory and b is, b should come first\n        return 1;\n    } else {\n        // If both a and b are directories or both are not, sort by editedAt\n        return b.editedAt - a.editedAt;\n    }\n});\n\n\n\n\nconst moveToDown = (folder, object)=>{\n    const forderIndex = object.findIndex(obj => obj.name === folder);\n\n    if (forderIndex !== -1) {\n        // Remove the object at the found index and store it in a variable\n        const obj = object.splice(forderIndex, 1)[0];\n        // Add the object to the end of the array\n        object.push(obj);\n    }\n}\n\nlet folders = sorted.filter(e => e.isDirectory == true).filter(e => e.name !== 'default' && e.name !== 'images' && e.name !== 'files')\n\nfolders.forEach(f => moveToDown(f.name, sorted))\n\nmsg.payload.payload = sorted\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1050,
+        "y": 3220,
+        "wires": [
+            [
+                "f135abaf51aa22a4",
+                "d965f1af2b39ae56"
+            ]
+        ]
+    },
+    {
+        "id": "65e822e95975693e",
+        "type": "link call",
+        "z": "254289433a84914b",
+        "name": "",
+        "links": [
+            "a9fb567ad07dc66a"
+        ],
+        "linkType": "static",
+        "timeout": "30",
+        "x": 530,
+        "y": 2800,
+        "wires": [
+            [
+                "452bb0dbe8b8a7cc"
+            ]
+        ]
+    },
+    {
+        "id": "452bb0dbe8b8a7cc",
+        "type": "change",
+        "z": "254289433a84914b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "filename",
+                "pt": "msg",
+                "to": "payload[0].image",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 670,
+        "y": 2840,
+        "wires": [
+            [
+                "a2a3cb9c54ca6b3d"
+            ]
+        ]
+    },
+    {
+        "id": "a3cb9fb4108bf528",
+        "type": "change",
+        "z": "254289433a84914b",
+        "name": "Set Headers",
+        "rules": [
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "headers.content-type",
+                "pt": "msg",
+                "to": "image/png",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers['access-control-allow-credentials']",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            },
+            {
+                "t": "set",
+                "p": "headers.accept-ranges",
+                "pt": "msg",
+                "to": "bytes",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers.x-xss-protection",
+                "pt": "msg",
+                "to": "1; mode=block",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers.x-frame-options",
+                "pt": "msg",
+                "to": "SAMEORIGIN",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers.nel",
+                "pt": "msg",
+                "to": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers.x-dns-prefetch-control",
+                "pt": "msg",
+                "to": "off",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers.x-download-options",
+                "pt": "msg",
+                "to": "noopen",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 970,
+        "y": 2880,
+        "wires": [
+            [
+                "e05ed5f110a73ec3"
+            ]
+        ]
+    },
+    {
+        "id": "e05ed5f110a73ec3",
+        "type": "function",
+        "z": "254289433a84914b",
+        "name": "function",
+        "func": "msg.headers = {\n    ...msg.headers,\n    ['x-content-type-options']: 'nosniff',\n    ['access-control-allow-credentials']: true,\n    ['cache-control']: 'public, max-age=14400',\n    ['cf-cache-status']: 'EXPIRED',\n    ['cf-ray']: '747ece538ba590b2-FRA',\n//report - to: { \"endpoints\": [{ \"url\": \"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=6FLrusuf%2B3JD%2By2hHTtEFI4LqfbHg6hE9OshVZ%2FGZHvRuKBMMPaZtmTvqedBYxS2H4SCN2hx0ulKIF4%2FetNCOLpZzbK46BXQfKwNg05NsEn3O4Uu6Oh5sk2s1A9i87oLs0t0yHlvVjNd\" }], \"group\": \"cf-nel\", \"max_age\": 604800 }\n//server: cloudflare\n    ['strict-transport-security']: 'max-age=15552000; includeSubDomains',\n    // ['link']: 'rel=\"shortcut icon\" href=\"\"',\n    ['Content-Security-Policy']:\"img-src 'none'\",\n    ['x-xss-protection']:' 1; mode = block'\n    //rel: \"shortcut icon\",\n    //vary: 'Origin,Accept-Encoding'\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 900,
+        "y": 2800,
+        "wires": [
+            [
+                "f27612a8b6fec8a5"
+            ]
+        ]
     },
     {
         "id": "a9fb567ad07dc66a",
@@ -2995,25 +4021,6 @@
         "x": 910,
         "y": 420,
         "wires": [
-            []
-        ]
-    },
-    {
-        "id": "e7bb1a4d640a45bd",
-        "type": "multipart-decoder",
-        "z": "572dfaa9458e5333",
-        "name": "",
-        "ret": "txt",
-        "url": "",
-        "authentication": "basic",
-        "delay": 0,
-        "maximum": 1000000,
-        "blockSize": 1,
-        "enableLog": "off",
-        "x": 430,
-        "y": 460,
-        "wires": [
-            [],
             []
         ]
     },
