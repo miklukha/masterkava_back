@@ -126,9 +126,7 @@
             "4f6b79dc7a07448b"
         ],
         "x": 34,
-        "y": 19,
-        "w": 532,
-        "h": 122
+        "y": 19
     },
     {
         "id": "10f169318ad1a329",
@@ -152,9 +150,7 @@
             "89c2e450b846c7c9"
         ],
         "x": 34,
-        "y": 179,
-        "w": 712,
-        "h": 162
+        "y": 179
     },
     {
         "id": "b7f4d86114a55d70",
@@ -176,9 +172,7 @@
             "9497ff1729fe73e6"
         ],
         "x": 34,
-        "y": 379,
-        "w": 792,
-        "h": 122
+        "y": 379
     },
     {
         "id": "1c2202b3413ad6f7",
@@ -200,9 +194,7 @@
             "9b18d0692c3da728"
         ],
         "x": 34,
-        "y": 539,
-        "w": 612,
-        "h": 122
+        "y": 539
     },
     {
         "id": "024c1ba1dc39c40d",
@@ -229,9 +221,7 @@
             "0edd863d78f53e53"
         ],
         "x": 34,
-        "y": 699,
-        "w": 792,
-        "h": 202
+        "y": 699
     },
     {
         "id": "2e23327e0aa0042c",
@@ -253,9 +243,7 @@
             "ab7126da435ada47"
         ],
         "x": 34,
-        "y": 939,
-        "w": 592,
-        "h": 142
+        "y": 939
     },
     {
         "id": "46754a6258cacf85",
@@ -278,9 +266,7 @@
             "458063eab4db9cad"
         ],
         "x": 34,
-        "y": 1119,
-        "w": 732,
-        "h": 142
+        "y": 1119
     },
     {
         "id": "2272c92dc80bcb38",
@@ -1099,7 +1085,8 @@
                 "bf23b5b6a37925a4"
             ],
             [
-                "60f1c36683a9219a"
+                "60f1c36683a9219a",
+                "dfc64f6ce7cd4348"
             ],
             [
                 "9e97302fa04b7641"
@@ -1194,7 +1181,7 @@
         "type": "function",
         "z": "254289433a84914b",
         "name": "sortByCategory()",
-        "func": "const { label } = msg.req.query;\n\nmsg.payload = msg.payload.filter(product =>\n    product.category.label === label\n);\n\nreturn msg;\n",
+        "func": "const { label } = msg.req.query;\nconst categories = label.split(',');\n\n// node.warn(categories.inculdes(product.category.label))\n\n// msg.payload = msg.payload.filter(product =>\n//     product.category.label === label\n// );\n\nmsg.payload = msg.payload.filter(product => \n    categories.includes(product.category.label)\n);\n\nreturn msg;\n\n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -2171,8 +2158,8 @@
         "method": "post",
         "upload": true,
         "swaggerDoc": "",
-        "x": 90,
-        "y": 2620,
+        "x": 130,
+        "y": 3560,
         "wires": [
             [
                 "97fcfe96.6f76c"
@@ -2195,8 +2182,8 @@
                 "module": "path"
             }
         ],
-        "x": 290,
-        "y": 2620,
+        "x": 330,
+        "y": 3560,
         "wires": [
             [
                 "4d6cfdccc34546b2"
@@ -2223,8 +2210,8 @@
         "mode": "777",
         "property": "payload",
         "propertyType": "msg",
-        "x": 510,
-        "y": 2560,
+        "x": 550,
+        "y": 3500,
         "wires": [
             [
                 "74c6161a7d0ee640"
@@ -2242,8 +2229,8 @@
         "createDir": true,
         "overwriteFile": "true",
         "encoding": "none",
-        "x": 480,
-        "y": 2680,
+        "x": 520,
+        "y": 3620,
         "wires": [
             [
                 "6afb867fea63aacd"
@@ -2261,8 +2248,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 770,
-        "y": 2560,
+        "x": 810,
+        "y": 3500,
         "wires": [
             [
                 "5680f7958362b006"
@@ -2284,8 +2271,8 @@
         "depth": 0,
         "stat": true,
         "showWarnings": true,
-        "x": 940,
-        "y": 2560,
+        "x": 980,
+        "y": 3500,
         "wires": [
             [
                 "e9552de6832c27c6"
@@ -2308,8 +2295,8 @@
                 "module": "path"
             }
         ],
-        "x": 680,
-        "y": 2680,
+        "x": 720,
+        "y": 3620,
         "wires": [
             [
                 "72656fb743344b5e"
@@ -2331,8 +2318,8 @@
         "depth": 0,
         "stat": true,
         "showWarnings": true,
-        "x": 880,
-        "y": 2680,
+        "x": 920,
+        "y": 3620,
         "wires": [
             [
                 "db8c30bc4bdea22b"
@@ -2346,8 +2333,8 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 1270,
-        "y": 2560,
+        "x": 1310,
+        "y": 3500,
         "wires": []
     },
     {
@@ -2357,8 +2344,8 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 1270,
-        "y": 2680,
+        "x": 1310,
+        "y": 3620,
         "wires": []
     },
     {
@@ -2372,8 +2359,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1100,
-        "y": 2680,
+        "x": 1140,
+        "y": 3620,
         "wires": [
             [
                 "ccaec6ccf77fdd23"
@@ -2391,8 +2378,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1120,
-        "y": 2560,
+        "x": 1160,
+        "y": 3500,
         "wires": [
             [
                 "1faf730dc135de6d"
@@ -2502,11 +2489,10 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 120,
-        "y": 2320,
+        "y": 3880,
         "wires": [
             [
-                "fb1173e5a2210c94",
-                "20e7283747fd3738"
+                "fb1173e5a2210c94"
             ]
         ]
     },
@@ -2517,16 +2503,16 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 490,
-        "y": 2320,
+        "x": 670,
+        "y": 3880,
         "wires": []
     },
     {
         "id": "fb1173e5a2210c94",
         "type": "function",
         "z": "254289433a84914b",
-        "name": "function 16",
-        "func": "const productId = msg.req.params.id;\nnode.warn(productId);\n\n// msg.payload = {\n//     $set: { deleted: true }\n// };\n\n// msg.query = {\n//     _id: objectid(productId)\n// };\n\n// msg.collection = \"products\";\n\nreturn msg;\n",
+        "name": "updateProduct()",
+        "func": "const productId = msg.req.params.id;\nconst { name, code, availability, sourness,\n    bitterness, sturdiness, saturation, price,\n    description, roastLevel, countries,\n    category } = msg.req.body;\n\nmsg.payload = {\n    $set: { \n        name,\n        code,\n        availability: availability === \"true\",\n        category: objectid(category),\n        characteristics: {\n            sourness: parseInt(sourness),\n            bitterness: parseInt(bitterness),\n            sturdiness: parseInt(sturdiness),\n            saturation: parseInt(saturation)\n        },\n        price: parseInt(price),\n        description,\n        roastLevel,\n        countries: countries.split(',').map(c => c.trim()),\n        // image: imgPath\n    }\n};\n\nmsg.query = {\n    _id: objectid(productId)\n};\n\nmsg.collection = \"products\";\n\nreturn msg;\n\n\n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -2535,50 +2521,19 @@
             {
                 "var": "objectid",
                 "module": "objectid"
+            },
+            {
+                "var": "path",
+                "module": "path"
             }
         ],
-        "x": 290,
-        "y": 2320,
+        "x": 300,
+        "y": 3880,
         "wires": [
             [
-                "d410909f4b3e5fda",
-                "b7cfac732d76e1d5"
+                "a843ac34f6f2f665"
             ]
         ]
-    },
-    {
-        "id": "20e7283747fd3738",
-        "type": "debug",
-        "z": "254289433a84914b",
-        "name": "debug 221",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 290,
-        "y": 2260,
-        "wires": []
-    },
-    {
-        "id": "d410909f4b3e5fda",
-        "type": "debug",
-        "z": "254289433a84914b",
-        "name": "debug 222",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 490,
-        "y": 2260,
-        "wires": []
     },
     {
         "id": "8914a42b4616d099",
@@ -2590,10 +2545,10 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 120,
-        "y": 2800,
+        "y": 3800,
         "wires": [
             [
-                "25eb74a7359fcbb1"
+                "65435a18dbd80012"
             ]
         ]
     },
@@ -2604,33 +2559,9 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 1090,
-        "y": 2820,
+        "x": 1250,
+        "y": 3800,
         "wires": []
-    },
-    {
-        "id": "25eb74a7359fcbb1",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "function 17",
-        "func": "const productId = msg.req.params.id;\n\nmsg.payload = {\n    _id: objectid(productId)\n}\n\nmsg.collection = \"products\";\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "objectid",
-                "module": "objectid"
-            }
-        ],
-        "x": 330,
-        "y": 2800,
-        "wires": [
-            [
-                "65e822e95975693e"
-            ]
-        ]
     },
     {
         "id": "a2a3cb9c54ca6b3d",
@@ -2644,30 +2575,13 @@
         "sendError": false,
         "encoding": "none",
         "allProps": false,
-        "x": 780,
-        "y": 2880,
+        "x": 820,
+        "y": 3800,
         "wires": [
             [
-                "3859ee4b701a4539",
                 "a3cb9fb4108bf528"
             ]
         ]
-    },
-    {
-        "id": "3859ee4b701a4539",
-        "type": "debug",
-        "z": "254289433a84914b",
-        "name": "debug 224",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 710,
-        "y": 2740,
-        "wires": []
     },
     {
         "id": "16ac409ab5440d3c",
@@ -3441,8 +3355,8 @@
         ],
         "linkType": "static",
         "timeout": "30",
-        "x": 530,
-        "y": 2800,
+        "x": 470,
+        "y": 3800,
         "wires": [
             [
                 "452bb0dbe8b8a7cc"
@@ -3468,8 +3382,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 670,
-        "y": 2840,
+        "x": 650,
+        "y": 3800,
         "wires": [
             [
                 "a2a3cb9c54ca6b3d"
@@ -3552,7 +3466,7 @@
         "to": "",
         "reg": false,
         "x": 970,
-        "y": 2880,
+        "y": 3800,
         "wires": [
             [
                 "e05ed5f110a73ec3"
@@ -3570,11 +3484,268 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 900,
-        "y": 2800,
+        "x": 1120,
+        "y": 3800,
         "wires": [
             [
                 "f27612a8b6fec8a5"
+            ]
+        ]
+    },
+    {
+        "id": "65435a18dbd80012",
+        "type": "function",
+        "z": "254289433a84914b",
+        "name": "findProduct()",
+        "func": "const productId = msg.req.params.id;\n\nmsg.payload = {\n    _id: objectid(productId)\n}\n\nmsg.collection = \"products\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "objectid",
+                "module": "objectid"
+            }
+        ],
+        "x": 310,
+        "y": 3800,
+        "wires": [
+            [
+                "65e822e95975693e"
+            ]
+        ]
+    },
+    {
+        "id": "a843ac34f6f2f665",
+        "type": "link call",
+        "z": "254289433a84914b",
+        "name": "",
+        "links": [
+            "6e02acf20c7c434c"
+        ],
+        "linkType": "static",
+        "timeout": "60",
+        "x": 500,
+        "y": 3880,
+        "wires": [
+            [
+                "b7cfac732d76e1d5"
+            ]
+        ]
+    },
+    {
+        "id": "286b44a9d3938b8c",
+        "type": "http in",
+        "z": "254289433a84914b",
+        "name": "",
+        "url": "/register",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 90,
+        "y": 4040,
+        "wires": [
+            [
+                "8a1b6bae63317d40",
+                "f07687a78b7197b9"
+            ]
+        ]
+    },
+    {
+        "id": "3cc8bab9e3145a0a",
+        "type": "http response",
+        "z": "254289433a84914b",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 930,
+        "y": 4040,
+        "wires": []
+    },
+    {
+        "id": "e2668a38f1dfa8eb",
+        "type": "function",
+        "z": "254289433a84914b",
+        "name": "function 318",
+        "func": "const { name, email, password, role } = msg.req.body;\n\n// const error = new Error('Email already exists in database');\n// error.status = 409;\n// node.error(error);\n\n\nmsg.payload = {\n    _id: objectid(),\n    name,\n    email,\n    orders: [],\n    shipping: [{\n        name: \"\",\n        surname: \"\",\n        phone: \"\"\n    }],\n    role // only admin OR user\n}\nmsg.collection = \"users\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "objectid",
+                "module": "objectid"
+            }
+        ],
+        "x": 630,
+        "y": 4060,
+        "wires": [
+            [
+                "80d5d36c1d0b31e5"
+            ]
+        ]
+    },
+    {
+        "id": "8a1b6bae63317d40",
+        "type": "debug",
+        "z": "254289433a84914b",
+        "name": "debug 220",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 470,
+        "y": 3960,
+        "wires": []
+    },
+    {
+        "id": "8175157485182bcc",
+        "type": "http in",
+        "z": "254289433a84914b",
+        "name": "",
+        "url": "/users",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 90,
+        "y": 4120,
+        "wires": [
+            [
+                "ec976959a9031105"
+            ]
+        ]
+    },
+    {
+        "id": "ec976959a9031105",
+        "type": "function",
+        "z": "254289433a84914b",
+        "name": "createUser()",
+        "func": "const { name, email, role } = msg.req.body;\n\nmsg.payload = {\n    _id: objectid(),\n    name,\n    email, \n    // orders: [],\n    // shipping: [{\n    //     name,\n    //     surname,\n    //     phone\n    // }],\n    role // only admin OR user\n}\nmsg.collection = \"users\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "objectid",
+                "module": "objectid"
+            }
+        ],
+        "x": 290,
+        "y": 4120,
+        "wires": [
+            [
+                "39006ec200768235"
+            ]
+        ]
+    },
+    {
+        "id": "39006ec200768235",
+        "type": "link call",
+        "z": "254289433a84914b",
+        "name": "",
+        "links": [
+            "11c9729c152a736b"
+        ],
+        "linkType": "static",
+        "timeout": "60",
+        "x": 530,
+        "y": 4120,
+        "wires": [
+            [
+                "57ed77b89d81bdc4"
+            ]
+        ]
+    },
+    {
+        "id": "57ed77b89d81bdc4",
+        "type": "function",
+        "z": "254289433a84914b",
+        "name": "checkStatus()",
+        "func": "msg.payload = {\n    success: true,\n    message: \"Everything is OK\"\n}\n\nmsg.statusCode = 200;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 4120,
+        "wires": [
+            [
+                "addc72995ff53ff4"
+            ]
+        ]
+    },
+    {
+        "id": "addc72995ff53ff4",
+        "type": "http response",
+        "z": "254289433a84914b",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 910,
+        "y": 4120,
+        "wires": []
+    },
+    {
+        "id": "80d5d36c1d0b31e5",
+        "type": "link call",
+        "z": "254289433a84914b",
+        "name": "",
+        "links": [
+            "11c9729c152a736b"
+        ],
+        "linkType": "static",
+        "timeout": "60",
+        "x": 770,
+        "y": 4040,
+        "wires": [
+            [
+                "3cc8bab9e3145a0a"
+            ]
+        ]
+    },
+    {
+        "id": "f07687a78b7197b9",
+        "type": "function",
+        "z": "254289433a84914b",
+        "name": "function 319",
+        "func": "const { name, email, password, role } = msg.req.body;\n\nmsg.payload = {\n    email\n}\nmsg.collection = \"users\";\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 4040,
+        "wires": [
+            [
+                "93ffc9080549daeb"
+            ]
+        ]
+    },
+    {
+        "id": "93ffc9080549daeb",
+        "type": "link call",
+        "z": "254289433a84914b",
+        "name": "",
+        "links": [
+            "a9fb567ad07dc66a"
+        ],
+        "linkType": "static",
+        "timeout": "30",
+        "x": 450,
+        "y": 4040,
+        "wires": [
+            [
+                "8a1b6bae63317d40",
+                "3cc8bab9e3145a0a"
             ]
         ]
     },
@@ -3784,6 +3955,58 @@
                 "f6f164110b64c323"
             ]
         ]
+    },
+    {
+        "id": "1787f64d70c757a1",
+        "type": "catch",
+        "z": "5625818d4797c40c",
+        "name": "",
+        "scope": [
+            "1b4a93743b4cb585"
+        ],
+        "uncaught": false,
+        "x": 570,
+        "y": 100,
+        "wires": [
+            [
+                "a31b78cb333e5754"
+            ]
+        ]
+    },
+    {
+        "id": "a31b78cb333e5754",
+        "type": "function",
+        "z": "5625818d4797c40c",
+        "name": "Handle Error",
+        "func": "if (msg.error.message.includes(\"E11000 duplicate key error\")) {\n    msg.payload = { error: true, message: \"This email already exists in the database.\" };\n} else {\n    msg.payload = { error: false };\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 100,
+        "wires": [
+            [
+                "4dd80a5342ed9238"
+            ]
+        ]
+    },
+    {
+        "id": "4dd80a5342ed9238",
+        "type": "debug",
+        "z": "5625818d4797c40c",
+        "name": "debug 221",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 100,
+        "wires": []
     },
     {
         "id": "56fe8f7960bcea2a",
