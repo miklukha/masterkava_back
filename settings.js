@@ -459,10 +459,10 @@ module.exports = {
    *    global.get("os")
    */
   functionGlobalContext: {
-    // env: process.env,
     // myDir: __dirname,
     path: require('path'),
     multer: require('multer'),
+    dotenv: require('dotenv'),
     // env: require(env),
     // os:require('os'),
   },
