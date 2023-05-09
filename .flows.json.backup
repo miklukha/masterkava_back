@@ -1,13 +1,5 @@
 [
     {
-        "id": "6d691e6d89cccf80",
-        "type": "tab",
-        "label": "Flow 4",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
         "id": "254289433a84914b",
         "type": "tab",
         "label": "Operations",
@@ -16,9 +8,9 @@
         "env": []
     },
     {
-        "id": "5625818d4797c40c",
+        "id": "6d691e6d89cccf80",
         "type": "tab",
-        "label": "Mongo linking",
+        "label": "Store operations ",
         "disabled": false,
         "info": "",
         "env": []
@@ -35,6 +27,21 @@
         "id": "27e958a26f8b472d",
         "type": "tab",
         "label": "Help",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "fcd0e09e.2ef47",
+        "type": "tab",
+        "label": "LiqPay Payment Status",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "5625818d4797c40c",
+        "type": "tab",
+        "label": "Mongo linking",
         "disabled": false,
         "info": "",
         "env": []
@@ -107,6 +114,86 @@
         "icon": "font-awesome/fa-check-square"
     },
     {
+        "id": "3cc90a312bfe3a6f",
+        "type": "subflow",
+        "name": "auth",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 80,
+                "y": 200,
+                "wires": [
+                    {
+                        "id": "fb8943a6f4c9d5aa"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 780,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "1988dc59f854ca7e",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "d025cd27.f975",
+        "type": "subflow",
+        "name": "authenticate()",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 40,
+                "y": 160,
+                "wires": [
+                    {
+                        "id": "adfa8fb5.06713"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 800,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "68867def13630798",
+                        "port": 1
+                    }
+                ]
+            },
+            {
+                "x": 600,
+                "y": 220,
+                "wires": [
+                    {
+                        "id": "c20f2a24.77c63",
+                        "port": 0
+                    },
+                    {
+                        "id": "9477ba71c4bc9500",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
         "id": "9f43ceecbe5c8618",
         "type": "group",
         "z": "27e958a26f8b472d",
@@ -126,9 +213,7 @@
             "4f6b79dc7a07448b"
         ],
         "x": 34,
-        "y": 19,
-        "w": 532,
-        "h": 122
+        "y": 19
     },
     {
         "id": "10f169318ad1a329",
@@ -152,9 +237,7 @@
             "89c2e450b846c7c9"
         ],
         "x": 34,
-        "y": 179,
-        "w": 712,
-        "h": 162
+        "y": 179
     },
     {
         "id": "b7f4d86114a55d70",
@@ -176,9 +259,7 @@
             "9497ff1729fe73e6"
         ],
         "x": 34,
-        "y": 379,
-        "w": 792,
-        "h": 122
+        "y": 379
     },
     {
         "id": "1c2202b3413ad6f7",
@@ -200,9 +281,7 @@
             "9b18d0692c3da728"
         ],
         "x": 34,
-        "y": 539,
-        "w": 612,
-        "h": 122
+        "y": 539
     },
     {
         "id": "024c1ba1dc39c40d",
@@ -229,9 +308,7 @@
             "0edd863d78f53e53"
         ],
         "x": 34,
-        "y": 699,
-        "w": 792,
-        "h": 202
+        "y": 699
     },
     {
         "id": "2e23327e0aa0042c",
@@ -253,9 +330,7 @@
             "ab7126da435ada47"
         ],
         "x": 34,
-        "y": 939,
-        "w": 592,
-        "h": 142
+        "y": 939
     },
     {
         "id": "46754a6258cacf85",
@@ -278,9 +353,7 @@
             "458063eab4db9cad"
         ],
         "x": 34,
-        "y": 1119,
-        "w": 732,
-        "h": 142
+        "y": 1119
     },
     {
         "id": "1013a31fe9ac9265",
@@ -302,9 +375,7 @@
             "c3b222eeaf84350c"
         ],
         "x": 34,
-        "y": 1299,
-        "w": 672,
-        "h": 142
+        "y": 1299
     },
     {
         "id": "e629b0fe5d3c5f61",
@@ -326,9 +397,7 @@
             "57dfc1ce96cb73b3"
         ],
         "x": 34,
-        "y": 1479,
-        "w": 572,
-        "h": 142
+        "y": 1479
     },
     {
         "id": "7579215f712a4ebb",
@@ -350,8 +419,179 @@
             "cb6a89ccdd6b626d"
         ],
         "x": 34,
-        "y": 1659,
-        "w": 612,
+        "y": 1659
+    },
+    {
+        "id": "f88877fc8db92035",
+        "type": "group",
+        "z": "572dfaa9458e5333",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "f9a0f82c11903966",
+            "9fd58a423081395a",
+            "b9d241f7c21a84da",
+            "68cc7cedd1b416bf",
+            "063ccd6fdf1fd599",
+            "965b95ad54b9dbd0",
+            "da27471bf65208ff"
+        ],
+        "x": 54,
+        "y": 59,
+        "w": 772,
+        "h": 202
+    },
+    {
+        "id": "11b41d9c358fbbc7",
+        "type": "group",
+        "z": "6d691e6d89cccf80",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "0378f4e7da866670",
+            "0c38ea0ed211618e",
+            "e341ecea77834032",
+            "043273f2a8508fd9",
+            "c867a6f44cbbd5f0",
+            "919f2bb373ea6628",
+            "a8fb6a094339f033",
+            "e0f8b41137b2d3f3",
+            "6eb5839307ba394f",
+            "e457df9a8795e770"
+        ],
+        "x": 14,
+        "y": 99,
+        "w": 872,
+        "h": 202
+    },
+    {
+        "id": "0a150d04a0787f8e",
+        "type": "group",
+        "z": "6d691e6d89cccf80",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "4234cd0c91cec0fe",
+            "57aed6d48e7807ab",
+            "b95060745c78c8b8",
+            "3d4aec1434784919",
+            "989fc4e75f7267a5",
+            "7df002ef32ab9776",
+            "96bccb99f906781a",
+            "90b7d71d645b6410",
+            "dc51d7a1f15863ce",
+            "3daecd34275b7d5a",
+            "0bbee4a4474ba7a4",
+            "a972a3a57e5c3159",
+            "e8a386eabeaa307c",
+            "263a45d438eea4ea",
+            "f11c6b872dcb13ce",
+            "64e87f146bb7c985",
+            "d31d8a386fe96ba6",
+            "1b6e2f2d9ca97c78",
+            "1d623f44217498df",
+            "08c9e12d8638472d",
+            "22d5f59a7192b812",
+            "08f9b1c9f1b6bf86",
+            "c51eb8985f2f10a3",
+            "b81f4fbeea309fd8",
+            "f268b45dc3b2a222",
+            "c9c627b0a6af71d4",
+            "b7cfac732d76e1d5",
+            "fb1173e5a2210c94",
+            "a843ac34f6f2f665"
+        ],
+        "x": 14,
+        "y": 339,
+        "w": 1072,
+        "h": 622
+    },
+    {
+        "id": "c0b0251c40a3b95d",
+        "type": "group",
+        "z": "6d691e6d89cccf80",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "0632f252f439a751",
+            "75530cd2.06a71c",
+            "97fcfe96.6f76c",
+            "4d6cfdccc34546b2",
+            "488bf4b1d65b9a3b",
+            "74c6161a7d0ee640",
+            "5680f7958362b006",
+            "6afb867fea63aacd",
+            "72656fb743344b5e",
+            "1faf730dc135de6d",
+            "ccaec6ccf77fdd23",
+            "db8c30bc4bdea22b",
+            "e9552de6832c27c6",
+            "8914a42b4616d099",
+            "f27612a8b6fec8a5",
+            "a2a3cb9c54ca6b3d",
+            "65e822e95975693e",
+            "452bb0dbe8b8a7cc",
+            "a3cb9fb4108bf528",
+            "e05ed5f110a73ec3",
+            "65435a18dbd80012"
+        ],
+        "x": 14,
+        "y": 979,
+        "w": 1312,
+        "h": 362
+    },
+    {
+        "id": "a36154d393038484",
+        "type": "group",
+        "z": "6d691e6d89cccf80",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "10f6db36557cf78a",
+            "429013cfcc1d8e25",
+            "bcb99566c443c02f",
+            "9531437ba3acd3b4",
+            "23a66c4f0a1ee112",
+            "23534fe124dd2dcc"
+        ],
+        "x": 14,
+        "y": 1359,
+        "w": 852,
         "h": 142
     },
     {
@@ -471,547 +711,290 @@
         "wires": []
     },
     {
-        "id": "3c0098806f90729c",
-        "type": "http in",
-        "z": "6d691e6d89cccf80",
-        "name": "",
-        "url": "/photo",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 180,
-        "y": 920,
+        "id": "1988dc59f854ca7e",
+        "type": "function",
+        "z": "3cc90a312bfe3a6f",
+        "name": "sendResponse()",
+        "func": "const isEmailExist = msg.payload.length !== 0;\n\n\nif (!isEmailExist){\n    msg.payload = {\n        \"success\": false,\n        \"error\": \"Forbidden!\"\n    }\n    \n    msg.statusCode = 401;\n    return [null, msg]\n} else {\n    msg.res.user = msg.payload\n    node.warn(msg.res.user);\n    msg.payload = msg.oldpayload\n    delete msg.oldpayload\n    return[msg, null]\n}",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 160,
         "wires": [
+            [],
             [
-                "9de426dba07efafb",
-                "647a9d87cf5fe0a4"
+                "a34807ec8545e2db"
             ]
         ]
     },
     {
-        "id": "6e9fd355cecc207d",
+        "id": "a34807ec8545e2db",
         "type": "http response",
-        "z": "6d691e6d89cccf80",
+        "z": "3cc90a312bfe3a6f",
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 730,
-        "y": 920,
+        "x": 790,
+        "y": 200,
         "wires": []
     },
     {
-        "id": "9de426dba07efafb",
+        "id": "fb8943a6f4c9d5aa",
         "type": "function",
-        "z": "6d691e6d89cccf80",
-        "name": "function 14",
-        "func": "const tempDir = path.resolve('') + \"/temp\";\nconst multerConfig = multer.diskStorage({\n    destination: tempDir,\n    filename: (req, file, cb) => {\n        cb(null, file.originalname)\n    }\n});\n\nconst upload = multer({\n    storage: multerConfig\n}).single(\"photo\");\n\nupload(msg.req, msg.res, function (err) {\n    if (err) {\n        msg.payload = \"Error uploading file: \" + err.message;\n        return node.send([null, msg]);\n    }\n\n    msg.payload = \"File uploaded successfully\";\n    return node.send([msg, null]);\n});\n",
-        "outputs": 1,
+        "z": "3cc90a312bfe3a6f",
+        "name": "checkToken()",
+        "func": "const result = dotenv.config();\nconst { SECRET_KEY } = result.parsed;\n\nif (msg.req.cookies.user_token) {\n    msg.oldpayload = msg.payload\n\n    try {\n        const { id } = jwt.verify(msg.req.cookies.user_token, SECRET_KEY);\n        msg.collection = \"users\";\n        msg.payload = {\n            _id: objectid(id)\n        }\n        return [msg, null];\n\n    } catch (error) {\n        node.warn(error.message)\n    };\n} else {\n    return [null, msg];\n}\n\n",
+        "outputs": 2,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [
             {
-                "var": "multer",
-                "module": "multer"
+                "var": "objectid",
+                "module": "objectid"
             },
             {
-                "var": "path",
-                "module": "path"
+                "var": "jwt",
+                "module": "jsonwebtoken"
+            },
+            {
+                "var": "dotenv",
+                "module": "dotenv"
             }
         ],
-        "x": 370,
-        "y": 920,
+        "x": 210,
+        "y": 200,
         "wires": [
             [
-                "6e9fd355cecc207d",
-                "3b94e3d977cbb618"
+                "035e4e958ed74eef",
+                "53bf848b4ee63fdd"
+            ],
+            [
+                "593e048f97b4d06a",
+                "53bf848b4ee63fdd"
             ]
         ]
     },
     {
-        "id": "3b94e3d977cbb618",
-        "type": "debug",
-        "z": "6d691e6d89cccf80",
-        "name": "debug 216",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 610,
-        "y": 860,
-        "wires": []
-    },
-    {
-        "id": "647a9d87cf5fe0a4",
-        "type": "debug",
-        "z": "6d691e6d89cccf80",
-        "name": "debug 219",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 350,
-        "y": 860,
-        "wires": []
-    },
-    {
-        "id": "1b608ea8d239dee8",
-        "type": "http in",
-        "z": "254289433a84914b",
-        "name": "",
-        "url": "/categories",
-        "method": "post",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 120,
-        "y": 300,
-        "wires": [
-            [
-                "b32186c298b6a565"
-            ]
-        ]
-    },
-    {
-        "id": "b32186c298b6a565",
+        "id": "593e048f97b4d06a",
         "type": "function",
-        "z": "254289433a84914b",
-        "name": "createCategory()",
-        "func": "const {label, name} = msg.req.body;\n\nmsg.payload = {\n    _id: objectid(),\n    label,\n    name,\n    createdAt: new Date()\n}\nmsg.collection = \"categories\";\n\nreturn msg;",
+        "z": "3cc90a312bfe3a6f",
+        "name": "sendError()",
+        "func": "msg.payload = {\n    success: false,\n    message: \"Forbidden\"\n}\n\nmsg.statusCode = 401;\nreturn msg\n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "libs": [
-            {
-                "var": "objectid",
-                "module": "objectid"
-            }
-        ],
-        "x": 330,
-        "y": 300,
+        "libs": [],
+        "x": 390,
+        "y": 240,
         "wires": [
             [
-                "ab0eb788e836d245"
+                "71872b64ea0a49ad"
             ]
         ]
     },
     {
-        "id": "ab0eb788e836d245",
+        "id": "71872b64ea0a49ad",
+        "type": "http response",
+        "z": "3cc90a312bfe3a6f",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 550,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "035e4e958ed74eef",
         "type": "link call",
-        "z": "254289433a84914b",
+        "z": "3cc90a312bfe3a6f",
         "name": "",
         "links": [
-            "11c9729c152a736b"
+            "a9fb567ad07dc66a"
         ],
         "linkType": "static",
-        "timeout": "60",
-        "x": 550,
-        "y": 300,
+        "timeout": "30",
+        "x": 390,
+        "y": 160,
         "wires": [
             [
-                "25a3577fe42b0ec0"
+                "1988dc59f854ca7e",
+                "f418d6c7bc50da4c"
             ]
         ]
     },
     {
-        "id": "25a3577fe42b0ec0",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "checkStatus()",
-        "func": "msg.payload = {\n    success: true,\n    message: \"Everything is OK\"\n}\n\nmsg.statusCode = 200;\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 740,
-        "y": 300,
-        "wires": [
-            [
-                "3a5750cd33a5a065"
-            ]
-        ]
-    },
-    {
-        "id": "3a5750cd33a5a065",
-        "type": "http response",
-        "z": "254289433a84914b",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 930,
-        "y": 300,
+        "id": "f418d6c7bc50da4c",
+        "type": "debug",
+        "z": "3cc90a312bfe3a6f",
+        "name": "debug 229",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 570,
+        "y": 80,
         "wires": []
     },
     {
-        "id": "170895c23d39ce6b",
-        "type": "http in",
-        "z": "254289433a84914b",
+        "id": "53bf848b4ee63fdd",
+        "type": "debug",
+        "z": "3cc90a312bfe3a6f",
+        "name": "debug 230",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 330,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "a631b9446bb05070",
+        "type": "inject",
+        "z": "3cc90a312bfe3a6f",
         "name": "",
-        "url": "/products/:id",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 100,
-        "y": 480,
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 300,
         "wires": [
             [
-                "27a07b0c446e7476"
+                "fb8943a6f4c9d5aa"
             ]
         ]
     },
     {
-        "id": "27a07b0c446e7476",
+        "id": "adfa8fb5.06713",
         "type": "function",
-        "z": "254289433a84914b",
-        "name": "getProductById()",
-        "func": "const productId = msg.req.params.id;\n\n// msg.payload = {\n//     _id: objectid(productId)\n// }\n\n// msg.collection = \"products\";\n// return msg;\nconst pipeline = [\n    {\n        $match: {\n            _id: objectid(productId)\n        }\n    },\n    {\n        $lookup: {\n            from: \"categories\",\n            localField: \"category\",\n            foreignField: \"_id\",\n            as: \"category_doc\",\n        }\n    },\n    {\n        $unwind: \"$category_doc\"\n    },\n    {\n        $project: {\n            _id: 1,\n            name: 1,\n            code: 1,\n            availability: 1,\n            category: \"$category_doc.name\",\n            characteristics: 1,\n            price: 1,\n            description: 1,\n            roastLevel: 1,\n            countries: 1,\n            image: 1,\n            deleted: 1\n        }\n    }\n];\n\nmsg.payload = pipeline;\nmsg.collection = \"products\";\n\nreturn msg;",
-        "outputs": 1,
+        "z": "d025cd27.f975",
+        "name": "validateToken()",
+        "func": "const result = dotenv.config();\nconst { SECRET_KEY } = result.parsed;\n\nconst { authorization = \"\" } = msg.req.headers;\nconst [bearer, token] = authorization.split(\" \");\n\nif (bearer !== \"Bearer\") {\n    return [null, msg]\n}\n\ntry {\n    const { id } = jwt.verify(token, SECRET_KEY);\n\n    msg.payload = {\n        _id: objectid(id)\n    }\n\n    msg.req.token = token;\n    msg.collection = \"users\";\n\n    return [msg, null];\n}\n\ncatch {\n    return [null, msg];\n}\n\n",
+        "outputs": 2,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [
             {
+                "var": "jwt",
+                "module": "jsonwebtoken"
+            },
+            {
+                "var": "dotenv",
+                "module": "dotenv"
+            },
+            {
                 "var": "objectid",
                 "module": "objectid"
             }
         ],
-        "x": 310,
-        "y": 480,
+        "x": 160,
+        "y": 160,
         "wires": [
             [
-                "128b7aa59df6509f"
+                "524dfefb63ed79ad"
+            ],
+            [
+                "c20f2a24.77c63"
             ]
         ]
     },
     {
-        "id": "bc79b5d18c9e474c",
-        "type": "http response",
-        "z": "254289433a84914b",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 710,
-        "y": 480,
-        "wires": []
-    },
-    {
-        "id": "2cbcc0d023ba5516",
-        "type": "http in",
-        "z": "254289433a84914b",
-        "name": "",
-        "url": "/categories",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 100,
-        "y": 240,
-        "wires": [
-            [
-                "eaa7eadd368d976c"
-            ]
-        ]
-    },
-    {
-        "id": "eaa7eadd368d976c",
+        "id": "c20f2a24.77c63",
         "type": "function",
-        "z": "254289433a84914b",
-        "name": "getCategories()",
-        "func": "msg.payload = {}\n\nmsg.collection = \"categories\";\nreturn msg;\n",
+        "z": "d025cd27.f975",
+        "name": "setError()",
+        "func": "msg.payload = {\n    success: false,\n    message: \"Unauthorized\"\n}\n\nmsg.statusCode = 401;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 300,
-        "y": 240,
+        "x": 380,
+        "y": 220,
         "wires": [
-            [
-                "5c6ada2370743b24"
-            ]
+            []
         ]
     },
     {
-        "id": "5c6ada2370743b24",
+        "id": "524dfefb63ed79ad",
         "type": "link call",
-        "z": "254289433a84914b",
+        "z": "d025cd27.f975",
         "name": "",
         "links": [
             "a9fb567ad07dc66a"
         ],
         "linkType": "static",
         "timeout": "60",
-        "x": 530,
-        "y": 240,
+        "x": 350,
+        "y": 100,
         "wires": [
             [
-                "8b04948349b7103e"
+                "68867def13630798"
             ]
         ]
     },
     {
-        "id": "8b04948349b7103e",
-        "type": "http response",
-        "z": "254289433a84914b",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 710,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "10f6db36557cf78a",
-        "type": "http in",
-        "z": "254289433a84914b",
-        "name": "",
-        "url": "/orders",
-        "method": "post",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 130,
-        "y": 360,
-        "wires": [
-            [
-                "429013cfcc1d8e25"
-            ]
-        ]
-    },
-    {
-        "id": "429013cfcc1d8e25",
+        "id": "68867def13630798",
         "type": "function",
-        "z": "254289433a84914b",
-        "name": "createOrder()",
-        "func": "const { productId, quantity, weight, grinds, amount } = msg.req.body;\n\nmsg.payload = {\n    _id: objectid(),\n    // code\n    // userId,\n    // products: [{\n    //     productId: objectid(productId),\n    //     quantity,\n    //     characteristics: {\n    //         weight,\n    //         grinds,\n    //         amount\n    //     }\n    // }],\n    // totalPrice\n    date: new Date()\n}\nmsg.collection = \"orders\";\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "objectid",
-                "module": "objectid"
-            }
-        ],
-        "x": 320,
-        "y": 360,
-        "wires": [
-            [
-                "bcb99566c443c02f"
-            ]
-        ]
-    },
-    {
-        "id": "bcb99566c443c02f",
-        "type": "link call",
-        "z": "254289433a84914b",
-        "name": "",
-        "links": [
-            "11c9729c152a736b"
-        ],
-        "linkType": "static",
-        "timeout": "60",
-        "x": 550,
-        "y": 360,
-        "wires": [
-            [
-                "9531437ba3acd3b4"
-            ]
-        ]
-    },
-    {
-        "id": "9531437ba3acd3b4",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "checkStatus()",
-        "func": "msg.payload = {\n    success: true,\n    message: \"Everything is OK\"\n}\n\nmsg.statusCode = 200;\n\nreturn msg;",
-        "outputs": 1,
+        "z": "d025cd27.f975",
+        "name": "checkToken()",
+        "func": "const user = msg.payload[0];\n\nif (!user || !user.token || user.token !== msg.req.token) {\n    return [msg, null]\n} else {\n    return [null, msg];\n}\n\n",
+        "outputs": 2,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 740,
-        "y": 360,
+        "x": 510,
+        "y": 100,
         "wires": [
             [
-                "23a66c4f0a1ee112"
-            ]
-        ]
-    },
-    {
-        "id": "23a66c4f0a1ee112",
-        "type": "http response",
-        "z": "254289433a84914b",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 930,
-        "y": 360,
-        "wires": []
-    },
-    {
-        "id": "bb400da8d1bae39f",
-        "type": "http in",
-        "z": "254289433a84914b",
-        "name": "",
-        "url": "/users",
-        "method": "post",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 110,
-        "y": 420,
-        "wires": [
-            [
-                "d24af595cff3f770"
-            ]
-        ]
-    },
-    {
-        "id": "d24af595cff3f770",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "createUser()",
-        "func": "const { name, email, role } = msg.req.body;\n\nmsg.payload = {\n    _id: objectid(),\n    name,\n    email, \n    // orders: [],\n    // shipping: [{\n    //     name,\n    //     surname,\n    //     phone\n    // }],\n    role // only admin OR user\n}\nmsg.collection = \"users\";\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "objectid",
-                "module": "objectid"
-            }
-        ],
-        "x": 310,
-        "y": 420,
-        "wires": [
-            [
-                "063d6d903ea662b9"
-            ]
-        ]
-    },
-    {
-        "id": "063d6d903ea662b9",
-        "type": "link call",
-        "z": "254289433a84914b",
-        "name": "",
-        "links": [
-            "11c9729c152a736b"
-        ],
-        "linkType": "static",
-        "timeout": "60",
-        "x": 550,
-        "y": 420,
-        "wires": [
-            [
-                "350f91f1c1aecd7d"
-            ]
-        ]
-    },
-    {
-        "id": "350f91f1c1aecd7d",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "checkStatus()",
-        "func": "msg.payload = {\n    success: true,\n    message: \"Everything is OK\"\n}\n\nmsg.statusCode = 200;\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 740,
-        "y": 420,
-        "wires": [
-            [
-                "7f6f98f0d2c1c4b8"
-            ]
-        ]
-    },
-    {
-        "id": "7f6f98f0d2c1c4b8",
-        "type": "http response",
-        "z": "254289433a84914b",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 930,
-        "y": 420,
-        "wires": []
-    },
-    {
-        "id": "bdf8ad5f3c620554",
-        "type": "http in",
-        "z": "254289433a84914b",
-        "name": "",
-        "url": "/products",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 70,
-        "y": 620,
-        "wires": [
-            [
-                "551eb579ca278c53"
-            ]
-        ]
-    },
-    {
-        "id": "dfc64f6ce7cd4348",
-        "type": "http response",
-        "z": "254289433a84914b",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 990,
-        "y": 620,
-        "wires": []
-    },
-    {
-        "id": "a003343850834325",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "function 6",
-        "func": "const { category } = msg.req.body;\n\nconst pipeline = [\n    {\n        $match: {\n            _id: objectid(category)\n        }\n    }\n];\n\nmsg.payload = pipeline;\nmsg.collection = \"categories\";\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "objectid",
-                "module": "objectid"
-            }
-        ],
-        "x": 100,
-        "y": 1900,
-        "wires": [
+                "9477ba71c4bc9500"
+            ],
             []
         ]
     },
     {
-        "id": "990a914615270d98",
-        "type": "debug",
-        "z": "254289433a84914b",
-        "name": "debug 9",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 800,
-        "y": 100,
-        "wires": []
+        "id": "9477ba71c4bc9500",
+        "type": "function",
+        "z": "d025cd27.f975",
+        "name": "setError()",
+        "func": "msg.payload = {\n    success: false,\n    message: \"Unauthorized\"\n}\n\nmsg.statusCode = 401;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 80,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "9c978ba2294068e8",
@@ -1020,8 +1003,8 @@
         "name": "",
         "scope": null,
         "uncaught": false,
-        "x": 100,
-        "y": 60,
+        "x": 80,
+        "y": 20,
         "wires": [
             [
                 "3c195631ac636fd4"
@@ -1041,32 +1024,724 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 260,
-        "y": 60,
+        "x": 240,
+        "y": 20,
         "wires": []
     },
     {
-        "id": "5275344861a08fc6",
+        "id": "286b44a9d3938b8c",
+        "type": "http in",
+        "z": "254289433a84914b",
+        "name": "",
+        "url": "/register",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 90,
+        "y": 200,
+        "wires": [
+            [
+                "f07687a78b7197b9"
+            ]
+        ]
+    },
+    {
+        "id": "3cc8bab9e3145a0a",
+        "type": "http response",
+        "z": "254289433a84914b",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 890,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "80d5d36c1d0b31e5",
         "type": "link call",
         "z": "254289433a84914b",
+        "name": "",
+        "links": [
+            "11c9729c152a736b"
+        ],
+        "linkType": "static",
+        "timeout": "60",
+        "x": 730,
+        "y": 140,
+        "wires": [
+            [
+                "3cc8bab9e3145a0a"
+            ]
+        ]
+    },
+    {
+        "id": "f07687a78b7197b9",
+        "type": "function",
+        "z": "254289433a84914b",
+        "name": "findEmail()",
+        "func": "const { email } = msg.req.body;\n\nmsg.payload = {\n    email\n}\nmsg.collection = \"users\";\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 200,
+        "wires": [
+            [
+                "93ffc9080549daeb"
+            ]
+        ]
+    },
+    {
+        "id": "93ffc9080549daeb",
+        "type": "link call",
+        "z": "254289433a84914b",
+        "name": "",
+        "links": [
+            "a9fb567ad07dc66a"
+        ],
+        "linkType": "static",
+        "timeout": "30",
+        "x": 410,
+        "y": 200,
+        "wires": [
+            [
+                "71da3d11f16af381"
+            ]
+        ]
+    },
+    {
+        "id": "71da3d11f16af381",
+        "type": "function",
+        "z": "254289433a84914b",
+        "name": "createUser()",
+        "func": "const isEmailExist = msg.payload.length !== 0;\n\nif (!isEmailExist) {\n    const { name, email, password, role = \"user\" } = msg.req.body;\n    const passwordHash = await bcrypt.hash(password, 10);\n\n    msg.payload = {\n        _id: objectid(),\n        name,\n        email,\n        password: passwordHash,\n        orders: [],\n        shipping: {\n            firstName: \"\",\n            lastName: \"\",\n            phone: \"\"\n        },\n        role, // only admin OR user\n        token: \"\" \n    }\n    msg.collection = \"users\";\n\n    msg.statusCode = 200;\n    return [msg, null];\n}\n\nif (isEmailExist){\n    return [null, msg];\n}\n\n",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "objectid",
+                "module": "objectid"
+            },
+            {
+                "var": "bcrypt",
+                "module": "bcrypt"
+            }
+        ],
+        "x": 570,
+        "y": 200,
+        "wires": [
+            [
+                "80d5d36c1d0b31e5"
+            ],
+            [
+                "5e0c6f7d6748aa9c"
+            ]
+        ]
+    },
+    {
+        "id": "8844ec8e0c680d4a",
+        "type": "http in",
+        "z": "254289433a84914b",
+        "name": "",
+        "url": "/login",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 90,
+        "y": 380,
+        "wires": [
+            [
+                "a1b28182cf5b1724"
+            ]
+        ]
+    },
+    {
+        "id": "3f37e028a8878403",
+        "type": "http response",
+        "z": "254289433a84914b",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1350,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "1e14480f782cfca8",
+        "type": "function",
+        "z": "254289433a84914b",
+        "name": "checkEmail()",
+        "func": "const result = dotenv.config();\nconst { SECRET_KEY } = result.parsed;\nconst isEmailExist = msg.payload.length !== 0;\n\nif (isEmailExist) {\n    const user = msg.payload[0];\n    const { password } = msg.req.body;\n    const isPasswordCorrect = await bcrypt.compare(password, user.password);\n    \n    if (isPasswordCorrect) {\n        const payload = {\n            id: user._id\n        }\n\n        const token = jwt.sign(payload, SECRET_KEY, { expiresIn: '10d' })\n\n        msg.payload = {\n            token\n        }\n\n        msg.user = user;\n\n        return [msg, null];\n    }\n\n    if (!isPasswordCorrect){\n        return [null, msg]\n    }\n}\n\nif (!isEmailExist) {\n    return [null,  msg];\n\n}\n\nreturn msg;",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "bcrypt",
+                "module": "bcrypt"
+            },
+            {
+                "var": "jwt",
+                "module": "jsonwebtoken"
+            },
+            {
+                "var": "dotenv",
+                "module": "dotenv"
+            }
+        ],
+        "x": 630,
+        "y": 380,
+        "wires": [
+            [
+                "a17ce1d83b08b90d"
+            ],
+            [
+                "02d90907ba7ec1f2"
+            ]
+        ]
+    },
+    {
+        "id": "125bcc53a1edfa41",
+        "type": "link call",
+        "z": "254289433a84914b",
+        "name": "",
+        "links": [
+            "a9fb567ad07dc66a"
+        ],
+        "linkType": "static",
+        "timeout": "60",
+        "x": 450,
+        "y": 380,
+        "wires": [
+            [
+                "1e14480f782cfca8"
+            ]
+        ]
+    },
+    {
+        "id": "a1b28182cf5b1724",
+        "type": "function",
+        "z": "254289433a84914b",
+        "name": "findEmail()",
+        "func": "const { email } = msg.req.body;\n\nmsg.payload = {\n    email\n}\nmsg.collection = \"users\";\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 270,
+        "y": 380,
+        "wires": [
+            [
+                "125bcc53a1edfa41"
+            ]
+        ]
+    },
+    {
+        "id": "e49d1c22247329f1",
+        "type": "http in",
+        "z": "254289433a84914b",
+        "name": "",
+        "url": "/logout",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 90,
+        "y": 580,
+        "wires": [
+            [
+                "c4de64fef46e737d"
+            ]
+        ]
+    },
+    {
+        "id": "962e2be5ddd19cfc",
+        "type": "http response",
+        "z": "254289433a84914b",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 950,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "5e0c6f7d6748aa9c",
+        "type": "function",
+        "z": "254289433a84914b",
+        "name": "setError()",
+        "func": "msg.payload = {\n    success: false,\n    message: \"Email is already in use\"\n}\n\nmsg.statusCode = 409;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 260,
+        "wires": [
+            [
+                "3cc8bab9e3145a0a"
+            ]
+        ]
+    },
+    {
+        "id": "02d90907ba7ec1f2",
+        "type": "function",
+        "z": "254289433a84914b",
+        "name": "setError()",
+        "func": "msg.payload = {\n    success: false,\n    message: \"Invalid email or password\"\n}\n\nmsg.statusCode = 401;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 420,
+        "wires": [
+            [
+                "3f37e028a8878403"
+            ]
+        ]
+    },
+    {
+        "id": "a17ce1d83b08b90d",
+        "type": "function",
+        "z": "254289433a84914b",
+        "name": "addToken()",
+        "func": "const { token } = msg.payload;\nconst { _id } = msg.user;\n\nmsg.payload = {\n    $set: {\n        token\n    }\n}\n\nmsg.query = {\n    _id: objectid(_id)\n};\n\nmsg.collection = \"users\";\n\nreturn msg;\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "objectid",
+                "module": "objectid"
+            }
+        ],
+        "x": 810,
+        "y": 360,
+        "wires": [
+            [
+                "d0b2f7962ea7e14e"
+            ]
+        ]
+    },
+    {
+        "id": "d0b2f7962ea7e14e",
+        "type": "link call",
+        "z": "254289433a84914b",
+        "name": "",
+        "links": [
+            "6e02acf20c7c434c"
+        ],
+        "linkType": "static",
+        "timeout": "60",
+        "x": 980,
+        "y": 360,
+        "wires": [
+            [
+                "3f37e028a8878403"
+            ]
+        ]
+    },
+    {
+        "id": "c4de64fef46e737d",
+        "type": "subflow:d025cd27.f975",
+        "z": "254289433a84914b",
+        "name": "",
+        "x": 280,
+        "y": 580,
+        "wires": [
+            [
+                "55a353b084d06163"
+            ],
+            [
+                "962e2be5ddd19cfc"
+            ]
+        ]
+    },
+    {
+        "id": "55a353b084d06163",
+        "type": "function",
+        "z": "254289433a84914b",
+        "name": "deleteToken()",
+        "func": "const user = msg.payload[0];\nconst { _id } = user;\n\nmsg.payload = {\n    $set: {\n        token: ''\n    }\n}\n\nmsg.query = {\n    _id: objectid(_id)\n};\n\nmsg.collection = \"users\";\n\nreturn msg;\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "objectid",
+                "module": "objectid"
+            }
+        ],
+        "x": 460,
+        "y": 540,
+        "wires": [
+            [
+                "b72c8b9ede6317d8"
+            ]
+        ]
+    },
+    {
+        "id": "b72c8b9ede6317d8",
+        "type": "link call",
+        "z": "254289433a84914b",
+        "name": "",
+        "links": [
+            "6e02acf20c7c434c"
+        ],
+        "linkType": "static",
+        "timeout": "60",
+        "x": 640,
+        "y": 540,
+        "wires": [
+            [
+                "5e7a80bcc9428f74"
+            ]
+        ]
+    },
+    {
+        "id": "5e7a80bcc9428f74",
+        "type": "function",
+        "z": "254289433a84914b",
+        "name": "checkStatus()",
+        "func": "msg.payload = {\n    success: true,\n    message: \"Everything is OK\"\n}\n\nmsg.statusCode = 200;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 540,
+        "wires": [
+            [
+                "962e2be5ddd19cfc"
+            ]
+        ]
+    },
+    {
+        "id": "0378f4e7da866670",
+        "type": "http in",
+        "z": "6d691e6d89cccf80",
+        "g": "11b41d9c358fbbc7",
+        "name": "",
+        "url": "/categories",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 260,
+        "wires": [
+            [
+                "0c38ea0ed211618e"
+            ]
+        ]
+    },
+    {
+        "id": "0c38ea0ed211618e",
+        "type": "function",
+        "z": "6d691e6d89cccf80",
+        "g": "11b41d9c358fbbc7",
+        "name": "createCategory()",
+        "func": "const {label, name} = msg.req.body;\n\nmsg.payload = {\n    _id: objectid(),\n    label,\n    name,\n    createdAt: new Date()\n}\nmsg.collection = \"categories\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "objectid",
+                "module": "objectid"
+            }
+        ],
+        "x": 310,
+        "y": 260,
+        "wires": [
+            [
+                "e341ecea77834032"
+            ]
+        ]
+    },
+    {
+        "id": "e341ecea77834032",
+        "type": "link call",
+        "z": "6d691e6d89cccf80",
+        "g": "11b41d9c358fbbc7",
+        "name": "",
+        "links": [
+            "11c9729c152a736b"
+        ],
+        "linkType": "static",
+        "timeout": "60",
+        "x": 490,
+        "y": 260,
+        "wires": [
+            [
+                "043273f2a8508fd9"
+            ]
+        ]
+    },
+    {
+        "id": "043273f2a8508fd9",
+        "type": "function",
+        "z": "6d691e6d89cccf80",
+        "g": "11b41d9c358fbbc7",
+        "name": "checkStatus()",
+        "func": "msg.payload = {\n    success: true,\n    message: \"Everything is OK\"\n}\n\nmsg.statusCode = 200;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 260,
+        "wires": [
+            [
+                "c867a6f44cbbd5f0"
+            ]
+        ]
+    },
+    {
+        "id": "c867a6f44cbbd5f0",
+        "type": "http response",
+        "z": "6d691e6d89cccf80",
+        "g": "11b41d9c358fbbc7",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 810,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "919f2bb373ea6628",
+        "type": "http in",
+        "z": "6d691e6d89cccf80",
+        "g": "11b41d9c358fbbc7",
+        "name": "",
+        "url": "/categories",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 200,
+        "wires": [
+            [
+                "a8fb6a094339f033"
+            ]
+        ]
+    },
+    {
+        "id": "a8fb6a094339f033",
+        "type": "function",
+        "z": "6d691e6d89cccf80",
+        "g": "11b41d9c358fbbc7",
+        "name": "getCategories()",
+        "func": "msg.payload = {}\n\nmsg.collection = \"categories\";\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 200,
+        "wires": [
+            [
+                "e0f8b41137b2d3f3"
+            ]
+        ]
+    },
+    {
+        "id": "e0f8b41137b2d3f3",
+        "type": "link call",
+        "z": "6d691e6d89cccf80",
+        "g": "11b41d9c358fbbc7",
+        "name": "",
+        "links": [
+            "a9fb567ad07dc66a"
+        ],
+        "linkType": "static",
+        "timeout": "60",
+        "x": 470,
+        "y": 200,
+        "wires": [
+            [
+                "6eb5839307ba394f"
+            ]
+        ]
+    },
+    {
+        "id": "6eb5839307ba394f",
+        "type": "http response",
+        "z": "6d691e6d89cccf80",
+        "g": "11b41d9c358fbbc7",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 610,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "e457df9a8795e770",
+        "type": "comment",
+        "z": "6d691e6d89cccf80",
+        "g": "11b41d9c358fbbc7",
+        "name": "Categories",
+        "info": "",
+        "x": 100,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "c1b66edbf80cc196",
+        "type": "catch",
+        "z": "6d691e6d89cccf80",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 80,
+        "y": 40,
+        "wires": [
+            [
+                "121b679a42fe1861"
+            ]
+        ]
+    },
+    {
+        "id": "121b679a42fe1861",
+        "type": "debug",
+        "z": "6d691e6d89cccf80",
+        "name": "store errors",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "error.message",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 240,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "4234cd0c91cec0fe",
+        "type": "http in",
+        "z": "6d691e6d89cccf80",
+        "g": "0a150d04a0787f8e",
+        "name": "",
+        "url": "/products/:id",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 680,
+        "wires": [
+            [
+                "57aed6d48e7807ab"
+            ]
+        ]
+    },
+    {
+        "id": "57aed6d48e7807ab",
+        "type": "function",
+        "z": "6d691e6d89cccf80",
+        "g": "0a150d04a0787f8e",
+        "name": "getProductById()",
+        "func": "const productId = msg.req.params.id;\n\n// msg.payload = {\n//     _id: objectid(productId)\n// }\n\n// msg.collection = \"products\";\n// return msg;\nconst pipeline = [\n    {\n        $match: {\n            _id: objectid(productId)\n        }\n    },\n    {\n        $lookup: {\n            from: \"categories\",\n            localField: \"category\",\n            foreignField: \"_id\",\n            as: \"category_doc\",\n        }\n    },\n    {\n        $unwind: \"$category_doc\"\n    },\n    {\n        $project: {\n            _id: 1,\n            name: 1,\n            code: 1,\n            availability: 1,\n            category: \"$category_doc.name\",\n            characteristics: 1,\n            price: 1,\n            description: 1,\n            roastLevel: 1,\n            countries: 1,\n            image: 1,\n            deleted: 1\n        }\n    }\n];\n\nmsg.payload = pipeline;\nmsg.collection = \"products\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "objectid",
+                "module": "objectid"
+            }
+        ],
+        "x": 310,
+        "y": 680,
+        "wires": [
+            [
+                "90b7d71d645b6410"
+            ]
+        ]
+    },
+    {
+        "id": "b95060745c78c8b8",
+        "type": "http response",
+        "z": "6d691e6d89cccf80",
+        "g": "0a150d04a0787f8e",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 670,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "3d4aec1434784919",
+        "type": "http in",
+        "z": "6d691e6d89cccf80",
+        "g": "0a150d04a0787f8e",
+        "name": "",
+        "url": "/products",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 460,
+        "wires": [
+            [
+                "96bccb99f906781a"
+            ]
+        ]
+    },
+    {
+        "id": "989fc4e75f7267a5",
+        "type": "http response",
+        "z": "6d691e6d89cccf80",
+        "g": "0a150d04a0787f8e",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1010,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "7df002ef32ab9776",
+        "type": "link call",
+        "z": "6d691e6d89cccf80",
+        "g": "0a150d04a0787f8e",
         "name": "",
         "links": [
             "d66b320450918147"
         ],
         "linkType": "static",
         "timeout": "60",
-        "x": 430,
-        "y": 620,
+        "x": 470,
+        "y": 460,
         "wires": [
             [
-                "2357aed35a875667"
+                "dc51d7a1f15863ce"
             ]
         ]
     },
     {
-        "id": "551eb579ca278c53",
+        "id": "96bccb99f906781a",
         "type": "function",
-        "z": "254289433a84914b",
+        "z": "6d691e6d89cccf80",
+        "g": "0a150d04a0787f8e",
         "name": "getProducts()",
         "func": "const pipeline = [\n    {\n        $match: {\n            deleted: false\n        }\n    },\n    {\n        $lookup: {\n            from: \"categories\",\n            localField: \"category\",\n            foreignField: \"_id\",\n            as: \"category_doc\",\n        }\n    },\n    {\n        $unwind: \"$category_doc\"\n    },\n    {\n        $project: {\n            _id: 1,\n            name: 1,\n            code: 1,\n            availability: 1,\n            category: {\n                name: \"$category_doc.name\",\n                label: \"$category_doc.label\"\n            },\n            characteristics: 1,\n            price: 1,\n            description: 1,\n            roastLevel: 1,\n            countries: 1,\n            image: 1,\n            deleted: 1\n        }\n    }\n];\n\nmsg.payload = pipeline;\nmsg.collection = \"products\";\n\nreturn msg;\n",
         "outputs": 1,
@@ -1074,52 +1749,38 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 240,
-        "y": 620,
+        "x": 280,
+        "y": 460,
         "wires": [
             [
-                "5275344861a08fc6"
+                "7df002ef32ab9776"
             ]
         ]
     },
     {
-        "id": "128b7aa59df6509f",
+        "id": "90b7d71d645b6410",
         "type": "link call",
-        "z": "254289433a84914b",
+        "z": "6d691e6d89cccf80",
+        "g": "0a150d04a0787f8e",
         "name": "",
         "links": [
             "d66b320450918147"
         ],
         "linkType": "static",
         "timeout": "60",
-        "x": 530,
-        "y": 480,
+        "x": 510,
+        "y": 680,
         "wires": [
             [
-                "bc79b5d18c9e474c"
+                "b95060745c78c8b8"
             ]
         ]
     },
     {
-        "id": "54dd30369781e6e4",
-        "type": "debug",
-        "z": "254289433a84914b",
-        "name": "debug 14",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 580,
-        "y": 1900,
-        "wires": []
-    },
-    {
-        "id": "2357aed35a875667",
+        "id": "dc51d7a1f15863ce",
         "type": "switch",
-        "z": "254289433a84914b",
+        "z": "6d691e6d89cccf80",
+        "g": "0a150d04a0787f8e",
         "name": "",
         "property": "req.query.sort",
         "propertyType": "msg",
@@ -1161,38 +1822,39 @@
         "checkall": "true",
         "repair": false,
         "outputs": 7,
-        "x": 590,
-        "y": 620,
+        "x": 630,
+        "y": 460,
         "wires": [
             [
-                "37b0a51897821d8e"
+                "0bbee4a4474ba7a4"
             ],
             [
-                "bf23b5b6a37925a4"
+                "a972a3a57e5c3159"
             ],
             [
-                "60f1c36683a9219a",
-                "dfc64f6ce7cd4348"
+                "3daecd34275b7d5a",
+                "989fc4e75f7267a5"
             ],
             [
-                "9e97302fa04b7641"
+                "263a45d438eea4ea"
             ],
             [
-                "2824b734248165f8"
+                "f11c6b872dcb13ce"
             ],
             [
-                "765270910eb0e47d"
+                "e8a386eabeaa307c"
             ],
             [
-                "dfc64f6ce7cd4348"
+                "989fc4e75f7267a5"
             ]
         ]
     },
     {
-        "id": "60f1c36683a9219a",
+        "id": "3daecd34275b7d5a",
         "type": "debug",
-        "z": "254289433a84914b",
-        "name": "debug 17",
+        "z": "6d691e6d89cccf80",
+        "g": "0a150d04a0787f8e",
+        "name": "debug 235",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -1201,14 +1863,15 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 740,
-        "y": 620,
+        "x": 790,
+        "y": 460,
         "wires": []
     },
     {
-        "id": "37b0a51897821d8e",
+        "id": "0bbee4a4474ba7a4",
         "type": "function",
-        "z": "254289433a84914b",
+        "z": "6d691e6d89cccf80",
+        "g": "0a150d04a0787f8e",
         "name": "sortByPriceAsc()",
         "func": "if (Array.isArray(msg.payload)) {\n    msg.payload.sort((a, b) => a.price - b.price);\n}\n\nreturn msg;",
         "outputs": 1,
@@ -1216,18 +1879,19 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 770,
-        "y": 540,
+        "x": 810,
+        "y": 380,
         "wires": [
             [
-                "dfc64f6ce7cd4348"
+                "989fc4e75f7267a5"
             ]
         ]
     },
     {
-        "id": "bf23b5b6a37925a4",
+        "id": "a972a3a57e5c3159",
         "type": "function",
-        "z": "254289433a84914b",
+        "z": "6d691e6d89cccf80",
+        "g": "0a150d04a0787f8e",
         "name": "sortByPriceDesc()",
         "func": "if (Array.isArray(msg.payload)) {\n    msg.payload.sort((a, b) => b.price - a.price);\n}\n\nreturn msg;",
         "outputs": 1,
@@ -1235,18 +1899,19 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 770,
-        "y": 580,
+        "x": 810,
+        "y": 420,
         "wires": [
             [
-                "dfc64f6ce7cd4348"
+                "989fc4e75f7267a5"
             ]
         ]
     },
     {
-        "id": "765270910eb0e47d",
+        "id": "e8a386eabeaa307c",
         "type": "function",
-        "z": "254289433a84914b",
+        "z": "6d691e6d89cccf80",
+        "g": "0a150d04a0787f8e",
         "name": "sortByPrice()",
         "func": "const {min, max} = msg.req.query;\n\nmsg.payload = msg.payload.filter(product =>\n    product.price >= min && product.price <= max\n);\n\nreturn msg;",
         "outputs": 1,
@@ -1254,18 +1919,19 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 750,
-        "y": 720,
+        "x": 790,
+        "y": 540,
         "wires": [
             [
-                "dfc64f6ce7cd4348"
+                "989fc4e75f7267a5"
             ]
         ]
     },
     {
-        "id": "9e97302fa04b7641",
+        "id": "263a45d438eea4ea",
         "type": "function",
-        "z": "254289433a84914b",
+        "z": "6d691e6d89cccf80",
+        "g": "0a150d04a0787f8e",
         "name": "sortByCategory()",
         "func": "const { label } = msg.req.query;\nconst categories = label.split(',');\n\n// node.warn(categories.inculdes(product.category.label))\n\n// msg.payload = msg.payload.filter(product =>\n//     product.category.label === label\n// );\n\nmsg.payload = msg.payload.filter(product => \n    categories.includes(product.category.label)\n);\n\nreturn msg;\n\n\n",
         "outputs": 1,
@@ -1278,18 +1944,19 @@
                 "module": "objectid"
             }
         ],
-        "x": 770,
-        "y": 680,
+        "x": 810,
+        "y": 500,
         "wires": [
             [
-                "dfc64f6ce7cd4348"
+                "989fc4e75f7267a5"
             ]
         ]
     },
     {
-        "id": "2824b734248165f8",
+        "id": "f11c6b872dcb13ce",
         "type": "function",
-        "z": "254289433a84914b",
+        "z": "6d691e6d89cccf80",
+        "g": "0a150d04a0787f8e",
         "name": "sortByCountry()",
         "func": "const { name } = msg.req.query;\nconst countries = name.split(',');\n\nmsg.payload = msg.payload.filter(product => {\n    const productCountries = product.countries.map(country => country.toLowerCase());\n    const matchingCountries = productCountries.filter(country => countries.includes(country));\n    return matchingCountries.length > 0;\n});\n\nreturn msg;\n",
         "outputs": 1,
@@ -1297,148 +1964,49 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 760,
-        "y": 760,
+        "x": 800,
+        "y": 580,
         "wires": [
             [
-                "dfc64f6ce7cd4348"
+                "989fc4e75f7267a5"
             ]
         ]
     },
     {
-        "id": "c45c51d330c57e55",
+        "id": "64e87f146bb7c985",
         "type": "http in",
-        "z": "254289433a84914b",
-        "name": "",
-        "url": "/upload-image",
-        "method": "post",
-        "upload": true,
-        "swaggerDoc": "",
-        "x": 130,
-        "y": 1960,
-        "wires": [
-            [
-                "bee92b8855e56fef",
-                "d86fef73bbbde5b7"
-            ]
-        ]
-    },
-    {
-        "id": "bee92b8855e56fef",
-        "type": "file",
-        "z": "254289433a84914b",
-        "name": "",
-        "filename": "filename",
-        "filenameType": "msg",
-        "appendNewline": true,
-        "createDir": true,
-        "overwriteFile": "false",
-        "encoding": "none",
-        "x": 370,
-        "y": 1960,
-        "wires": [
-            [
-                "67b01a9a18701437"
-            ]
-        ]
-    },
-    {
-        "id": "67b01a9a18701437",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "Save to DB",
-        "func": "// const mongoose = global.get('mongoose');\n// const Product = mongoose.model('Product');\n\nconst imagePath = msg.req.file.path;\n\n// const product = new Product({\n//     name: 'Coffee',\n//     imagePath: imagePath\n// });\n// product.save((err, product) => {\n//     if (err) {\n//         console.error(err);\n//         return;\n//     }\n//     console.log('Product saved to database:', product);\n//     msg.payload = { imagePath: imagePath };\n//     return msg;\n// });",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 550,
-        "y": 1960,
-        "wires": [
-            [
-                "a51b42c9e9f4fb8e",
-                "e093ad4febe95730"
-            ]
-        ]
-    },
-    {
-        "id": "a51b42c9e9f4fb8e",
-        "type": "http response",
-        "z": "254289433a84914b",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 710,
-        "y": 1960,
-        "wires": []
-    },
-    {
-        "id": "e093ad4febe95730",
-        "type": "debug",
-        "z": "254289433a84914b",
-        "name": "debug 18",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 740,
-        "y": 1900,
-        "wires": []
-    },
-    {
-        "id": "d86fef73bbbde5b7",
-        "type": "debug",
-        "z": "254289433a84914b",
-        "name": "debug 19",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 400,
-        "y": 1920,
-        "wires": []
-    },
-    {
-        "id": "fa14afe9d996fd63",
-        "type": "http in",
-        "z": "254289433a84914b",
+        "z": "6d691e6d89cccf80",
+        "g": "0a150d04a0787f8e",
         "name": "",
         "url": "/delete/:id",
         "method": "put",
         "upload": false,
         "swaggerDoc": "",
-        "x": 140,
-        "y": 820,
+        "x": 120,
+        "y": 760,
         "wires": [
             [
-                "d267db7de063a15f"
+                "1b6e2f2d9ca97c78"
             ]
         ]
     },
     {
-        "id": "3aaace6cc45a0895",
+        "id": "d31d8a386fe96ba6",
         "type": "http response",
-        "z": "254289433a84914b",
+        "z": "6d691e6d89cccf80",
+        "g": "0a150d04a0787f8e",
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 770,
-        "y": 820,
+        "x": 630,
+        "y": 760,
         "wires": []
     },
     {
-        "id": "d267db7de063a15f",
+        "id": "1b6e2f2d9ca97c78",
         "type": "function",
-        "z": "254289433a84914b",
+        "z": "6d691e6d89cccf80",
+        "g": "0a150d04a0787f8e",
         "name": "deleteProduct()",
         "func": "const productId = msg.req.params.id;\n\nmsg.payload = {\n    $set: { deleted: true }\n};\n\nmsg.query = {\n    _id: objectid(productId)\n};\n\nmsg.collection = \"products\";\n\nreturn msg;\n",
         "outputs": 1,
@@ -1451,1066 +2019,86 @@
                 "module": "objectid"
             }
         ],
-        "x": 380,
-        "y": 820,
+        "x": 300,
+        "y": 760,
         "wires": [
             [
-                "0fa253218bc61e87"
+                "1d623f44217498df"
             ]
         ]
     },
     {
-        "id": "0fa253218bc61e87",
+        "id": "1d623f44217498df",
         "type": "link call",
-        "z": "254289433a84914b",
+        "z": "6d691e6d89cccf80",
+        "g": "0a150d04a0787f8e",
         "name": "",
         "links": [
             "6e02acf20c7c434c"
         ],
         "linkType": "static",
         "timeout": "60",
-        "x": 600,
-        "y": 820,
+        "x": 480,
+        "y": 760,
         "wires": [
             [
-                "3aaace6cc45a0895"
+                "d31d8a386fe96ba6"
             ]
         ]
     },
     {
-        "id": "7eb80bddeb1c1873",
-        "type": "http in",
-        "z": "254289433a84914b",
-        "name": "",
-        "url": "/update/:id",
-        "method": "put",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 120,
-        "y": 2160,
-        "wires": [
-            [
-                "0b171b8828295d57",
-                "7131fe137a3b51ef"
-            ]
-        ]
-    },
-    {
-        "id": "490f6ccade89a327",
-        "type": "http response",
-        "z": "254289433a84914b",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 730,
-        "y": 2060,
-        "wires": []
-    },
-    {
-        "id": "7131fe137a3b51ef",
-        "type": "debug",
-        "z": "254289433a84914b",
-        "name": "debug 23",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 520,
-        "y": 2020,
-        "wires": []
-    },
-    {
-        "id": "0b171b8828295d57",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "function 11",
-        "func": "const decodedFilename = msg.req.body[0].originalname;\nconst outputString = decodedFilename.replace(/י/g, '`')\n\nmsg.filename = \"/data/storage/\" + msg.req.query.path + \"/\" + outputString;;\n\nmsg.payload.file = msg.req.files[0].buffer;\nmsg.payload = msg.payload.file;\nreturn [null, msg];\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "formidable",
-                "module": "formidable"
-            }
-        ],
-        "x": 350,
-        "y": 2160,
-        "wires": [
-            [
-                "490f6ccade89a327"
-            ]
-        ]
-    },
-    {
-        "id": "412d8e59.ada5a",
-        "type": "http in",
-        "z": "254289433a84914b",
-        "name": "",
-        "url": "/img",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
+        "id": "08c9e12d8638472d",
+        "type": "comment",
+        "z": "6d691e6d89cccf80",
+        "g": "0a150d04a0787f8e",
+        "name": "Products",
+        "info": "",
         "x": 100,
-        "y": 1320,
-        "wires": [
-            [
-                "b13b26047187de90"
-            ]
-        ]
-    },
-    {
-        "id": "85e75f9.45f94a",
-        "type": "change",
-        "z": "254289433a84914b",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "filename",
-                "pt": "msg",
-                "to": "'/data/upload' & '2023-04-23_13-02.png'",
-                "tot": "jsonata"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 310,
-        "y": 1320,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "ccc9150b.a8cb08",
-        "type": "file in",
-        "z": "254289433a84914b",
-        "name": "get_file",
-        "filename": "filename",
-        "filenameType": "msg",
-        "format": "",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "utf8",
-        "allProps": false,
-        "x": 520,
-        "y": 1320,
-        "wires": [
-            [
-                "55fbb339aef9940d"
-            ]
-        ]
-    },
-    {
-        "id": "5b12233f.af313c",
-        "type": "http response",
-        "z": "254289433a84914b",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 1210,
-        "y": 1240,
+        "y": 380,
         "wires": []
     },
     {
-        "id": "9ed97723.1f95b8",
-        "type": "change",
-        "z": "254289433a84914b",
-        "name": "Set Headers",
-        "rules": [
-            {
-                "t": "set",
-                "p": "headers",
-                "pt": "msg",
-                "to": "{}",
-                "tot": "json"
-            },
-            {
-                "t": "set",
-                "p": "headers.content-type",
-                "pt": "msg",
-                "to": "image/png",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "headers['access-control-allow-credentials']",
-                "pt": "msg",
-                "to": "true",
-                "tot": "bool"
-            },
-            {
-                "t": "set",
-                "p": "headers.accept-ranges",
-                "pt": "msg",
-                "to": "bytes",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "headers.x-xss-protection",
-                "pt": "msg",
-                "to": "1; mode=block",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "headers.x-frame-options",
-                "pt": "msg",
-                "to": "SAMEORIGIN",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "headers.nel",
-                "pt": "msg",
-                "to": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "headers.x-dns-prefetch-control",
-                "pt": "msg",
-                "to": "off",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "headers.x-download-options",
-                "pt": "msg",
-                "to": "noopen",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 770,
-        "y": 1320,
-        "wires": [
-            [
-                "dfa25ea9526af83d",
-                "59f69c20a9e0e4a7"
-            ]
-        ]
-    },
-    {
-        "id": "dfa25ea9526af83d",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "function",
-        "func": "msg.headers = {\n    ...msg.headers,\n    ['x-content-type-options']: 'nosniff',\n    ['access-control-allow-credentials']: true,\n    ['cache-control']: 'public, max-age=14400',\n    ['cf-cache-status']: 'EXPIRED',\n    ['cf-ray']: '747ece538ba590b2-FRA',\n//report - to: { \"endpoints\": [{ \"url\": \"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=6FLrusuf%2B3JD%2By2hHTtEFI4LqfbHg6hE9OshVZ%2FGZHvRuKBMMPaZtmTvqedBYxS2H4SCN2hx0ulKIF4%2FetNCOLpZzbK46BXQfKwNg05NsEn3O4Uu6Oh5sk2s1A9i87oLs0t0yHlvVjNd\" }], \"group\": \"cf-nel\", \"max_age\": 604800 }\n//server: cloudflare\n    ['strict-transport-security']: 'max-age=15552000; includeSubDomains',\n    // ['link']: 'rel=\"shortcut icon\" href=\"\"',\n    ['Content-Security-Policy']:\"img-src 'none'\",\n    ['x-xss-protection']:' 1; mode = block'\n    //rel: \"shortcut icon\",\n    //vary: 'Origin,Accept-Encoding'\n}\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 980,
-        "y": 1320,
-        "wires": [
-            [
-                "5b12233f.af313c"
-            ]
-        ]
-    },
-    {
-        "id": "59f69c20a9e0e4a7",
-        "type": "debug",
-        "z": "254289433a84914b",
-        "name": "2",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 970,
-        "y": 1260,
-        "wires": []
-    },
-    {
-        "id": "55fbb339aef9940d",
-        "type": "debug",
-        "z": "254289433a84914b",
-        "name": "2",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 590,
-        "y": 1240,
-        "wires": []
-    },
-    {
-        "id": "b13b26047187de90",
-        "type": "debug",
-        "z": "254289433a84914b",
-        "name": "debug 205",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 270,
-        "y": 1220,
-        "wires": []
-    },
-    {
-        "id": "25d331c47673b875",
-        "type": "http response",
-        "z": "254289433a84914b",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 1310,
-        "y": 1400,
-        "wires": []
-    },
-    {
-        "id": "8b524c92bbfe272b",
-        "type": "file",
-        "z": "254289433a84914b",
-        "name": "",
-        "filename": "filename",
-        "filenameType": "msg",
-        "appendNewline": false,
-        "createDir": true,
-        "overwriteFile": "true",
-        "encoding": "none",
-        "x": 540,
-        "y": 1500,
-        "wires": [
-            [
-                "9168e7108a2b4ada",
-                "4b117820fde776cf"
-            ]
-        ]
-    },
-    {
-        "id": "2a7ff6b0722ba2a0",
+        "id": "22d5f59a7192b812",
         "type": "http in",
-        "z": "254289433a84914b",
-        "name": "",
-        "url": "/fm/upload/image",
-        "method": "post",
-        "upload": true,
-        "swaggerDoc": "",
-        "x": 120,
-        "y": 1480,
-        "wires": [
-            [
-                "543cb92c34ddb951"
-            ]
-        ]
-    },
-    {
-        "id": "87fc55ef1737e55e",
-        "type": "http response",
-        "z": "254289433a84914b",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 1310,
-        "y": 1540,
-        "wires": []
-    },
-    {
-        "id": "543cb92c34ddb951",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "",
-        "func": "if(msg.payload.file){\n   msg.path = \"/data/storage/\" + msg.req.query.path + \"/\"\n   msg.filename = msg.payload.file\n   return[msg,null]\n}\n\nconst decodedFilename = msg.req.files[0].originalname;\nconst outputString = decodedFilename.replace(/י/g, '`')\n\nmsg.filename = \"/data/storage/\" + msg.req.query.path + \"/\" + outputString;;\n\n//msg.filename =\"/data/\"+msg.req.query.path+\"/\"+ msg.req.files[0].originalname;\n\nmsg.payload.file = msg.req.files[0].buffer;\nmsg.payload = msg.payload.file;\nreturn [null,msg];",
-        "outputs": 2,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 380,
-        "y": 1460,
-        "wires": [
-            [
-                "4eaf62cec5c18cc6"
-            ],
-            [
-                "8b524c92bbfe272b"
-            ]
-        ]
-    },
-    {
-        "id": "915ff95f6a12e8cd",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "",
-        "func": "// @ts-ignore\nNewMsg = {};\nNewMsg.payload={\n    success:true,\n};\nNewMsg.payload.payload = msg.payload.map(elem=>{\n    return{\n        \"isDirectory\":elem.stat.isDirectory,\n        \"name\":elem.name,\n        \"path\":elem.name,\n        \"size\":(elem.stat.size/1048576).toFixed(3) + \"Мb\",\n        \"editedAt\":elem.stat.created,\n    }\n})\n\nmsg.payload = NewMsg.payload;\nmsg.req =\"\"\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1160,
-        "y": 1480,
-        "wires": [
-            [
-                "87fc55ef1737e55e",
-                "71a76034243b9e8a"
-            ]
-        ]
-    },
-    {
-        "id": "9168e7108a2b4ada",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "",
-        "func": "msg.payload.start = \"/data/storage/\"+msg.req.query.path;\n//msg.payload.start = \"/data/\"+msg.req.query.path;\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 760,
-        "y": 1500,
-        "wires": [
-            [
-                "456473a8af5c5091",
-                "1d46fe1b37b3d5ea"
-            ]
-        ]
-    },
-    {
-        "id": "4b117820fde776cf",
-        "type": "debug",
-        "z": "254289433a84914b",
-        "name": "2",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 790,
-        "y": 1440,
-        "wires": []
-    },
-    {
-        "id": "1d46fe1b37b3d5ea",
-        "type": "debug",
-        "z": "254289433a84914b",
-        "name": "3",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 970,
-        "y": 1440,
-        "wires": []
-    },
-    {
-        "id": "71a76034243b9e8a",
-        "type": "debug",
-        "z": "254289433a84914b",
-        "name": "5",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1310,
-        "y": 1460,
-        "wires": []
-    },
-    {
-        "id": "8b3ea1178114ffe6",
-        "type": "debug",
-        "z": "254289433a84914b",
-        "name": "4",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1050,
-        "y": 1560,
-        "wires": []
-    },
-    {
-        "id": "2daef178831d17e1",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "",
-        "func": "node.warn(msg.req.query.path)\nmsg.payload={\n}\nmsg.payload.start = \"/data/storage/\"+msg.req.query.path;\nnode.warn(msg.payload.start)\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 820,
-        "y": 1400,
-        "wires": [
-            [
-                "bcdfc1d11118a9af"
-            ]
-        ]
-    },
-    {
-        "id": "fe8943eb38940fe6",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "",
-        "func": "// @ts-ignore\nNewMsg = {};\nNewMsg.payload={\n    success:true,\n};\nNewMsg.payload.payload = msg.payload.map(elem=>{\n    return{\n        \"isDirectory\":elem.stat.isDirectory,\n        \"name\":elem.name,\n        \"path\":elem.name,\n        \"size\":(elem.stat.size/1048576).toFixed(3) + \"Мb\",\n        \"editedAt\":elem.stat.created,\n    }\n})\n\nmsg.payload = NewMsg.payload;\nmsg.req =\"\"\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1160,
-        "y": 1400,
-        "wires": [
-            [
-                "25d331c47673b875"
-            ]
-        ]
-    },
-    {
-        "id": "4eaf62cec5c18cc6",
-        "type": "fs-mkdir",
-        "z": "254289433a84914b",
-        "name": "",
-        "purpose": "reg",
-        "path": "path",
-        "pathType": "msg",
-        "foldername": "filename",
-        "foldernameType": "msg",
-        "recursive": true,
-        "exists": true,
-        "prefix": "",
-        "prefixType": "str",
-        "mode": "777",
-        "property": "payload",
-        "propertyType": "msg",
-        "x": 530,
-        "y": 1400,
-        "wires": [
-            [
-                "2daef178831d17e1"
-            ]
-        ]
-    },
-    {
-        "id": "456473a8af5c5091",
-        "type": "fs-file-lister",
-        "z": "254289433a84914b",
-        "name": "",
-        "start": "{{msg.payload.start}}",
-        "pattern": "",
-        "folders": "",
-        "hidden": true,
-        "lstype": "both",
-        "path": false,
-        "single": true,
-        "depth": 0,
-        "stat": true,
-        "showWarnings": true,
-        "x": 940,
-        "y": 1480,
-        "wires": [
-            [
-                "915ff95f6a12e8cd",
-                "8b3ea1178114ffe6"
-            ]
-        ]
-    },
-    {
-        "id": "bcdfc1d11118a9af",
-        "type": "fs-file-lister",
-        "z": "254289433a84914b",
-        "name": "",
-        "start": "{{msg.payload.start}}",
-        "pattern": "",
-        "folders": "",
-        "hidden": true,
-        "lstype": "both",
-        "path": false,
-        "single": true,
-        "depth": 0,
-        "stat": true,
-        "showWarnings": true,
-        "x": 980,
-        "y": 1400,
-        "wires": [
-            [
-                "fe8943eb38940fe6"
-            ]
-        ]
-    },
-    {
-        "id": "62f1eb0d.6f79ac",
-        "type": "http in",
-        "z": "254289433a84914b",
-        "name": "/upload_files",
-        "url": "/upload_files",
-        "method": "post",
-        "upload": true,
-        "swaggerDoc": "",
-        "x": 110,
-        "y": 1700,
-        "wires": [
-            [
-                "e63265bb.9c173"
-            ]
-        ]
-    },
-    {
-        "id": "e63265bb.9c173",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "uploadFiles",
-        "func": "const upload = multer({ dest: \"uploads/\" });\n\n    upload.array('files')(msg.req, msg.res, function (err) {\n        if (err) {\n            // handle the error\n            console.log(err);\n            msg.payload = { error: err.message };\n            return msg;\n        } else {\n            // the file(s) have been uploaded\n            const files = msg.req.files;\n            console.log(files);\n            // do something with the files\n            msg.payload = { message: \"Successfully uploaded files\" };\n            return msg;\n        }\n    })",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "multer",
-                "module": "multer"
-            }
-        ],
-        "x": 310,
-        "y": 1700,
-        "wires": [
-            [
-                "9aeb0b0e.7d008"
-            ]
-        ]
-    },
-    {
-        "id": "9aeb0b0e.7d008",
-        "type": "http response",
-        "z": "254289433a84914b",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 530,
-        "y": 1700,
-        "wires": []
-    },
-    {
-        "id": "5a176d594bb6a57f",
-        "type": "inject",
-        "z": "254289433a84914b",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 120,
-        "y": 1280,
-        "wires": [
-            [
-                "b24f4e006b3f910e"
-            ]
-        ]
-    },
-    {
-        "id": "b24f4e006b3f910e",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "Handle File Upload",
-        "func": "const currentDir = path.resolve('');\nmsg.filename = currentDir + \"/data/upload/\" + \"2023-04-23_13-02.png\";\n\nnode.warn(msg.filename);\n\nreturn  msg;\n\n\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "path",
-                "module": "path"
-            }
-        ],
-        "x": 304.89581298828125,
-        "y": 1261.6666259765625,
-        "wires": [
-            [
-                "ccc9150b.a8cb08"
-            ]
-        ]
-    },
-    {
-        "id": "fa7fc71873399e18",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "function 15",
-        "func": "const tempDir = path.resolve('') + \"/temp\";\nconst multerConfig = multer.diskStorage({\n    destination: tempDir,\n    filename: (req, file, cb) => {\n        node.warn(file);\n        cb(null, file.originalname)\n    }\n});\n\nconst upload = multer({\n    storage: multerConfig\n}).single(\"image\");\n\nupload(msg.req, msg.res, function (err) {\n    if (err) {\n        msg.payload = \"Error uploading file: \" + err.message;\n        // return node.send([null, msg]);\n        return node.send( msg);\n\n    }\n\n    msg.payload = \"File uploaded successfully\";\n    return node.send(msg);\n});\n\n// const multerConfig = multer.memoryStorage();\n\n// const upload = multer({\n//     storage: multerConfig\n// }).single(\"image\");\n\n// upload(msg.req, msg.res, function (err) {\n//     if (err) {\n//         msg.payload = \"Error uploading file: \" + err.message;\n//         return node.send(msg);\n//     }\n\n//     // Access the uploaded file buffer\n//     const fileBuffer = msg.req.file.buffer;\n\n//     msg.payload = \"File uploaded successfully\";\n//     msg.file = {\n//         buffer: fileBuffer,\n//         mimetype: msg.req.file.mimetype,\n//         originalname: msg.req.file.originalname\n//     };\n\n//     return node.send(msg);\n// });\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "multer",
-                "module": "multer"
-            },
-            {
-                "var": "path",
-                "module": "path"
-            }
-        ],
-        "x": 750,
-        "y": 2140,
-        "wires": [
-            [
-                "a9a89c2d19c818af",
-                "4c05111f6007dd2e"
-            ]
-        ]
-    },
-    {
-        "id": "4c05111f6007dd2e",
-        "type": "http response",
-        "z": "254289433a84914b",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 990,
-        "y": 2140,
-        "wires": []
-    },
-    {
-        "id": "a9a89c2d19c818af",
-        "type": "debug",
-        "z": "254289433a84914b",
-        "name": "debug 217",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 830,
-        "y": 2180,
-        "wires": []
-    },
-    {
-        "id": "75530cd2.06a71c",
-        "type": "http in",
-        "z": "254289433a84914b",
-        "name": "",
-        "url": "/upload",
-        "method": "post",
-        "upload": true,
-        "swaggerDoc": "",
-        "x": 130,
-        "y": 3560,
-        "wires": [
-            [
-                "97fcfe96.6f76c"
-            ]
-        ]
-    },
-    {
-        "id": "97fcfe96.6f76c",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "Handle File Upload",
-        "func": "const currentDir = path.resolve('');\nconst decodedFilename = msg.req.files[0].originalname;\n\nmsg.filename = currentDir + \"/data\" + msg.req.route.path + \"/\" + decodedFilename;\nmsg.path = currentDir + \"/data\" + msg.req.route.path + \"/\"\nmsg.payload.file = msg.req.files[0].buffer;\nmsg.payload = msg.payload.file;\n\nreturn [null, msg];\n\n\n",
-        "outputs": 2,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "path",
-                "module": "path"
-            }
-        ],
-        "x": 330,
-        "y": 3560,
-        "wires": [
-            [
-                "4d6cfdccc34546b2"
-            ],
-            [
-                "488bf4b1d65b9a3b"
-            ]
-        ]
-    },
-    {
-        "id": "4d6cfdccc34546b2",
-        "type": "fs-mkdir",
-        "z": "254289433a84914b",
-        "name": "",
-        "purpose": "reg",
-        "path": "path",
-        "pathType": "msg",
-        "foldername": "filename",
-        "foldernameType": "msg",
-        "recursive": true,
-        "exists": true,
-        "prefix": "",
-        "prefixType": "str",
-        "mode": "777",
-        "property": "payload",
-        "propertyType": "msg",
-        "x": 550,
-        "y": 3500,
-        "wires": [
-            [
-                "74c6161a7d0ee640"
-            ]
-        ]
-    },
-    {
-        "id": "488bf4b1d65b9a3b",
-        "type": "file",
-        "z": "254289433a84914b",
-        "name": "",
-        "filename": "filename",
-        "filenameType": "msg",
-        "appendNewline": false,
-        "createDir": true,
-        "overwriteFile": "true",
-        "encoding": "none",
-        "x": 520,
-        "y": 3620,
-        "wires": [
-            [
-                "6afb867fea63aacd"
-            ]
-        ]
-    },
-    {
-        "id": "74c6161a7d0ee640",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "function 13",
-        "func": "node.warn(msg.req.route.path)\nmsg.payload = {\n}\nmsg.payload.start = \"/data/storage/\" + msg.req.route.path;\nnode.warn(msg.payload.start)\n\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 810,
-        "y": 3500,
-        "wires": [
-            [
-                "5680f7958362b006"
-            ]
-        ]
-    },
-    {
-        "id": "5680f7958362b006",
-        "type": "fs-file-lister",
-        "z": "254289433a84914b",
-        "name": "",
-        "start": "{{msg.payload.start}}",
-        "pattern": "",
-        "folders": "",
-        "hidden": true,
-        "lstype": "both",
-        "path": false,
-        "single": true,
-        "depth": 0,
-        "stat": true,
-        "showWarnings": true,
-        "x": 980,
-        "y": 3500,
-        "wires": [
-            [
-                "e9552de6832c27c6"
-            ]
-        ]
-    },
-    {
-        "id": "6afb867fea63aacd",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "",
-        "func": "const currentDir = path.resolve('');\nmsg.payload.start = currentDir + \"/data\" + msg.req.route.path;\n//msg.payload.start = \"/data/\"+msg.req.query.path;\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "path",
-                "module": "path"
-            }
-        ],
-        "x": 720,
-        "y": 3620,
-        "wires": [
-            [
-                "72656fb743344b5e"
-            ]
-        ]
-    },
-    {
-        "id": "72656fb743344b5e",
-        "type": "fs-file-lister",
-        "z": "254289433a84914b",
-        "name": "",
-        "start": "{{msg.payload.start}}",
-        "pattern": "",
-        "folders": "",
-        "hidden": true,
-        "lstype": "both",
-        "path": false,
-        "single": true,
-        "depth": 0,
-        "stat": true,
-        "showWarnings": true,
-        "x": 920,
-        "y": 3620,
-        "wires": [
-            [
-                "db8c30bc4bdea22b"
-            ]
-        ]
-    },
-    {
-        "id": "1faf730dc135de6d",
-        "type": "http response",
-        "z": "254289433a84914b",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 1310,
-        "y": 3500,
-        "wires": []
-    },
-    {
-        "id": "ccaec6ccf77fdd23",
-        "type": "http response",
-        "z": "254289433a84914b",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 1310,
-        "y": 3620,
-        "wires": []
-    },
-    {
-        "id": "db8c30bc4bdea22b",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "",
-        "func": "// @ts-ignore\nNewMsg = {};\nNewMsg.payload={\n    success:true,\n};\nNewMsg.payload.payload = msg.payload.map(elem=>{\n    return{\n        \"isDirectory\":elem.stat.isDirectory,\n        \"name\":elem.name,\n        \"path\":elem.name,\n        \"size\":(elem.stat.size/1048576).toFixed(3) + \"Мb\",\n        \"editedAt\":elem.stat.created,\n    }\n})\n\nmsg.payload = NewMsg.payload;\nmsg.req =\"\"\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1140,
-        "y": 3620,
-        "wires": [
-            [
-                "ccaec6ccf77fdd23"
-            ]
-        ]
-    },
-    {
-        "id": "e9552de6832c27c6",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "",
-        "func": "// @ts-ignore\nNewMsg = {};\nNewMsg.payload={\n    success:true,\n};\nNewMsg.payload.payload = msg.payload.map(elem=>{\n    return{\n        \"isDirectory\":elem.stat.isDirectory,\n        \"name\":elem.name,\n        \"path\":elem.name,\n        \"size\":(elem.stat.size/1048576).toFixed(3) + \"Мb\",\n        \"editedAt\":elem.stat.created,\n    }\n})\n\nmsg.payload = NewMsg.payload;\nmsg.req =\"\"\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1160,
-        "y": 3500,
-        "wires": [
-            [
-                "1faf730dc135de6d"
-            ]
-        ]
-    },
-    {
-        "id": "af9cb3fe6349abc5",
-        "type": "http in",
-        "z": "254289433a84914b",
+        "z": "6d691e6d89cccf80",
+        "g": "0a150d04a0787f8e",
         "name": "",
         "url": "/products",
         "method": "post",
         "upload": false,
         "swaggerDoc": "",
-        "x": 100,
-        "y": 2400,
+        "x": 120,
+        "y": 840,
         "wires": [
             [
-                "728f69733eaaceef"
+                "f268b45dc3b2a222"
             ]
         ]
     },
     {
-        "id": "087c5252c5f5d140",
+        "id": "08f9b1c9f1b6bf86",
         "type": "link call",
-        "z": "254289433a84914b",
+        "z": "6d691e6d89cccf80",
+        "g": "0a150d04a0787f8e",
         "name": "",
         "links": [
             "11c9729c152a736b"
         ],
         "linkType": "static",
         "timeout": "60",
-        "x": 510,
-        "y": 2400,
+        "x": 470,
+        "y": 840,
         "wires": [
             [
-                "32d463f5f48cd8d4"
+                "c51eb8985f2f10a3"
             ]
         ]
     },
     {
-        "id": "32d463f5f48cd8d4",
+        "id": "c51eb8985f2f10a3",
         "type": "function",
-        "z": "254289433a84914b",
+        "z": "6d691e6d89cccf80",
+        "g": "0a150d04a0787f8e",
         "name": "checkStatus()",
         "func": "msg.payload = {\n    success: true,\n    message: \"Everything is OK\"\n}\n\nmsg.statusCode = 200;\n\nreturn msg;",
         "outputs": 1,
@@ -2518,29 +2106,31 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 700,
-        "y": 2400,
+        "x": 640,
+        "y": 840,
         "wires": [
             [
-                "3e3630905f7c21f0"
+                "b81f4fbeea309fd8"
             ]
         ]
     },
     {
-        "id": "3e3630905f7c21f0",
+        "id": "b81f4fbeea309fd8",
         "type": "http response",
-        "z": "254289433a84914b",
+        "z": "6d691e6d89cccf80",
+        "g": "0a150d04a0787f8e",
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 910,
-        "y": 2400,
+        "x": 790,
+        "y": 840,
         "wires": []
     },
     {
-        "id": "728f69733eaaceef",
+        "id": "f268b45dc3b2a222",
         "type": "function",
-        "z": "254289433a84914b",
+        "z": "6d691e6d89cccf80",
+        "g": "0a150d04a0787f8e",
         "name": "createProduct()",
         "func": "const { name, code, availability, sourness, \n        bitterness, sturdiness, saturation, price,  \n        description, roastLevel, countries, image,\n        category } = msg.req.body;\n\nconst currentDir = path.resolve('');\nconst imgPath = currentDir + \"/data/upload/\" + image;\n\nmsg.payload = {\n    _id: objectid(),\n    name,\n    code, \n    availability: availability === \"true\",\n    category: objectid(category), \n    characteristics: {\n        sourness: parseInt(sourness), \n        bitterness: parseInt(bitterness),\n        sturdiness: parseInt(sturdiness),\n        saturation: parseInt(saturation)\n    },\n    price: parseInt(price),\n    description,\n    roastLevel, \n    countries: countries.split(',').map(c => c.trim()),\n    image: imgPath,\n    deleted: false\n}\nmsg.collection = \"products\";\n\nreturn msg;\n",
         "outputs": 1,
@@ -2557,25 +2147,26 @@
                 "module": "path"
             }
         ],
-        "x": 320,
-        "y": 2400,
+        "x": 300,
+        "y": 840,
         "wires": [
             [
-                "087c5252c5f5d140"
+                "08f9b1c9f1b6bf86"
             ]
         ]
     },
     {
         "id": "c9c627b0a6af71d4",
         "type": "http in",
-        "z": "254289433a84914b",
+        "z": "6d691e6d89cccf80",
+        "g": "0a150d04a0787f8e",
         "name": "",
         "url": "/products/:id",
         "method": "put",
         "upload": false,
         "swaggerDoc": "",
         "x": 120,
-        "y": 3880,
+        "y": 920,
         "wires": [
             [
                 "fb1173e5a2210c94"
@@ -2585,18 +2176,20 @@
     {
         "id": "b7cfac732d76e1d5",
         "type": "http response",
-        "z": "254289433a84914b",
+        "z": "6d691e6d89cccf80",
+        "g": "0a150d04a0787f8e",
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 670,
-        "y": 3880,
+        "x": 630,
+        "y": 920,
         "wires": []
     },
     {
         "id": "fb1173e5a2210c94",
         "type": "function",
-        "z": "254289433a84914b",
+        "z": "6d691e6d89cccf80",
+        "g": "0a150d04a0787f8e",
         "name": "updateProduct()",
         "func": "const productId = msg.req.params.id;\nconst { name, code, availability, sourness,\n    bitterness, sturdiness, saturation, price,\n    description, roastLevel, countries,\n    category } = msg.req.body;\n\nmsg.payload = {\n    $set: { \n        name,\n        code,\n        availability: availability === \"true\",\n        category: objectid(category),\n        characteristics: {\n            sourness: parseInt(sourness),\n            bitterness: parseInt(bitterness),\n            sturdiness: parseInt(sturdiness),\n            saturation: parseInt(saturation)\n        },\n        price: parseInt(price),\n        description,\n        roastLevel,\n        countries: countries.split(',').map(c => c.trim()),\n        // image: imgPath\n    }\n};\n\nmsg.query = {\n    _id: objectid(productId)\n};\n\nmsg.collection = \"products\";\n\nreturn msg;\n\n\n\n",
         "outputs": 1,
@@ -2614,7 +2207,7 @@
             }
         ],
         "x": 300,
-        "y": 3880,
+        "y": 920,
         "wires": [
             [
                 "a843ac34f6f2f665"
@@ -2622,287 +2215,157 @@
         ]
     },
     {
-        "id": "8914a42b4616d099",
-        "type": "http in",
-        "z": "254289433a84914b",
+        "id": "a843ac34f6f2f665",
+        "type": "link call",
+        "z": "6d691e6d89cccf80",
+        "g": "0a150d04a0787f8e",
         "name": "",
-        "url": "/images/:id",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 120,
-        "y": 3800,
+        "links": [
+            "6e02acf20c7c434c"
+        ],
+        "linkType": "static",
+        "timeout": "60",
+        "x": 480,
+        "y": 920,
         "wires": [
             [
-                "65435a18dbd80012"
+                "b7cfac732d76e1d5"
             ]
         ]
     },
     {
-        "id": "f27612a8b6fec8a5",
-        "type": "http response",
-        "z": "254289433a84914b",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 1250,
-        "y": 3800,
+        "id": "0632f252f439a751",
+        "type": "comment",
+        "z": "6d691e6d89cccf80",
+        "g": "c0b0251c40a3b95d",
+        "name": "Images",
+        "info": "",
+        "x": 90,
+        "y": 1020,
         "wires": []
     },
     {
-        "id": "a2a3cb9c54ca6b3d",
-        "type": "file in",
-        "z": "254289433a84914b",
+        "id": "75530cd2.06a71c",
+        "type": "http in",
+        "z": "6d691e6d89cccf80",
+        "g": "c0b0251c40a3b95d",
+        "name": "",
+        "url": "/upload",
+        "method": "post",
+        "upload": true,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 1140,
+        "wires": [
+            [
+                "97fcfe96.6f76c"
+            ]
+        ]
+    },
+    {
+        "id": "97fcfe96.6f76c",
+        "type": "function",
+        "z": "6d691e6d89cccf80",
+        "g": "c0b0251c40a3b95d",
+        "name": "onFileUpload()",
+        "func": "const currentDir = path.resolve('');\nconst decodedFilename = msg.req.files[0].originalname;\n\nmsg.filename = currentDir + \"/data\" + msg.req.route.path + \"/\" + decodedFilename;\nmsg.path = currentDir + \"/data\" + msg.req.route.path + \"/\"\nmsg.payload.file = msg.req.files[0].buffer;\nmsg.payload = msg.payload.file;\n\nreturn [null, msg];\n\n\n",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "path",
+                "module": "path"
+            }
+        ],
+        "x": 300,
+        "y": 1140,
+        "wires": [
+            [
+                "4d6cfdccc34546b2"
+            ],
+            [
+                "488bf4b1d65b9a3b"
+            ]
+        ]
+    },
+    {
+        "id": "4d6cfdccc34546b2",
+        "type": "fs-mkdir",
+        "z": "6d691e6d89cccf80",
+        "g": "c0b0251c40a3b95d",
+        "name": "Make Folder",
+        "purpose": "reg",
+        "path": "path",
+        "pathType": "msg",
+        "foldername": "filename",
+        "foldernameType": "msg",
+        "recursive": true,
+        "exists": true,
+        "prefix": "",
+        "prefixType": "str",
+        "mode": "777",
+        "property": "payload",
+        "propertyType": "msg",
+        "x": 490,
+        "y": 1080,
+        "wires": [
+            [
+                "74c6161a7d0ee640"
+            ]
+        ]
+    },
+    {
+        "id": "488bf4b1d65b9a3b",
+        "type": "file",
+        "z": "6d691e6d89cccf80",
+        "g": "c0b0251c40a3b95d",
         "name": "",
         "filename": "filename",
         "filenameType": "msg",
-        "format": "",
-        "chunk": false,
-        "sendError": false,
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "true",
         "encoding": "none",
-        "allProps": false,
-        "x": 820,
-        "y": 3800,
+        "x": 480,
+        "y": 1200,
         "wires": [
             [
-                "a3cb9fb4108bf528"
+                "6afb867fea63aacd"
             ]
         ]
     },
     {
-        "id": "16ac409ab5440d3c",
-        "type": "http in",
-        "z": "254289433a84914b",
-        "name": "",
-        "url": "/fm/list/image",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 170,
-        "y": 3220,
-        "wires": [
-            [
-                "1970a145a5913938",
-                "f67441b990db69b5"
-            ]
-        ]
-    },
-    {
-        "id": "f135abaf51aa22a4",
-        "type": "http response",
-        "z": "254289433a84914b",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 1230,
-        "y": 3220,
-        "wires": []
-    },
-    {
-        "id": "6f4ef0c56d5fc346",
+        "id": "74c6161a7d0ee640",
         "type": "function",
-        "z": "254289433a84914b",
-        "name": "",
-        "func": "// // @ts-ignore\n// NewMsg={};\n// NewMsg.payload={\n//     success:true,\n// };\n// NewMsg.payload.payload = msg.payload.map(elem=>{\n//     let patch;\n//     if(!elem.stat.isDirectory){\n//         patch = msg.req.query.path +\"/\"+elem.name;\n//     }else{\n//         patch = elem.name;\n//     }\n//     return{\n//         \"isDirectory\":elem.stat.isDirectory,\n//         \"name\":elem.name,\n//         \"path\":patch,\n//         \"size\":(elem.stat.size/1048576).toFixed(3) + \"Мb\",\n//         \"editedAt\":elem.stat.created,\n        \n//     }\n// })\n\n// msg.payload = NewMsg.payload;\n// return msg;\n\n\n// @ts-ignore\nNewMsg = {};\nNewMsg.payload = {\n    success: true,\n};\nNewMsg.payload.payload = msg.payload.map(elem => {\n    let patch;\n    if (msg.start_path) {\n        patch = msg.start_path + \"/\" + elem.name;\n    } else {\n        patch = elem.name;\n    }\n    return {\n        \"isDirectory\": elem.stat.isDirectory,\n        \"name\": elem.name,\n        \"path\": patch,\n        \"size\": (elem.stat.size / 1048576).toFixed(3) + \"Мb\",\n        \"editedAt\": elem.stat.created,\n\n    }\n})\n\nmsg.payload = NewMsg.payload;\nreturn msg;",
+        "z": "6d691e6d89cccf80",
+        "g": "c0b0251c40a3b95d",
+        "name": "setPayloadStart()",
+        "func": "const currentDir = path.resolve('');\n\nmsg.payload = {\n}\nmsg.payload.start = currentDir + \"/data\" + msg.req.route.path;\n// msg.payload.start = \"/data/storage/\" + msg.req.route.path;\nnode.warn(msg.payload.start)\n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "libs": [],
-        "x": 880,
-        "y": 3220,
-        "wires": [
-            [
-                "d965f1af2b39ae56",
-                "cb71c50b00b62945"
-            ]
-        ]
-    },
-    {
-        "id": "96465254b192d73f",
-        "type": "http in",
-        "z": "254289433a84914b",
-        "name": "",
-        "url": "/img",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 140,
-        "y": 3340,
-        "wires": [
-            [
-                "7a70093c0e4e5d37",
-                "a9fd31868fcc73d8"
-            ]
-        ]
-    },
-    {
-        "id": "7a70093c0e4e5d37",
-        "type": "change",
-        "z": "254289433a84914b",
-        "name": "",
-        "rules": [
+        "libs": [
             {
-                "t": "set",
-                "p": "filename",
-                "pt": "msg",
-                "to": "'/data/storage/' & payload.file",
-                "tot": "jsonata"
+                "var": "path",
+                "module": "path"
             }
         ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 410,
-        "y": 3340,
+        "x": 670,
+        "y": 1080,
         "wires": [
             [
-                "098419e3bf193c3a",
-                "5955fdc8ad4c8b75"
+                "5680f7958362b006"
             ]
         ]
     },
     {
-        "id": "098419e3bf193c3a",
-        "type": "file in",
-        "z": "254289433a84914b",
-        "name": "get_file",
-        "filename": "filename",
-        "filenameType": "msg",
-        "format": "",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "utf8",
-        "allProps": false,
-        "x": 620,
-        "y": 3340,
-        "wires": [
-            [
-                "1dce3851262da3de"
-            ]
-        ]
-    },
-    {
-        "id": "dd50b6678e315c99",
-        "type": "http response",
-        "z": "254289433a84914b",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 1250,
-        "y": 3340,
-        "wires": []
-    },
-    {
-        "id": "1dce3851262da3de",
-        "type": "change",
-        "z": "254289433a84914b",
-        "name": "Set Headers",
-        "rules": [
-            {
-                "t": "set",
-                "p": "headers",
-                "pt": "msg",
-                "to": "{}",
-                "tot": "json"
-            },
-            {
-                "t": "set",
-                "p": "headers.content-type",
-                "pt": "msg",
-                "to": "image/png",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "headers['access-control-allow-credentials']",
-                "pt": "msg",
-                "to": "true",
-                "tot": "bool"
-            },
-            {
-                "t": "set",
-                "p": "headers.accept-ranges",
-                "pt": "msg",
-                "to": "bytes",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "headers.x-xss-protection",
-                "pt": "msg",
-                "to": "1; mode=block",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "headers.x-frame-options",
-                "pt": "msg",
-                "to": "SAMEORIGIN",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "headers.nel",
-                "pt": "msg",
-                "to": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "headers.x-dns-prefetch-control",
-                "pt": "msg",
-                "to": "off",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "headers.x-download-options",
-                "pt": "msg",
-                "to": "noopen",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 810,
-        "y": 3340,
-        "wires": [
-            [
-                "4f4c8aea19620a14",
-                "74af9a45dbd17a05"
-            ]
-        ]
-    },
-    {
-        "id": "1970a145a5913938",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "",
-        "func": "// msg.payload.start = \"/data/storage/\"+msg.payload.path;\n// return msg;\n\n\nmsg.payload.start = \"/data/storage/\" + msg.payload.path;\nmsg.start_path = msg.payload.path;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 440,
-        "y": 3220,
-        "wires": [
-            [
-                "7846cbfed35dde26",
-                "f67441b990db69b5"
-            ]
-        ]
-    },
-    {
-        "id": "7846cbfed35dde26",
+        "id": "5680f7958362b006",
         "type": "fs-file-lister",
-        "z": "254289433a84914b",
+        "z": "6d691e6d89cccf80",
+        "g": "c0b0251c40a3b95d",
         "name": "",
         "start": "{{msg.payload.start}}",
         "pattern": "",
@@ -2914,527 +2377,183 @@
         "depth": 0,
         "stat": true,
         "showWarnings": true,
-        "x": 660,
-        "y": 3220,
+        "x": 840,
+        "y": 1080,
         "wires": [
             [
-                "6f4ef0c56d5fc346",
-                "d965f1af2b39ae56"
+                "e9552de6832c27c6"
             ]
         ]
     },
     {
-        "id": "4f4c8aea19620a14",
+        "id": "6afb867fea63aacd",
         "type": "function",
-        "z": "254289433a84914b",
-        "name": "function",
-        "func": "msg.headers = {\n    ...msg.headers,\n    ['x-content-type-options']: 'nosniff',\n    ['access-control-allow-credentials']: true,\n    ['cache-control']: 'public, max-age=14400',\n    ['cf-cache-status']: 'EXPIRED',\n    ['cf-ray']: '747ece538ba590b2-FRA',\n//report - to: { \"endpoints\": [{ \"url\": \"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=6FLrusuf%2B3JD%2By2hHTtEFI4LqfbHg6hE9OshVZ%2FGZHvRuKBMMPaZtmTvqedBYxS2H4SCN2hx0ulKIF4%2FetNCOLpZzbK46BXQfKwNg05NsEn3O4Uu6Oh5sk2s1A9i87oLs0t0yHlvVjNd\" }], \"group\": \"cf-nel\", \"max_age\": 604800 }\n//server: cloudflare\n    ['strict-transport-security']: 'max-age=15552000; includeSubDomains',\n    // ['link']: 'rel=\"shortcut icon\" href=\"\"',\n    ['Content-Security-Policy']:\"img-src 'none'\",\n    ['x-xss-protection']:' 1; mode = block'\n    //rel: \"shortcut icon\",\n    //vary: 'Origin,Accept-Encoding'\n}\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1060,
-        "y": 3340,
-        "wires": [
-            [
-                "dd50b6678e315c99"
-            ]
-        ]
-    },
-    {
-        "id": "d965f1af2b39ae56",
-        "type": "debug",
-        "z": "254289433a84914b",
-        "name": "2",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 890,
-        "y": 3180,
-        "wires": []
-    },
-    {
-        "id": "f67441b990db69b5",
-        "type": "debug",
-        "z": "254289433a84914b",
-        "name": "debug 110",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 390,
-        "y": 3180,
-        "wires": []
-    },
-    {
-        "id": "74af9a45dbd17a05",
-        "type": "debug",
-        "z": "254289433a84914b",
-        "name": "2",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1050,
-        "y": 3300,
-        "wires": []
-    },
-    {
-        "id": "5955fdc8ad4c8b75",
-        "type": "debug",
-        "z": "254289433a84914b",
-        "name": "2",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 770,
-        "y": 3300,
-        "wires": []
-    },
-    {
-        "id": "738157ffa4805fd5",
-        "type": "inject",
-        "z": "254289433a84914b",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 160,
-        "y": 3260,
-        "wires": [
-            [
-                "1970a145a5913938"
-            ]
-        ]
-    },
-    {
-        "id": "812a7494842133c8",
-        "type": "change",
-        "z": "254289433a84914b",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "filename",
-                "pt": "msg",
-                "to": "'/data/storage/' & payload.file",
-                "tot": "jsonata"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 510,
-        "y": 2960,
-        "wires": [
-            [
-                "3e434ab434045856"
-            ]
-        ]
-    },
-    {
-        "id": "3e434ab434045856",
-        "type": "file in",
-        "z": "254289433a84914b",
-        "name": "get_file",
-        "filename": "filename",
-        "filenameType": "msg",
-        "format": "",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "utf8",
-        "allProps": false,
-        "x": 740,
-        "y": 2960,
-        "wires": [
-            [
-                "127134d6913cb3b0"
-            ]
-        ]
-    },
-    {
-        "id": "af66c14f70c49fa0",
-        "type": "change",
-        "z": "254289433a84914b",
-        "name": "Set Headers",
-        "rules": [
-            {
-                "t": "set",
-                "p": "headers",
-                "pt": "msg",
-                "to": "{}",
-                "tot": "json"
-            },
-            {
-                "t": "set",
-                "p": "headers.content-type",
-                "pt": "msg",
-                "to": "image/png",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "headers['access-control-allow-credentials']",
-                "pt": "msg",
-                "to": "true",
-                "tot": "bool"
-            },
-            {
-                "t": "set",
-                "p": "headers.accept-ranges",
-                "pt": "msg",
-                "to": "bytes",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "headers.x-xss-protection",
-                "pt": "msg",
-                "to": "1; mode=block",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "headers.x-frame-options",
-                "pt": "msg",
-                "to": "SAMEORIGIN",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "headers.nel",
-                "pt": "msg",
-                "to": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "headers.x-dns-prefetch-control",
-                "pt": "msg",
-                "to": "off",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "headers.x-download-options",
-                "pt": "msg",
-                "to": "noopen",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1210,
-        "y": 3000,
-        "wires": [
-            [
-                "df45f3cd1fb5a90e",
-                "7c4e2ad837076323"
-            ]
-        ]
-    },
-    {
-        "id": "df45f3cd1fb5a90e",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "function",
-        "func": "msg.headers = {\n    ...msg.headers,\n    ['x-content-type-options']: 'nosniff',\n    ['access-control-allow-credentials']: true,\n    ['cache-control']: 'public, max-age=14400',\n    ['cf-cache-status']: 'EXPIRED',\n    ['cf-ray']: '747ece538ba590b2-FRA',\n//report - to: { \"endpoints\": [{ \"url\": \"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=6FLrusuf%2B3JD%2By2hHTtEFI4LqfbHg6hE9OshVZ%2FGZHvRuKBMMPaZtmTvqedBYxS2H4SCN2hx0ulKIF4%2FetNCOLpZzbK46BXQfKwNg05NsEn3O4Uu6Oh5sk2s1A9i87oLs0t0yHlvVjNd\" }], \"group\": \"cf-nel\", \"max_age\": 604800 }\n//server: cloudflare\n    ['strict-transport-security']: 'max-age=15552000; includeSubDomains',\n    // ['link']: 'rel=\"shortcut icon\" href=\"\"',\n    ['Content-Security-Policy']:\"img-src 'none'\",\n    ['x-xss-protection']:' 1; mode = block'\n    //rel: \"shortcut icon\",\n    //vary: 'Origin,Accept-Encoding'\n}\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1400,
-        "y": 3000,
-        "wires": [
-            [
-                "965fdb74eeb6ebf3"
-            ]
-        ]
-    },
-    {
-        "id": "965fdb74eeb6ebf3",
-        "type": "http response",
-        "z": "254289433a84914b",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 1530,
-        "y": 2960,
-        "wires": []
-    },
-    {
-        "id": "a9fd31868fcc73d8",
-        "type": "debug",
-        "z": "254289433a84914b",
-        "name": "debug 205",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 390,
-        "y": 3300,
-        "wires": []
-    },
-    {
-        "id": "6c6987a3051e515e",
-        "type": "debug",
-        "z": "254289433a84914b",
-        "name": "debug 206",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 290,
-        "y": 2960,
-        "wires": []
-    },
-    {
-        "id": "b42697de89f342bc",
-        "type": "http in",
-        "z": "254289433a84914b",
-        "name": "",
-        "url": "/files",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 120,
-        "y": 3000,
-        "wires": [
-            [
-                "6c6987a3051e515e",
-                "f0b782ba88420d92"
-            ]
-        ]
-    },
-    {
-        "id": "f0b782ba88420d92",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "function 126",
-        "func": "if (msg.payload.file.includes('.png') || msg.payload.file.includes('.jpeg') || msg.payload.file.includes('.svg') || msg.payload.file.includes('.jpg')) {\n    return [msg, null]\n} else {\n    return [null, msg]\n}\n\n",
-        "outputs": 2,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 310,
-        "y": 3000,
-        "wires": [
-            [
-                "812a7494842133c8"
-            ],
-            [
-                "3674a5f69c553307"
-            ]
-        ]
-    },
-    {
-        "id": "3674a5f69c553307",
-        "type": "change",
-        "z": "254289433a84914b",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "filename",
-                "pt": "msg",
-                "to": "'/data/storage/' & payload.file",
-                "tot": "jsonata"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 510,
-        "y": 3040,
-        "wires": [
-            [
-                "8ec83491727795b9"
-            ]
-        ]
-    },
-    {
-        "id": "8ec83491727795b9",
-        "type": "file in",
-        "z": "254289433a84914b",
-        "name": "get_file",
-        "filename": "filename",
-        "filenameType": "msg",
-        "format": "",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "utf8",
-        "allProps": false,
-        "x": 740,
-        "y": 3040,
-        "wires": [
-            [
-                "5aa4189663588abc"
-            ]
-        ]
-    },
-    {
-        "id": "5aa4189663588abc",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "function",
-        "func": "msg.headers = {\n    \"Content-Disposition\": \"inline\",\n    \"filename\": \"calls.pdf\",\n    'Content-Type': 'application/pdf',\n    \"charset\": 'utf-8',\n    \"content-transfer-encoding\": \"binary\"\n}\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 920,
-        "y": 3040,
-        "wires": [
-            [
-                "781de59113c6f6ff"
-            ]
-        ]
-    },
-    {
-        "id": "781de59113c6f6ff",
-        "type": "http response",
-        "z": "254289433a84914b",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 1090,
-        "y": 3040,
-        "wires": []
-    },
-    {
-        "id": "3914df8b394a2359",
-        "type": "debug",
-        "z": "254289433a84914b",
-        "name": "2",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1150,
-        "y": 2920,
-        "wires": []
-    },
-    {
-        "id": "127134d6913cb3b0",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "quality60",
-        "func": "/*const optimized = await sharp(msg.payload)\n    .toFormat(\"png\", { quality: 60 })\n    .toBuffer();\n\nmsg.payload = optimized;\n*/\nreturn msg\n",
+        "z": "6d691e6d89cccf80",
+        "g": "c0b0251c40a3b95d",
+        "name": "setPayloadStart()",
+        "func": "const currentDir = path.resolve('');\nmsg.payload.start = currentDir + \"/data\" + msg.req.route.path;\n//msg.payload.start = \"/data/\"+msg.req.query.path;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [
             {
-                "var": "sharp",
-                "module": "sharp"
+                "var": "path",
+                "module": "path"
             }
         ],
-        "x": 940,
-        "y": 2960,
+        "x": 650,
+        "y": 1200,
         "wires": [
             [
-                "3914df8b394a2359",
-                "7c4e2ad837076323"
+                "72656fb743344b5e"
             ]
         ]
     },
     {
-        "id": "7c4e2ad837076323",
+        "id": "72656fb743344b5e",
+        "type": "fs-file-lister",
+        "z": "6d691e6d89cccf80",
+        "g": "c0b0251c40a3b95d",
+        "name": "",
+        "start": "{{msg.payload.start}}",
+        "pattern": "",
+        "folders": "",
+        "hidden": true,
+        "lstype": "both",
+        "path": false,
+        "single": true,
+        "depth": 0,
+        "stat": true,
+        "showWarnings": true,
+        "x": 820,
+        "y": 1200,
+        "wires": [
+            [
+                "db8c30bc4bdea22b"
+            ]
+        ]
+    },
+    {
+        "id": "1faf730dc135de6d",
+        "type": "http response",
+        "z": "6d691e6d89cccf80",
+        "g": "c0b0251c40a3b95d",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1110,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "ccaec6ccf77fdd23",
+        "type": "http response",
+        "z": "6d691e6d89cccf80",
+        "g": "c0b0251c40a3b95d",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1090,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "db8c30bc4bdea22b",
         "type": "function",
-        "z": "254289433a84914b",
-        "name": "function 317",
-        "func": "msg.headers = {\n    // \"Content-Disposition\": \"inline\",\n    //'Content-Type': 'application/pdf',\n    'Content-Type': 'image/jpeg',\n    //\"charset\": 'utf-8',\n    //\"content-transfer-encoding\": \"binary\"\n}\nreturn msg;",
+        "z": "6d691e6d89cccf80",
+        "g": "c0b0251c40a3b95d",
+        "name": "",
+        "func": "// @ts-ignore\nNewMsg = {};\nNewMsg.payload={\n    success:true,\n};\nNewMsg.payload.payload = msg.payload.map(elem=>{\n    return{\n        \"isDirectory\":elem.stat.isDirectory,\n        \"name\":elem.name,\n        \"path\":elem.name,\n        \"size\":(elem.stat.size/1048576).toFixed(3) + \"Мb\",\n        \"editedAt\":elem.stat.created,\n    }\n})\n\nmsg.payload = NewMsg.payload;\nmsg.req =\"\"\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1230,
-        "y": 2960,
+        "x": 960,
+        "y": 1200,
         "wires": [
             [
-                "965fdb74eeb6ebf3",
-                "3914df8b394a2359"
+                "ccaec6ccf77fdd23"
             ]
         ]
     },
     {
-        "id": "cb71c50b00b62945",
+        "id": "e9552de6832c27c6",
         "type": "function",
-        "z": "254289433a84914b",
-        "name": "sorting",
-        "func": "const sorted = msg.payload.payload.sort((a, b) => {\n    if (a.isDirectory && !b.isDirectory) {\n        // If a is a directory and b is not, a should come first\n        return -1;\n    } else if (!a.isDirectory && b.isDirectory) {\n        // If a is not a directory and b is, b should come first\n        return 1;\n    } else {\n        // If both a and b are directories or both are not, sort by editedAt\n        return b.editedAt - a.editedAt;\n    }\n});\n\n\n\n\nconst moveToDown = (folder, object)=>{\n    const forderIndex = object.findIndex(obj => obj.name === folder);\n\n    if (forderIndex !== -1) {\n        // Remove the object at the found index and store it in a variable\n        const obj = object.splice(forderIndex, 1)[0];\n        // Add the object to the end of the array\n        object.push(obj);\n    }\n}\n\nlet folders = sorted.filter(e => e.isDirectory == true).filter(e => e.name !== 'default' && e.name !== 'images' && e.name !== 'files')\n\nfolders.forEach(f => moveToDown(f.name, sorted))\n\nmsg.payload.payload = sorted\nreturn msg;",
+        "z": "6d691e6d89cccf80",
+        "g": "c0b0251c40a3b95d",
+        "name": "",
+        "func": "// @ts-ignore\nNewMsg = {};\nNewMsg.payload={\n    success:true,\n};\nNewMsg.payload.payload = msg.payload.map(elem=>{\n    return{\n        \"isDirectory\":elem.stat.isDirectory,\n        \"name\":elem.name,\n        \"path\":elem.name,\n        \"size\":(elem.stat.size/1048576).toFixed(3) + \"Мb\",\n        \"editedAt\":elem.stat.created,\n    }\n})\n\nmsg.payload = NewMsg.payload;\nmsg.req =\"\"\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1050,
-        "y": 3220,
+        "x": 980,
+        "y": 1080,
         "wires": [
             [
-                "f135abaf51aa22a4",
-                "d965f1af2b39ae56"
+                "1faf730dc135de6d"
+            ]
+        ]
+    },
+    {
+        "id": "8914a42b4616d099",
+        "type": "http in",
+        "z": "6d691e6d89cccf80",
+        "g": "c0b0251c40a3b95d",
+        "name": "",
+        "url": "/images/:id",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 1300,
+        "wires": [
+            [
+                "65435a18dbd80012"
+            ]
+        ]
+    },
+    {
+        "id": "f27612a8b6fec8a5",
+        "type": "http response",
+        "z": "6d691e6d89cccf80",
+        "g": "c0b0251c40a3b95d",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1250,
+        "y": 1300,
+        "wires": []
+    },
+    {
+        "id": "a2a3cb9c54ca6b3d",
+        "type": "file in",
+        "z": "6d691e6d89cccf80",
+        "g": "c0b0251c40a3b95d",
+        "name": "",
+        "filename": "filename",
+        "filenameType": "msg",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 820,
+        "y": 1300,
+        "wires": [
+            [
+                "a3cb9fb4108bf528"
             ]
         ]
     },
     {
         "id": "65e822e95975693e",
         "type": "link call",
-        "z": "254289433a84914b",
+        "z": "6d691e6d89cccf80",
+        "g": "c0b0251c40a3b95d",
         "name": "",
         "links": [
             "a9fb567ad07dc66a"
@@ -3442,7 +2561,7 @@
         "linkType": "static",
         "timeout": "30",
         "x": 470,
-        "y": 3800,
+        "y": 1300,
         "wires": [
             [
                 "452bb0dbe8b8a7cc"
@@ -3452,7 +2571,8 @@
     {
         "id": "452bb0dbe8b8a7cc",
         "type": "change",
-        "z": "254289433a84914b",
+        "z": "6d691e6d89cccf80",
+        "g": "c0b0251c40a3b95d",
         "name": "",
         "rules": [
             {
@@ -3469,7 +2589,7 @@
         "to": "",
         "reg": false,
         "x": 650,
-        "y": 3800,
+        "y": 1300,
         "wires": [
             [
                 "a2a3cb9c54ca6b3d"
@@ -3479,7 +2599,8 @@
     {
         "id": "a3cb9fb4108bf528",
         "type": "change",
-        "z": "254289433a84914b",
+        "z": "6d691e6d89cccf80",
+        "g": "c0b0251c40a3b95d",
         "name": "Set Headers",
         "rules": [
             {
@@ -3552,7 +2673,7 @@
         "to": "",
         "reg": false,
         "x": 970,
-        "y": 3800,
+        "y": 1300,
         "wires": [
             [
                 "e05ed5f110a73ec3"
@@ -3562,7 +2683,8 @@
     {
         "id": "e05ed5f110a73ec3",
         "type": "function",
-        "z": "254289433a84914b",
+        "z": "6d691e6d89cccf80",
+        "g": "c0b0251c40a3b95d",
         "name": "function",
         "func": "msg.headers = {\n    ...msg.headers,\n    ['x-content-type-options']: 'nosniff',\n    ['access-control-allow-credentials']: true,\n    ['cache-control']: 'public, max-age=14400',\n    ['cf-cache-status']: 'EXPIRED',\n    ['cf-ray']: '747ece538ba590b2-FRA',\n//report - to: { \"endpoints\": [{ \"url\": \"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=6FLrusuf%2B3JD%2By2hHTtEFI4LqfbHg6hE9OshVZ%2FGZHvRuKBMMPaZtmTvqedBYxS2H4SCN2hx0ulKIF4%2FetNCOLpZzbK46BXQfKwNg05NsEn3O4Uu6Oh5sk2s1A9i87oLs0t0yHlvVjNd\" }], \"group\": \"cf-nel\", \"max_age\": 604800 }\n//server: cloudflare\n    ['strict-transport-security']: 'max-age=15552000; includeSubDomains',\n    // ['link']: 'rel=\"shortcut icon\" href=\"\"',\n    ['Content-Security-Policy']:\"img-src 'none'\",\n    ['x-xss-protection']:' 1; mode = block'\n    //rel: \"shortcut icon\",\n    //vary: 'Origin,Accept-Encoding'\n}\nreturn msg;",
         "outputs": 1,
@@ -3571,7 +2693,7 @@
         "finalize": "",
         "libs": [],
         "x": 1120,
-        "y": 3800,
+        "y": 1300,
         "wires": [
             [
                 "f27612a8b6fec8a5"
@@ -3581,7 +2703,8 @@
     {
         "id": "65435a18dbd80012",
         "type": "function",
-        "z": "254289433a84914b",
+        "z": "6d691e6d89cccf80",
+        "g": "c0b0251c40a3b95d",
         "name": "findProduct()",
         "func": "const productId = msg.req.params.id;\n\nmsg.payload = {\n    _id: objectid(productId)\n}\n\nmsg.collection = \"products\";\n\nreturn msg;",
         "outputs": 1,
@@ -3595,7 +2718,7 @@
             }
         ],
         "x": 310,
-        "y": 3800,
+        "y": 1300,
         "wires": [
             [
                 "65e822e95975693e"
@@ -3603,925 +2726,419 @@
         ]
     },
     {
-        "id": "a843ac34f6f2f665",
+        "id": "10f6db36557cf78a",
+        "type": "http in",
+        "z": "6d691e6d89cccf80",
+        "g": "a36154d393038484",
+        "name": "",
+        "url": "/orders",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 1460,
+        "wires": [
+            [
+                "429013cfcc1d8e25"
+            ]
+        ]
+    },
+    {
+        "id": "429013cfcc1d8e25",
+        "type": "function",
+        "z": "6d691e6d89cccf80",
+        "g": "a36154d393038484",
+        "name": "createOrder()",
+        "func": "const { productId, quantity, weight, grinds, amount } = msg.req.body;\n\nmsg.payload = {\n    _id: objectid(),\n    // code\n    // userId,\n    // products: [{\n    //     productId: objectid(productId),\n    //     quantity,\n    //     characteristics: {\n    //         weight,\n    //         grinds,\n    //         amount\n    //     }\n    // }],\n    // totalPrice\n    date: new Date()\n}\nmsg.collection = \"orders\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "objectid",
+                "module": "objectid"
+            }
+        ],
+        "x": 280,
+        "y": 1460,
+        "wires": [
+            [
+                "bcb99566c443c02f"
+            ]
+        ]
+    },
+    {
+        "id": "bcb99566c443c02f",
         "type": "link call",
-        "z": "254289433a84914b",
+        "z": "6d691e6d89cccf80",
+        "g": "a36154d393038484",
+        "name": "",
+        "links": [
+            "11c9729c152a736b"
+        ],
+        "linkType": "static",
+        "timeout": "60",
+        "x": 450,
+        "y": 1460,
+        "wires": [
+            [
+                "9531437ba3acd3b4"
+            ]
+        ]
+    },
+    {
+        "id": "9531437ba3acd3b4",
+        "type": "function",
+        "z": "6d691e6d89cccf80",
+        "g": "a36154d393038484",
+        "name": "checkStatus()",
+        "func": "msg.payload = {\n    success: true,\n    message: \"Everything is OK\"\n}\n\nmsg.statusCode = 200;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 1460,
+        "wires": [
+            [
+                "23a66c4f0a1ee112"
+            ]
+        ]
+    },
+    {
+        "id": "23a66c4f0a1ee112",
+        "type": "http response",
+        "z": "6d691e6d89cccf80",
+        "g": "a36154d393038484",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 790,
+        "y": 1460,
+        "wires": []
+    },
+    {
+        "id": "23534fe124dd2dcc",
+        "type": "comment",
+        "z": "6d691e6d89cccf80",
+        "g": "a36154d393038484",
+        "name": "Orders",
+        "info": "",
+        "x": 90,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "885a111e319fef0e",
+        "type": "comment",
+        "z": "6d691e6d89cccf80",
+        "name": "Users",
+        "info": "",
+        "x": 90,
+        "y": 1560,
+        "wires": []
+    },
+    {
+        "id": "21555cf0cd78d917",
+        "type": "http in",
+        "z": "6d691e6d89cccf80",
+        "name": "",
+        "url": "/current",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 1640,
+        "wires": [
+            [
+                "bf4f667d3cdd0f26"
+            ]
+        ]
+    },
+    {
+        "id": "bf8987158f7e3a62",
+        "type": "http response",
+        "z": "6d691e6d89cccf80",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 650,
+        "y": 1640,
+        "wires": []
+    },
+    {
+        "id": "bf4f667d3cdd0f26",
+        "type": "subflow:d025cd27.f975",
+        "z": "6d691e6d89cccf80",
+        "name": "",
+        "x": 300,
+        "y": 1640,
+        "wires": [
+            [
+                "eeb898509138a2cd"
+            ],
+            [
+                "bf8987158f7e3a62"
+            ]
+        ]
+    },
+    {
+        "id": "eeb898509138a2cd",
+        "type": "function",
+        "z": "6d691e6d89cccf80",
+        "name": "setUser()",
+        "func": "msg.payload = msg.payload[0];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 1620,
+        "wires": [
+            [
+                "bf8987158f7e3a62"
+            ]
+        ]
+    },
+    {
+        "id": "6007c78f96e02eaf",
+        "type": "http in",
+        "z": "6d691e6d89cccf80",
+        "name": "",
+        "url": "/users/:id",
+        "method": "put",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 1820,
+        "wires": [
+            [
+                "355de9816ad0fbb9",
+                "70d9dc553312a710"
+            ]
+        ]
+    },
+    {
+        "id": "355de9816ad0fbb9",
+        "type": "function",
+        "z": "6d691e6d89cccf80",
+        "name": "updateContactsUser()",
+        "func": "const userId = msg.req.params.id;\nconst { firstName, lastName, phone  } = msg.req.body;\n\nmsg.payload = {\n    $set: { \n        shipping: {\n            firstName,\n            lastName,\n            phone\n        }\n    }\n};\n\nmsg.query = {\n    _id: objectid(userId)\n};\n\nmsg.collection = \"users\";\n\nreturn msg;\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "objectid",
+                "module": "objectid"
+            }
+        ],
+        "x": 340,
+        "y": 1820,
+        "wires": [
+            [
+                "9a04e37fb3fb786e"
+            ]
+        ]
+    },
+    {
+        "id": "9a04e37fb3fb786e",
+        "type": "link call",
+        "z": "6d691e6d89cccf80",
         "name": "",
         "links": [
             "6e02acf20c7c434c"
         ],
         "linkType": "static",
         "timeout": "60",
-        "x": 500,
-        "y": 3880,
+        "x": 560,
+        "y": 1820,
         "wires": [
             [
-                "b7cfac732d76e1d5"
+                "25afbcb8b3d179e9",
+                "6570f2bfdce7cd7b"
             ]
         ]
     },
     {
-        "id": "286b44a9d3938b8c",
-        "type": "http in",
-        "z": "254289433a84914b",
-        "name": "",
-        "url": "/register",
-        "method": "post",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 90,
-        "y": 3980,
-        "wires": [
-            [
-                "f07687a78b7197b9"
-            ]
-        ]
-    },
-    {
-        "id": "3cc8bab9e3145a0a",
+        "id": "25afbcb8b3d179e9",
         "type": "http response",
-        "z": "254289433a84914b",
+        "z": "6d691e6d89cccf80",
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 1050,
-        "y": 3980,
-        "wires": []
-    },
-    {
-        "id": "8175157485182bcc",
-        "type": "http in",
-        "z": "254289433a84914b",
-        "name": "",
-        "url": "/users",
-        "method": "post",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 90,
-        "y": 4400,
-        "wires": [
-            [
-                "ec976959a9031105"
-            ]
-        ]
-    },
-    {
-        "id": "ec976959a9031105",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "createUser()",
-        "func": "const { name, email, role } = msg.req.body;\n\nmsg.payload = {\n    _id: objectid(),\n    name,\n    email, \n    // orders: [],\n    // shipping: [{\n    //     name,\n    //     surname,\n    //     phone\n    // }],\n    role // only admin OR user\n}\nmsg.collection = \"users\";\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "objectid",
-                "module": "objectid"
-            }
-        ],
-        "x": 290,
-        "y": 4400,
-        "wires": [
-            [
-                "39006ec200768235"
-            ]
-        ]
-    },
-    {
-        "id": "39006ec200768235",
-        "type": "link call",
-        "z": "254289433a84914b",
-        "name": "",
-        "links": [
-            "11c9729c152a736b"
-        ],
-        "linkType": "static",
-        "timeout": "60",
-        "x": 530,
-        "y": 4400,
-        "wires": [
-            [
-                "57ed77b89d81bdc4"
-            ]
-        ]
-    },
-    {
-        "id": "57ed77b89d81bdc4",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "checkStatus()",
-        "func": "msg.payload = {\n    success: true,\n    message: \"Everything is OK\"\n}\n\nmsg.statusCode = 200;\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 720,
-        "y": 4360,
-        "wires": [
-            [
-                "addc72995ff53ff4"
-            ]
-        ]
-    },
-    {
-        "id": "addc72995ff53ff4",
-        "type": "http response",
-        "z": "254289433a84914b",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 910,
-        "y": 4400,
-        "wires": []
-    },
-    {
-        "id": "80d5d36c1d0b31e5",
-        "type": "link call",
-        "z": "254289433a84914b",
-        "name": "",
-        "links": [
-            "11c9729c152a736b"
-        ],
-        "linkType": "static",
-        "timeout": "60",
-        "x": 730,
-        "y": 3980,
-        "wires": [
-            [
-                "e1cc58071173a61e"
-            ]
-        ]
-    },
-    {
-        "id": "f07687a78b7197b9",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "findEmail()",
-        "func": "const { email } = msg.req.body;\n\nmsg.payload = {\n    email\n}\nmsg.collection = \"users\";\n\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 250,
-        "y": 3980,
-        "wires": [
-            [
-                "93ffc9080549daeb"
-            ]
-        ]
-    },
-    {
-        "id": "93ffc9080549daeb",
-        "type": "link call",
-        "z": "254289433a84914b",
-        "name": "",
-        "links": [
-            "a9fb567ad07dc66a"
-        ],
-        "linkType": "static",
-        "timeout": "30",
-        "x": 410,
-        "y": 3980,
-        "wires": [
-            [
-                "71da3d11f16af381"
-            ]
-        ]
-    },
-    {
-        "id": "71da3d11f16af381",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "createUser()",
-        "func": "const isEmailExist = msg.payload.length !== 0;\n\nif (!isEmailExist) {\n    const { name, email, password, role } = msg.req.body;\n    const passwordHash = await bcrypt.hash(password, 10);\n\n    msg.payload = {\n        _id: objectid(),\n        name,\n        email,\n        password: passwordHash,\n        orders: [],\n        shipping: [{\n            name: \"\",\n            surname: \"\",\n            phone: \"\"\n        }],\n        role // only admin OR user\n    }\n    msg.collection = \"users\";\n}\n\nif (isEmailExist){\n    msg.payload = {\n        success: false,\n        message: \"Email is already in use\"\n    }\n\n    msg.statusCode = 409;\n}\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "objectid",
-                "module": "objectid"
-            },
-            {
-                "var": "bcrypt",
-                "module": "bcrypt"
-            }
-        ],
-        "x": 570,
-        "y": 3980,
-        "wires": [
-            [
-                "80d5d36c1d0b31e5"
-            ]
-        ]
-    },
-    {
-        "id": "e1cc58071173a61e",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "checkStatus()",
-        "func": "msg.payload = {\n    success: true,\n    message: \"Everything is OK\"\n}\n\nmsg.statusCode = 200;\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 900,
-        "y": 3980,
-        "wires": [
-            [
-                "3cc8bab9e3145a0a"
-            ]
-        ]
-    },
-    {
-        "id": "8844ec8e0c680d4a",
-        "type": "http in",
-        "z": "254289433a84914b",
-        "name": "",
-        "url": "/login",
-        "method": "post",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 90,
-        "y": 4140,
-        "wires": [
-            [
-                "a1b28182cf5b1724"
-            ]
-        ]
-    },
-    {
-        "id": "3f37e028a8878403",
-        "type": "http response",
-        "z": "254289433a84914b",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 810,
-        "y": 4140,
-        "wires": []
-    },
-    {
-        "id": "1e14480f782cfca8",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "checkEmail()",
-        "func": "const result = dotenv.config();\nconst { SECRET_KEY } = result.parsed;\nconst isEmailExist = msg.payload.length !== 0;\n\nif (isEmailExist) {\n    const user = msg.payload[0];\n    const { password } = msg.req.body;\n    const isPasswordCorrect = await bcrypt.compare(password, user.password);\n    \n    if (isPasswordCorrect) {\n        const payload = {\n            id: user._id\n        }\n\n        const token = jwt.sign(payload, SECRET_KEY, { expiresIn: \"24h\" })\n        \n        msg.payload = {\n            token\n        }\n    }\n\n    if (!isPasswordCorrect){\n        msg.payload = {\n            success: false,\n            message: \"Invalid email or password\"\n        }\n\n        msg.statusCode = 401;\n    }\n}\n\nif (!isEmailExist) {\n    msg.payload = {\n        success: false,\n        message: \"Invalid email or password\"\n    }\n\n    msg.statusCode = 401;\n}\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "bcrypt",
-                "module": "bcrypt"
-            },
-            {
-                "var": "jwt",
-                "module": "jsonwebtoken"
-            },
-            {
-                "var": "dotenv",
-                "module": "dotenv"
-            }
-        ],
-        "x": 630,
-        "y": 4140,
-        "wires": [
-            [
-                "3f37e028a8878403"
-            ]
-        ]
-    },
-    {
-        "id": "125bcc53a1edfa41",
-        "type": "link call",
-        "z": "254289433a84914b",
-        "name": "",
-        "links": [
-            "a9fb567ad07dc66a"
-        ],
-        "linkType": "static",
-        "timeout": "60",
-        "x": 450,
-        "y": 4140,
-        "wires": [
-            [
-                "1e14480f782cfca8"
-            ]
-        ]
-    },
-    {
-        "id": "a1b28182cf5b1724",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "findEmail()",
-        "func": "const { email } = msg.req.body;\n\nmsg.payload = {\n    email\n}\nmsg.collection = \"users\";\n\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 270,
-        "y": 4140,
-        "wires": [
-            [
-                "125bcc53a1edfa41"
-            ]
-        ]
-    },
-    {
-        "id": "f88b4cdb9b5848dd",
-        "type": "debug",
-        "z": "254289433a84914b",
-        "name": "debug 223",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 590,
-        "y": 4040,
-        "wires": []
-    },
-    {
-        "id": "d5af3a542c09ede3",
-        "type": "inject",
-        "z": "254289433a84914b",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 100,
-        "y": 4260,
-        "wires": [
-            [
-                "634f5718ae27abc1"
-            ]
-        ]
-    },
-    {
-        "id": "54d79b87ffd42b92",
-        "type": "debug",
-        "z": "254289433a84914b",
-        "name": "debug 224",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 450,
-        "y": 4260,
-        "wires": []
-    },
-    {
-        "id": "634f5718ae27abc1",
-        "type": "function",
-        "z": "254289433a84914b",
-        "name": "function 318",
-        "func": "const result = dotenv.config();\nconst { SECRET_KEY } = result.parsed;\n\nconst payload = {\n    id: \"32298928\"\n}\n\nconst token = jwt.sign(payload, SECRET_KEY, {expiresIn: \"5m\"});\nconst decodedToken = jwt.decode(token);\nconst invalidToken = \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMyMjk4OTI4IiwiaWF0IjoxNjgzMzEzMzg0LCJleHAiOjE2ODMzMTM2ODR9.B1znTO29gtwSXxyuDwFdPNwOM3d3HOWiN63kO5cu4\"\n\ntry {\n    const { id } = jwt.verify(token, SECRET_KEY);\n    // const { id } = jwt.verify(invalidToken, SECRET_KEY);\n    node.warn(id);\n\n} catch (error) {\n    node.warn(error.message)\n};\n\nmsg.payload = {\n    token, \n    decodedToken\n}\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "dotenv",
-                "module": "dotenv"
-            },
-            {
-                "var": "jwt",
-                "module": "jsonwebtoken"
-            }
-        ],
-        "x": 270,
-        "y": 4260,
-        "wires": [
-            [
-                "54d79b87ffd42b92"
-            ]
-        ]
-    },
-    {
-        "id": "a9fb567ad07dc66a",
-        "type": "link in",
-        "z": "5625818d4797c40c",
-        "name": "PROD find",
-        "links": [],
-        "x": 125,
-        "y": 60,
-        "wires": [
-            [
-                "2cbd6b0583706522"
-            ]
-        ]
-    },
-    {
-        "id": "82a088390a0e13bb",
-        "type": "link out",
-        "z": "5625818d4797c40c",
-        "name": "",
-        "mode": "return",
-        "links": [],
-        "x": 435,
-        "y": 60,
-        "wires": []
-    },
-    {
-        "id": "2cbd6b0583706522",
-        "type": "mongodb in",
-        "z": "5625818d4797c40c",
-        "mongodb": "2272c92dc80bcb38",
-        "name": "PROD find",
-        "collection": "",
-        "operation": "find",
-        "x": 260,
-        "y": 60,
-        "wires": [
-            [
-                "82a088390a0e13bb"
-            ]
-        ]
-    },
-    {
-        "id": "d66b320450918147",
-        "type": "link in",
-        "z": "5625818d4797c40c",
-        "name": "PROD aggregate",
-        "links": [],
-        "x": 125,
-        "y": 120,
-        "wires": [
-            [
-                "d1982e39382e3370"
-            ]
-        ]
-    },
-    {
-        "id": "be6649ec5b1c6c0e",
-        "type": "link out",
-        "z": "5625818d4797c40c",
-        "name": "",
-        "mode": "return",
-        "links": [],
-        "x": 435,
-        "y": 120,
-        "wires": []
-    },
-    {
-        "id": "d1982e39382e3370",
-        "type": "mongodb in",
-        "z": "5625818d4797c40c",
-        "mongodb": "2272c92dc80bcb38",
-        "name": "PROD aggregate",
-        "collection": "",
-        "operation": "aggregate",
-        "x": 280,
-        "y": 120,
-        "wires": [
-            [
-                "be6649ec5b1c6c0e"
-            ]
-        ]
-    },
-    {
-        "id": "1b4a93743b4cb585",
-        "type": "mongodb out",
-        "z": "5625818d4797c40c",
-        "mongodb": "2272c92dc80bcb38",
-        "name": "PROD insert",
-        "collection": "",
-        "payonly": true,
-        "upsert": false,
-        "multi": false,
-        "operation": "insert",
-        "x": 270,
-        "y": 200,
-        "wires": []
-    },
-    {
-        "id": "11c9729c152a736b",
-        "type": "link in",
-        "z": "5625818d4797c40c",
-        "name": "PROD insert",
-        "links": [],
-        "x": 125,
-        "y": 200,
-        "wires": [
-            [
-                "1b4a93743b4cb585",
-                "78487177228b9424"
-            ]
-        ]
-    },
-    {
-        "id": "78487177228b9424",
-        "type": "link out",
-        "z": "5625818d4797c40c",
-        "name": "",
-        "mode": "return",
-        "links": [],
-        "x": 235,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "37fd6e76c8c5cf02",
-        "type": "mongodb out",
-        "z": "5625818d4797c40c",
-        "mongodb": "2272c92dc80bcb38",
-        "name": "PROD update",
-        "collection": "",
-        "payonly": true,
-        "upsert": false,
-        "multi": false,
-        "operation": "update",
-        "x": 280,
-        "y": 300,
-        "wires": []
-    },
-    {
-        "id": "6e02acf20c7c434c",
-        "type": "link in",
-        "z": "5625818d4797c40c",
-        "name": "PROD update",
-        "links": [
-            "159f20af26b27591"
-        ],
-        "x": 125,
-        "y": 300,
-        "wires": [
-            [
-                "37fd6e76c8c5cf02",
-                "a9bea4a92fcfa3c1"
-            ]
-        ]
-    },
-    {
-        "id": "a9bea4a92fcfa3c1",
-        "type": "link out",
-        "z": "5625818d4797c40c",
-        "name": "",
-        "mode": "return",
-        "links": [],
-        "x": 235,
-        "y": 340,
-        "wires": []
-    },
-    {
-        "id": "1893ba3cf8670b46",
-        "type": "link in",
-        "z": "5625818d4797c40c",
-        "name": "PROD count",
-        "links": [],
-        "x": 135,
-        "y": 400,
-        "wires": [
-            [
-                "522c4fea30675a88"
-            ]
-        ]
-    },
-    {
-        "id": "f6f164110b64c323",
-        "type": "link out",
-        "z": "5625818d4797c40c",
-        "name": "",
-        "mode": "return",
-        "links": [],
-        "x": 445,
-        "y": 400,
-        "wires": []
-    },
-    {
-        "id": "522c4fea30675a88",
-        "type": "mongodb in",
-        "z": "5625818d4797c40c",
-        "mongodb": "2272c92dc80bcb38",
-        "name": "PROD count",
-        "collection": "",
-        "operation": "count",
-        "x": 270,
-        "y": 400,
-        "wires": [
-            [
-                "f6f164110b64c323"
-            ]
-        ]
-    },
-    {
-        "id": "1787f64d70c757a1",
-        "type": "catch",
-        "z": "5625818d4797c40c",
-        "name": "",
-        "scope": [
-            "1b4a93743b4cb585"
-        ],
-        "uncaught": false,
-        "x": 570,
-        "y": 100,
-        "wires": [
-            [
-                "a31b78cb333e5754"
-            ]
-        ]
-    },
-    {
-        "id": "a31b78cb333e5754",
-        "type": "function",
-        "z": "5625818d4797c40c",
-        "name": "Handle Error",
-        "func": "if (msg.error.message.includes(\"E11000 duplicate key error\")) {\n    msg.payload = { error: true, message: \"This email already exists in the database.\" };\n} else {\n    msg.payload = { error: false };\n}\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
         "x": 710,
-        "y": 100,
-        "wires": [
-            [
-                "4dd80a5342ed9238"
-            ]
-        ]
+        "y": 1820,
+        "wires": []
     },
     {
-        "id": "4dd80a5342ed9238",
+        "id": "70d9dc553312a710",
         "type": "debug",
-        "z": "5625818d4797c40c",
-        "name": "debug 221",
+        "z": "6d691e6d89cccf80",
+        "name": "debug 236",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 890,
-        "y": 100,
+        "x": 330,
+        "y": 1760,
         "wires": []
     },
     {
-        "id": "56fe8f7960bcea2a",
-        "type": "inject",
+        "id": "6570f2bfdce7cd7b",
+        "type": "debug",
+        "z": "6d691e6d89cccf80",
+        "name": "debug 237",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 1720,
+        "wires": []
+    },
+    {
+        "id": "f9a0f82c11903966",
+        "type": "function",
         "z": "572dfaa9458e5333",
+        "g": "f88877fc8db92035",
+        "name": "sendResponse()",
+        "func": "const isEmailExist = msg.payload.length !== 0;\n\n\nif (!isEmailExist){\n    msg.payload = {\n        \"success\": false,\n        \"error\": \"Forbidden!\"\n    }\n    \n    msg.statusCode = 401;\n    return [null, msg]\n} else {\n    msg.req.user = msg.payload\n    node.warn(msg.res.user);\n    msg.payload = msg.oldpayload\n    delete msg.oldpayload\n    return[msg, null]\n}",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 160,
+        "wires": [
+            [],
+            [
+                "9fd58a423081395a"
+            ]
+        ]
+    },
+    {
+        "id": "9fd58a423081395a",
+        "type": "http response",
+        "z": "572dfaa9458e5333",
+        "g": "f88877fc8db92035",
         "name": "",
-        "props": [
+        "statusCode": "",
+        "headers": {},
+        "x": 750,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "b9d241f7c21a84da",
+        "type": "function",
+        "z": "572dfaa9458e5333",
+        "g": "f88877fc8db92035",
+        "name": "checkToken()",
+        "func": "const result = dotenv.config();\nconst { SECRET_KEY } = result.parsed;\n\nif (msg.req.cookies.user_token) {\n    msg.oldpayload = msg.payload\n\n    try {\n        const { id } = jwt.verify(msg.req.cookies.user_token, SECRET_KEY);\n        msg.collection = \"users\";\n        msg.payload = {\n            _id: objectid(id)\n        }\n        return [msg, null];\n\n    } catch (error) {\n        node.warn(error.message)\n    };\n} else {\n    return [null, msg];\n}\n\n",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
             {
-                "p": "payload"
+                "var": "objectid",
+                "module": "objectid"
             },
             {
-                "p": "topic",
-                "vt": "str"
+                "var": "jwt",
+                "module": "jsonwebtoken"
+            },
+            {
+                "var": "dotenv",
+                "module": "dotenv"
             }
         ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 80,
-        "y": 60,
+        "x": 170,
+        "y": 220,
         "wires": [
             [
-                "c4603ba9cebd3f3a"
+                "965b95ad54b9dbd0"
+            ],
+            [
+                "68cc7cedd1b416bf"
             ]
         ]
     },
     {
-        "id": "219b221508c01985",
-        "type": "link call",
+        "id": "68cc7cedd1b416bf",
+        "type": "function",
         "z": "572dfaa9458e5333",
+        "g": "f88877fc8db92035",
+        "name": "sendError()",
+        "func": "msg.payload = {\n    success: false,\n    message: \"Forbidden\"\n}\n\nmsg.statusCode = 401;\nreturn msg\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 220,
+        "wires": [
+            [
+                "063ccd6fdf1fd599"
+            ]
+        ]
+    },
+    {
+        "id": "063ccd6fdf1fd599",
+        "type": "http response",
+        "z": "572dfaa9458e5333",
+        "g": "f88877fc8db92035",
         "name": "",
-        "links": [
-            "d66b320450918147"
-        ],
-        "linkType": "static",
-        "timeout": "30",
-        "x": 230,
-        "y": 180,
-        "wires": [
-            [
-                "c91ff7591b4bf82c"
-            ]
-        ]
-    },
-    {
-        "id": "d98a2a92e02864f9",
-        "type": "link call",
-        "z": "572dfaa9458e5333",
-        "name": "",
-        "links": [
-            "d66b320450918147"
-        ],
-        "linkType": "static",
-        "timeout": "30",
-        "x": 650,
-        "y": 140,
-        "wires": [
-            [
-                "45c63c01c890dba6"
-            ]
-        ]
-    },
-    {
-        "id": "45c63c01c890dba6",
-        "type": "debug",
-        "z": "572dfaa9458e5333",
-        "name": "debug 12",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 860,
-        "y": 140,
+        "statusCode": "",
+        "headers": {},
+        "x": 610,
+        "y": 220,
         "wires": []
     },
     {
-        "id": "c4603ba9cebd3f3a",
-        "type": "function",
+        "id": "965b95ad54b9dbd0",
+        "type": "link call",
         "z": "572dfaa9458e5333",
-        "name": "function 8",
-        "func": "msg.payload = [\n    { $unwind: \"$products\" },\n    { $group: { _id: \"$products.productId\", count: { $sum: 1 } } },\n    { $sort: { count: -1 } }\n];\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 180,
-        "y": 120,
-        "wires": [
-            [
-                "219b221508c01985"
-            ]
-        ]
-    },
-    {
-        "id": "c91ff7591b4bf82c",
-        "type": "function",
-        "z": "572dfaa9458e5333",
-        "name": "function 9",
-        "func": "msg.payload = [\n    {\n        $lookup: {\n            from: \"orders\",\n            localField: \"_id\",\n            foreignField: \"products.productId\",\n            as: \"purchases\"\n        }\n    },\n    { $addFields: { purchaseCount: { $size: \"$purchases\" } } },\n    { $sort: { purchaseCount: -1 } }\n];\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 440,
+        "g": "f88877fc8db92035",
+        "name": "",
+        "links": [
+            "a9fb567ad07dc66a"
+        ],
+        "linkType": "static",
+        "timeout": "30",
+        "x": 170,
         "y": 160,
         "wires": [
             [
-                "d98a2a92e02864f9"
+                "f9a0f82c11903966"
             ]
         ]
     },
     {
-        "id": "1bbf2fa2.1ab72a",
-        "type": "http in",
+        "id": "da27471bf65208ff",
+        "type": "comment",
         "z": "572dfaa9458e5333",
-        "name": "",
-        "url": "/upload-image",
-        "method": "post",
-        "upload": true,
-        "swaggerDoc": "",
-        "x": 150,
-        "y": 300,
-        "wires": [
-            [
-                "a50ecff1aa431e53",
-                "95db3a046c1f0657"
-            ]
-        ]
-    },
-    {
-        "id": "9a92597d.b3f3d",
-        "type": "http response",
-        "z": "572dfaa9458e5333",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 690,
-        "y": 300,
+        "g": "f88877fc8db92035",
+        "name": "SubFlow  auth (NOT work)",
+        "info": "",
+        "x": 190,
+        "y": 100,
         "wires": []
-    },
-    {
-        "id": "1e89526f5e4050d6",
-        "type": "debug",
-        "z": "572dfaa9458e5333",
-        "name": "debug 21",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 580,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "a50ecff1aa431e53",
-        "type": "debug",
-        "z": "572dfaa9458e5333",
-        "name": "debug 22",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 380,
-        "y": 260,
-        "wires": []
-    },
-    {
-        "id": "95db3a046c1f0657",
-        "type": "function",
-        "z": "572dfaa9458e5333",
-        "name": "function 10",
-        "func": "const upload = multer().single('image');\n\n// module.exports = function (RED) {\n//     function MyNode(config) {\n//         RED.nodes.createNode(this, config);\n\n//         this.on('input', function (msg) {\n//             upload(msg.req, msg.res, function (err) {\n//                 if (err) {\n//                     // handle the error\n//                 } else {\n//                     // the file has been uploaded\n//                     const file = msg.req.file;\n//                     // do something with the file\n//                 }\n//             });\n//         });\n//     }\n\n//     RED.nodes.registerType('my-node', MyNode);\n// }\n\n// return msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "multer",
-                "module": "multer"
-            }
-        ],
-        "x": 450,
-        "y": 300,
-        "wires": [
-            [
-                "9a92597d.b3f3d",
-                "1e89526f5e4050d6"
-            ]
-        ]
-    },
-    {
-        "id": "4d4f4e21.e3b3e4",
-        "type": "http in",
-        "z": "572dfaa9458e5333",
-        "name": "",
-        "url": "/upload",
-        "method": "post",
-        "upload": true,
-        "swaggerDoc": "",
-        "x": 150,
-        "y": 420,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "16af42a6.20347d",
-        "type": "file",
-        "z": "572dfaa9458e5333",
-        "name": "",
-        "filename": "uploads/{{{headers['content-disposition'].split('; ')[2].split('=')[1].replace(/\"/g, '')}}}",
-        "filenameType": "str",
-        "appendNewline": true,
-        "createDir": true,
-        "overwriteFile": "false",
-        "encoding": "none",
-        "x": 910,
-        "y": 420,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "02867b04f323983e",
@@ -5517,6 +4134,465 @@
         "info": "",
         "x": 170,
         "y": 1700,
+        "wires": []
+    },
+    {
+        "id": "6d73e6d9.6a7f88",
+        "type": "inject",
+        "z": "fcd0e09e.2ef47",
+        "name": "Get payment status",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 140,
+        "wires": [
+            [
+                "a3e397a3.90c2f8"
+            ]
+        ]
+    },
+    {
+        "id": "a3e397a3.90c2f8",
+        "type": "function",
+        "z": "fcd0e09e.2ef47",
+        "name": "Prepare payment status request",
+        "func": "\nconst public_key = 'sandbox_i84915551152';\nconst private_key = 'sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I';\n\nconst liqpay = new LiqPay(public_key, private_key);\n\nconst order_id = 'order_id_12345'; // Replace with the actual order_id\n\nconst request_data = {\n    'action': 'status',\n    'version': '3',\n    'public_key': public_key,\n    'order_id': order_id\n};\n\nconst encoded_request_data = Buffer.from(JSON.stringify(request_data)).toString('base64');\n\nconst str_to_sign = private_key + encoded_request_data + private_key;\nconst signature = crypto.createHash('sha1').update(str_to_sign).digest('base64');\n\nmsg.payload = {\n    'data': encoded_request_data,\n    'signature': signature\n};\n\nmsg.headers = {\n    'Content-Type': 'application/x-www-form-urlencoded',\n    'Accept': 'application/json'\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "LiqPay",
+                "module": "liqpay"
+            },
+            {
+                "var": "crypto",
+                "module": "crypto"
+            }
+        ],
+        "x": 360,
+        "y": 140,
+        "wires": [
+            [
+                "1d9a9262.2a516e"
+            ]
+        ]
+    },
+    {
+        "id": "1d9a9262.2a516e",
+        "type": "http request",
+        "z": "fcd0e09e.2ef47",
+        "name": "Request payment status",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://www.liqpay.ua/api/request",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 610,
+        "y": 140,
+        "wires": [
+            [
+                "f1b8a2a6.9d7f4"
+            ]
+        ]
+    },
+    {
+        "id": "f1b8a2a6.9d7f4",
+        "type": "function",
+        "z": "fcd0e09e.2ef47",
+        "name": "Handle payment status response",
+        "func": "const response = msg.payload;\n\nif (response.status === 'success') {\n    const payment_status = response.result.status;\n    console.log('Payment status:', payment_status);\n    // Handle the payment status here (e.g., update your database, display a message, etc.)\n} else {\n    console.error('Error fetching payment status:', response);\n    // Handle the error here (e.g., display an error message, etc.)\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 140,
+        "wires": [
+            [
+                "d9b27c23.19057"
+            ]
+        ]
+    },
+    {
+        "id": "d9b27c23.19057",
+        "type": "debug",
+        "z": "fcd0e09e.2ef47",
+        "name": "Payment status",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1090,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "ea318bd92bf04b4e",
+        "type": "http response",
+        "z": "fcd0e09e.2ef47",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 750,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "45aec5f7fda4d906",
+        "type": "function",
+        "z": "fcd0e09e.2ef47",
+        "name": "function 322",
+        "func": "const public_key = 'sandbox_i84915551152';\nconst private_key = 'sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I';\n\nconst liqpay = new LiqPay(public_key, private_key);\n\nconst payment_data = {\n    'action': 'pay',\n    'amount': '300',\n    'currency': 'UAH',\n    'description': 'Payment for services',\n    'order_id': 'order_id_12345',\n    'version': '3',\n    'public_key': public_key, \n    'sandbox': '1'\n};\n\nconst encoded_payment_data = Buffer.from(JSON.stringify(payment_data)).toString('base64');\n\nconst str_to_sign = private_key + encoded_payment_data + private_key;\nconst signature = crypto.createHash('sha1').update(str_to_sign).digest('base64');\n\nmsg.payload = {\n    'data': encoded_payment_data,\n    'signature': signature\n};\n\nnode.send(msg);\n\nreturn msg;\n\n\n\n\n\n// const order_id = 'order_id_12345'; // Replace with the actual order_id\n\n// const request_data = {\n//     'action': 'status',\n//     'version': '3',\n//     'public_key': public_key,\n//     'order_id': order_id\n// };\n\n// const encoded_request_data = Buffer.from(JSON.stringify(request_data)).toString('base64');\n\n// const str_to_sign = private_key + encoded_request_data + private_key;\n// const signature = crypto.createHash('sha1').update(str_to_sign).digest('base64');\n\n// msg.payload = {\n//     'data': encoded_request_data,\n//     'signature': signature\n// };\n\n// msg.headers = {\n//     'Content-Type': 'application/x-www-form-urlencoded',\n//     'Accept': 'application/json'\n// };\n\n// return msg;\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "LiqPay",
+                "module": "liqpay"
+            },
+            {
+                "var": "crypto",
+                "module": "crypto"
+            }
+        ],
+        "x": 570,
+        "y": 60,
+        "wires": [
+            [
+                "ea318bd92bf04b4e"
+            ]
+        ]
+    },
+    {
+        "id": "02f4e83947f81121",
+        "type": "http in",
+        "z": "fcd0e09e.2ef47",
+        "name": "",
+        "url": "/liqpay",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f55b2ea76c0293d0",
+        "type": "inject",
+        "z": "fcd0e09e.2ef47",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 320,
+        "y": 60,
+        "wires": [
+            [
+                "45aec5f7fda4d906"
+            ]
+        ]
+    },
+    {
+        "id": "a9fb567ad07dc66a",
+        "type": "link in",
+        "z": "5625818d4797c40c",
+        "name": "PROD find",
+        "links": [],
+        "x": 125,
+        "y": 60,
+        "wires": [
+            [
+                "2cbd6b0583706522"
+            ]
+        ]
+    },
+    {
+        "id": "82a088390a0e13bb",
+        "type": "link out",
+        "z": "5625818d4797c40c",
+        "name": "",
+        "mode": "return",
+        "links": [],
+        "x": 435,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "2cbd6b0583706522",
+        "type": "mongodb in",
+        "z": "5625818d4797c40c",
+        "mongodb": "2272c92dc80bcb38",
+        "name": "PROD find",
+        "collection": "",
+        "operation": "find",
+        "x": 260,
+        "y": 60,
+        "wires": [
+            [
+                "82a088390a0e13bb"
+            ]
+        ]
+    },
+    {
+        "id": "d66b320450918147",
+        "type": "link in",
+        "z": "5625818d4797c40c",
+        "name": "PROD aggregate",
+        "links": [],
+        "x": 125,
+        "y": 120,
+        "wires": [
+            [
+                "d1982e39382e3370"
+            ]
+        ]
+    },
+    {
+        "id": "be6649ec5b1c6c0e",
+        "type": "link out",
+        "z": "5625818d4797c40c",
+        "name": "",
+        "mode": "return",
+        "links": [],
+        "x": 435,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "d1982e39382e3370",
+        "type": "mongodb in",
+        "z": "5625818d4797c40c",
+        "mongodb": "2272c92dc80bcb38",
+        "name": "PROD aggregate",
+        "collection": "",
+        "operation": "aggregate",
+        "x": 280,
+        "y": 120,
+        "wires": [
+            [
+                "be6649ec5b1c6c0e"
+            ]
+        ]
+    },
+    {
+        "id": "1b4a93743b4cb585",
+        "type": "mongodb out",
+        "z": "5625818d4797c40c",
+        "mongodb": "2272c92dc80bcb38",
+        "name": "PROD insert",
+        "collection": "",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 270,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "11c9729c152a736b",
+        "type": "link in",
+        "z": "5625818d4797c40c",
+        "name": "PROD insert",
+        "links": [],
+        "x": 125,
+        "y": 200,
+        "wires": [
+            [
+                "1b4a93743b4cb585",
+                "78487177228b9424"
+            ]
+        ]
+    },
+    {
+        "id": "78487177228b9424",
+        "type": "link out",
+        "z": "5625818d4797c40c",
+        "name": "",
+        "mode": "return",
+        "links": [],
+        "x": 235,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "37fd6e76c8c5cf02",
+        "type": "mongodb out",
+        "z": "5625818d4797c40c",
+        "mongodb": "2272c92dc80bcb38",
+        "name": "PROD update",
+        "collection": "",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "update",
+        "x": 280,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "6e02acf20c7c434c",
+        "type": "link in",
+        "z": "5625818d4797c40c",
+        "name": "PROD update",
+        "links": [
+            "159f20af26b27591"
+        ],
+        "x": 125,
+        "y": 300,
+        "wires": [
+            [
+                "37fd6e76c8c5cf02",
+                "a9bea4a92fcfa3c1"
+            ]
+        ]
+    },
+    {
+        "id": "a9bea4a92fcfa3c1",
+        "type": "link out",
+        "z": "5625818d4797c40c",
+        "name": "",
+        "mode": "return",
+        "links": [],
+        "x": 235,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "1893ba3cf8670b46",
+        "type": "link in",
+        "z": "5625818d4797c40c",
+        "name": "PROD count",
+        "links": [],
+        "x": 135,
+        "y": 400,
+        "wires": [
+            [
+                "522c4fea30675a88"
+            ]
+        ]
+    },
+    {
+        "id": "f6f164110b64c323",
+        "type": "link out",
+        "z": "5625818d4797c40c",
+        "name": "",
+        "mode": "return",
+        "links": [],
+        "x": 445,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "522c4fea30675a88",
+        "type": "mongodb in",
+        "z": "5625818d4797c40c",
+        "mongodb": "2272c92dc80bcb38",
+        "name": "PROD count",
+        "collection": "",
+        "operation": "count",
+        "x": 270,
+        "y": 400,
+        "wires": [
+            [
+                "f6f164110b64c323"
+            ]
+        ]
+    },
+    {
+        "id": "1787f64d70c757a1",
+        "type": "catch",
+        "z": "5625818d4797c40c",
+        "name": "",
+        "scope": [
+            "1b4a93743b4cb585"
+        ],
+        "uncaught": false,
+        "x": 570,
+        "y": 100,
+        "wires": [
+            [
+                "a31b78cb333e5754"
+            ]
+        ]
+    },
+    {
+        "id": "a31b78cb333e5754",
+        "type": "function",
+        "z": "5625818d4797c40c",
+        "name": "Handle Error",
+        "func": "if (msg.error.message.includes(\"E11000 duplicate key error\")) {\n    msg.payload = { error: true, message: \"This email already exists in the database.\" };\n} else {\n    msg.payload = { error: false };\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 100,
+        "wires": [
+            [
+                "4dd80a5342ed9238"
+            ]
+        ]
+    },
+    {
+        "id": "4dd80a5342ed9238",
+        "type": "debug",
+        "z": "5625818d4797c40c",
+        "name": "debug 221",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 100,
         "wires": []
     }
 ]

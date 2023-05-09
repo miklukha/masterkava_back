@@ -463,6 +463,8 @@ module.exports = {
     path: require('path'),
     multer: require('multer'),
     dotenv: require('dotenv'),
+    liqpay: require('liqpay'),
+    crypto: require('crypto'),
     // env: require(env),
     // os:require('os'),
   },
