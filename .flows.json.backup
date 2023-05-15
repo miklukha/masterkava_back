@@ -562,8 +562,6 @@
             "9531437ba3acd3b4",
             "23a66c4f0a1ee112",
             "23534fe124dd2dcc",
-            "8cd41f4b998977e3",
-            "039c70bbf35fd36b",
             "d4100e5a444c3619",
             "0409c49cf0585f3b",
             "514f380fe3f84ad5",
@@ -572,7 +570,7 @@
         "x": 14,
         "y": 2219,
         "w": 852,
-        "h": 262
+        "h": 222
     },
     {
         "id": "f9896444b979122b",
@@ -614,7 +612,8 @@
             "22522d014311d395",
             "83e3d5e678eb53d2",
             "3bd377e068e3e13e",
-            "13f1be8c9c78b930"
+            "13f1be8c9c78b930",
+            "c8f564a634eda4ab"
         ],
         "x": 14,
         "y": 1379,
@@ -2795,11 +2794,10 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 110,
-        "y": 2360,
+        "y": 2320,
         "wires": [
             [
-                "429013cfcc1d8e25",
-                "8cd41f4b998977e3"
+                "429013cfcc1d8e25"
             ]
         ]
     },
@@ -2821,10 +2819,9 @@
             }
         ],
         "x": 280,
-        "y": 2360,
+        "y": 2320,
         "wires": [
             [
-                "039c70bbf35fd36b",
                 "bcb99566c443c02f"
             ]
         ]
@@ -2841,7 +2838,7 @@
         "linkType": "static",
         "timeout": "60",
         "x": 470,
-        "y": 2360,
+        "y": 2320,
         "wires": [
             [
                 "9531437ba3acd3b4"
@@ -2861,7 +2858,7 @@
         "finalize": "",
         "libs": [],
         "x": 640,
-        "y": 2360,
+        "y": 2320,
         "wires": [
             [
                 "23a66c4f0a1ee112"
@@ -2877,7 +2874,7 @@
         "statusCode": "",
         "headers": {},
         "x": 790,
-        "y": 2360,
+        "y": 2320,
         "wires": []
     },
     {
@@ -2917,7 +2914,7 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 570,
+        "x": 630,
         "y": 1480,
         "wires": []
     },
@@ -2927,7 +2924,7 @@
         "z": "6d691e6d89cccf80",
         "g": "f9896444b979122b",
         "name": "getUsers()",
-        "func": "msg.payload = {}\n\nmsg.collection = \"users\";\nreturn msg;",
+        "func": "// msg.payload = {}\n\n// msg.collection = \"users\";\n// return msg;\n\nconst pipeline = [\n    {\n        $lookup: {\n            from: \"orders\",\n            localField: \"_id\",\n            foreignField: \"userId\",\n            as: \"orders_doc\",\n        }\n    },\n    {\n        $unwind: {\n            path: \"$orders_doc\",\n            preserveNullAndEmptyArrays: true\n        }\n    },\n    {\n        $group: {\n            _id: \"$_id\",\n            name: { $first: \"$name\" },\n            email: { $first: \"$email\" },\n            shipping: { $first: \"$shipping\" },\n            role: { $first: \"$role\" },\n            orders: { $push: \"$orders_doc\" }\n        }\n    },\n    {\n        $project: {\n            _id: 1,\n            name: 1,\n            email: 1,\n            orders: 1,\n            shipping: 1,\n            role: 1\n        }\n    }\n    // {\n    //     $project: {\n    //         _id: 1,\n    //         name: 1,\n    //         email: 1,\n    //         orders: \"$orders_doc\",\n    //         shipping: 1,\n    //         role: 1\n    //     }\n    // }\n];\n\nmsg.payload = pipeline;\nmsg.collection = \"users\";\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -3238,15 +3235,16 @@
         "g": "f9896444b979122b",
         "name": "",
         "links": [
-            "a9fb567ad07dc66a"
+            "d66b320450918147"
         ],
         "linkType": "static",
         "timeout": "60",
-        "x": 410,
+        "x": 430,
         "y": 1480,
         "wires": [
             [
-                "2503d74b6ed7f764"
+                "2503d74b6ed7f764",
+                "c8f564a634eda4ab"
             ]
         ]
     },
@@ -3600,41 +3598,6 @@
         "wires": []
     },
     {
-        "id": "8cd41f4b998977e3",
-        "type": "debug",
-        "z": "6d691e6d89cccf80",
-        "g": "a36154d393038484",
-        "name": "debug 236",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 290,
-        "y": 2280,
-        "wires": []
-    },
-    {
-        "id": "039c70bbf35fd36b",
-        "type": "debug",
-        "z": "6d691e6d89cccf80",
-        "g": "a36154d393038484",
-        "name": "debug 237",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 610,
-        "y": 2260,
-        "wires": []
-    },
-    {
         "id": "d4100e5a444c3619",
         "type": "http in",
         "z": "6d691e6d89cccf80",
@@ -3645,7 +3608,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 110,
-        "y": 2440,
+        "y": 2400,
         "wires": [
             [
                 "514f380fe3f84ad5"
@@ -3661,7 +3624,7 @@
         "statusCode": "",
         "headers": {},
         "x": 650,
-        "y": 2440,
+        "y": 2400,
         "wires": []
     },
     {
@@ -3677,7 +3640,7 @@
         "finalize": "",
         "libs": [],
         "x": 270,
-        "y": 2440,
+        "y": 2400,
         "wires": [
             [
                 "2511cef997812faf"
@@ -3696,12 +3659,30 @@
         "linkType": "static",
         "timeout": "30",
         "x": 470,
-        "y": 2440,
+        "y": 2400,
         "wires": [
             [
                 "0409c49cf0585f3b"
             ]
         ]
+    },
+    {
+        "id": "c8f564a634eda4ab",
+        "type": "debug",
+        "z": "6d691e6d89cccf80",
+        "g": "f9896444b979122b",
+        "name": "debug 236",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 1420,
+        "wires": []
     },
     {
         "id": "02867b04f323983e",

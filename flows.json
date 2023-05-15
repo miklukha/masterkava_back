@@ -2913,7 +2913,7 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 570,
+        "x": 590,
         "y": 1480,
         "wires": []
     },
@@ -2923,7 +2923,7 @@
         "z": "6d691e6d89cccf80",
         "g": "f9896444b979122b",
         "name": "getUsers()",
-        "func": "msg.payload = {}\n\nmsg.collection = \"users\";\nreturn msg;",
+        "func": "// msg.payload = {}\n\n// msg.collection = \"users\";\n// return msg;\n\nconst pipeline = [\n    {\n        $lookup: {\n            from: \"orders\",\n            localField: \"_id\",\n            foreignField: \"userId\",\n            as: \"orders_doc\",\n        }\n    },\n    {\n        $unwind: {\n            path: \"$orders_doc\",\n            preserveNullAndEmptyArrays: true\n        }\n    },\n    {\n        $group: {\n            _id: \"$_id\",\n            name: { $first: \"$name\" },\n            email: { $first: \"$email\" },\n            shipping: { $first: \"$shipping\" },\n            role: { $first: \"$role\" },\n            orders: { $push: \"$orders_doc\" }\n        }\n    },\n    {\n        $project: {\n            _id: 1,\n            name: 1,\n            email: 1,\n            orders: 1,\n            shipping: 1,\n            role: 1\n        }\n    }\n    // {\n    //     $project: {\n    //         _id: 1,\n    //         name: 1,\n    //         email: 1,\n    //         orders: \"$orders_doc\",\n    //         shipping: 1,\n    //         role: 1\n    //     }\n    // }\n];\n\nmsg.payload = pipeline;\nmsg.collection = \"users\";\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -3234,11 +3234,11 @@
         "g": "f9896444b979122b",
         "name": "",
         "links": [
-            "a9fb567ad07dc66a"
+            "d66b320450918147"
         ],
         "linkType": "static",
         "timeout": "60",
-        "x": 410,
+        "x": 430,
         "y": 1480,
         "wires": [
             [
