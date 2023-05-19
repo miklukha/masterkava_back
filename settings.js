@@ -459,9 +459,12 @@ module.exports = {
    *    global.get("os")
    */
   functionGlobalContext: {
-    // env: process.env,
     // myDir: __dirname,
     path: require('path'),
+    multer: require('multer'),
+    dotenv: require('dotenv'),
+    liqpay: require('liqpay'),
+    crypto: require('crypto'),
     // env: require(env),
     // os:require('os'),
   },
