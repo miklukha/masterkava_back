@@ -685,9 +685,70 @@
             "d766c42b947a45bb",
             "41b51346a1bd3f30"
         ],
-        "x": 34,
-        "y": 3699,
+        "x": 14,
+        "y": 2599,
         "w": 732,
+        "h": 142
+    },
+    {
+        "id": "164c465466b25c64",
+        "type": "group",
+        "z": "6d691e6d89cccf80",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "10f6db36557cf78a",
+            "429013cfcc1d8e25",
+            "bcb99566c443c02f",
+            "9531437ba3acd3b4",
+            "23a66c4f0a1ee112",
+            "23534fe124dd2dcc",
+            "d4100e5a444c3619",
+            "0409c49cf0585f3b",
+            "514f380fe3f84ad5",
+            "2511cef997812faf",
+            "0debe6848905e6d0",
+            "0407f636237c52d1",
+            "607607576c724afa",
+            "ec80a72d5acb944c",
+            "99dec14673644968",
+            "b0402bfb7ef53494",
+            "d9ecc8815083ddd7"
+        ],
+        "x": 14,
+        "y": 2219,
+        "w": 1272,
+        "h": 342
+    },
+    {
+        "id": "0f11e1d7596ca61a",
+        "type": "group",
+        "z": "27e958a26f8b472d",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "57e89652256d736c",
+            "74a7d01094705169",
+            "662a1d346546f75b",
+            "c0da3c0c0218380c"
+        ],
+        "x": 34,
+        "y": 2019,
+        "w": 532,
         "h": 142
     },
     {
@@ -3559,13 +3620,14 @@
         "id": "10f6db36557cf78a",
         "type": "http in",
         "z": "6d691e6d89cccf80",
+        "g": "164c465466b25c64",
         "name": "",
         "url": "/orders",
         "method": "post",
         "upload": false,
         "swaggerDoc": "",
-        "x": 90,
-        "y": 2460,
+        "x": 110,
+        "y": 2480,
         "wires": [
             [
                 "0407f636237c52d1"
@@ -3576,6 +3638,7 @@
         "id": "429013cfcc1d8e25",
         "type": "function",
         "z": "6d691e6d89cccf80",
+        "g": "164c465466b25c64",
         "name": "createOrder()",
         "func": "const { contacts, products, totalPrice } = msg.req.body;\nconst { payment, deliveryType, city = '', department = '',\n        address = '', firstName, lastName, phone, userId } = contacts;\nconst code = msg.details?.order_id || Date.now();\n\nmsg.payload = {\n    _id: objectid(),\n    code,\n    userId: userId ? objectid(userId) : null,\n    contacts: {\n        firstName,\n        lastName,\n        phone\n    },\n    orderDesc: {\n        payment,\n        deliveryType,\n        city,\n        department,\n        address,\n    },    \n    products: products.map(({ id, price, name, grind, weight, quantity }) => {return {\n        _id: objectid(id),\n        name,\n        price,\n        grind: grind.name, \n        weight, \n        quantity \n    }}),\n    totalPrice,\n    date: new Date()\n}\nmsg.collection = \"orders\";\n\nreturn msg;",
         "outputs": 1,
@@ -3588,8 +3651,8 @@
                 "module": "objectid"
             }
         ],
-        "x": 580,
-        "y": 2460,
+        "x": 600,
+        "y": 2480,
         "wires": [
             [
                 "bcb99566c443c02f"
@@ -3600,18 +3663,21 @@
         "id": "bcb99566c443c02f",
         "type": "link call",
         "z": "6d691e6d89cccf80",
+        "g": "164c465466b25c64",
         "name": "",
         "links": [
             "11c9729c152a736b"
         ],
         "linkType": "static",
         "timeout": "60",
-        "x": 750,
-        "y": 2460,
+        "x": 770,
+        "y": 2480,
         "wires": [
             [
                 "9531437ba3acd3b4",
-                "607607576c724afa"
+                "607607576c724afa",
+                "d9ecc8815083ddd7",
+                "99dec14673644968"
             ]
         ]
     },
@@ -3619,6 +3685,7 @@
         "id": "9531437ba3acd3b4",
         "type": "function",
         "z": "6d691e6d89cccf80",
+        "g": "164c465466b25c64",
         "name": "checkStatus()",
         "func": "msg.payload = msg?.details || {\n    success: true,\n    message: \"Everything is OK\"\n};\n\n// msg.payload = {\n//     success: true,\n//     message: \"Everything is OK\"\n// };\n\nmsg.statusCode = 200;\n\nreturn msg;",
         "outputs": 1,
@@ -3626,8 +3693,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 920,
-        "y": 2460,
+        "x": 940,
+        "y": 2480,
         "wires": [
             [
                 "23a66c4f0a1ee112"
@@ -3638,34 +3705,37 @@
         "id": "23a66c4f0a1ee112",
         "type": "http response",
         "z": "6d691e6d89cccf80",
+        "g": "164c465466b25c64",
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 1070,
-        "y": 2460,
+        "x": 1090,
+        "y": 2480,
         "wires": []
     },
     {
         "id": "23534fe124dd2dcc",
         "type": "comment",
         "z": "6d691e6d89cccf80",
+        "g": "164c465466b25c64",
         "name": "Orders",
         "info": "",
-        "x": 70,
-        "y": 2240,
+        "x": 90,
+        "y": 2260,
         "wires": []
     },
     {
         "id": "d4100e5a444c3619",
         "type": "http in",
         "z": "6d691e6d89cccf80",
+        "g": "164c465466b25c64",
         "name": "",
         "url": "/orders",
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 90,
-        "y": 2280,
+        "x": 110,
+        "y": 2320,
         "wires": [
             [
                 "514f380fe3f84ad5"
@@ -3676,17 +3746,19 @@
         "id": "0409c49cf0585f3b",
         "type": "http response",
         "z": "6d691e6d89cccf80",
+        "g": "164c465466b25c64",
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 650,
-        "y": 2280,
+        "x": 610,
+        "y": 2320,
         "wires": []
     },
     {
         "id": "514f380fe3f84ad5",
         "type": "function",
         "z": "6d691e6d89cccf80",
+        "g": "164c465466b25c64",
         "name": "getOrders()",
         "func": "const pipeline = [\n    {\n        $lookup: {\n            from: \"users\",\n            localField: \"userId\",\n            foreignField: \"_id\",\n            as: \"user_doc\",\n        }\n    },\n    {\n        $unwind: {\n            path: \"$user_doc\",\n            preserveNullAndEmptyArrays: true\n        \t}\n    },\n    {\n        $project: {\n            _id: 1,\n            code: 1,\n            user: \"$user_doc.name\",\n            contacts: 1,\n            orderDesc: 1,\n            products: 1,\n            totalPrice: 1,\n            date: 1\n        }\n    }\n];\n\nmsg.payload = pipeline;\nmsg.collection = \"orders\";\n\nreturn msg;",
         "outputs": 1,
@@ -3694,8 +3766,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 290,
-        "y": 2280,
+        "x": 270,
+        "y": 2320,
         "wires": [
             [
                 "2511cef997812faf"
@@ -3706,18 +3778,18 @@
         "id": "2511cef997812faf",
         "type": "link call",
         "z": "6d691e6d89cccf80",
+        "g": "164c465466b25c64",
         "name": "",
         "links": [
             "d66b320450918147"
         ],
         "linkType": "static",
         "timeout": "30",
-        "x": 470,
-        "y": 2260,
+        "x": 450,
+        "y": 2320,
         "wires": [
             [
-                "0409c49cf0585f3b",
-                "c6d88f402d9da423"
+                "0409c49cf0585f3b"
             ]
         ]
     },
@@ -3725,6 +3797,7 @@
         "id": "0debe6848905e6d0",
         "type": "function",
         "z": "6d691e6d89cccf80",
+        "g": "164c465466b25c64",
         "name": "createPayment()",
         "func": "const { totalPrice } = msg.req.body;\n\n// const public_key = 'sandbox_i84915551152';\n// const private_key = 'sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I';\n\n// const liqpay = new LiqPay(public_key, private_key);\n// const order_id = Date.now();\n\n// const payment_data = {\n//     'action': 'pay',\n//     'amount': totalPrice,\n//     'currency': 'UAH',\n//     'description': 'Payment for services',\n//     'order_id': order_id,\n//     'version': '3',\n//     'public_key': public_key,\n//     'sandbox': '1',\n//     'server_url': \"http://127.0.0.1:1880/getstatus\",\n// };\n\n// const encoded_payment_data = Buffer.from(JSON.stringify(payment_data)).toString('base64');\n\n// const str_to_sign = private_key + encoded_payment_data + private_key;\n// const signature = crypto.createHash('sha1').update(str_to_sign).digest('base64');\n\n// msg.details = {\n//     'data': encoded_payment_data,\n//     'signature': signature,\n//     'order_id': order_id\n// };\n\n// return msg;\n\nconst public_key = 'sandbox_i84915551152';\nconst private_key = 'sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I';\n\nconst liqpay = new LiqPay(public_key, private_key);\nconst order_id = Date.now();\n\nconst payment_data = {\n    'public_key': public_key,\n    'version': 3,\n    'action': 'pay',\n    'amount': totalPrice,\n    'currency': 'UAH',\n    'description': 'Payment for services',\n    'order_id': order_id.toString(),\n    'server_url': \"http://127.0.0.1:1880/getstatus\"\n};\n\n\nconst encodedString = Buffer.from(JSON.stringify(payment_data)).toString('base64');\nconst signString = 'sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I' + encodedString + 'sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I'\n// node.warn(signString)\n\n\nconst signature = crypto.createHash('sha1').update(signString).digest('base64');\n\n// node.warn(signature)\n\n\n\nconst payload = {\n    data: encodedString,\n    signature\n};\n\nmsg.details = {\n    'data': encodedString,\n    'signature': signature,\n    'order_id': order_id\n};\n\nmsg.payload = payload;\n\nreturn msg;\n",
         "outputs": 1,
@@ -3741,8 +3814,8 @@
                 "module": "liqpay"
             }
         ],
-        "x": 400,
-        "y": 2500,
+        "x": 420,
+        "y": 2520,
         "wires": [
             [
                 "429013cfcc1d8e25"
@@ -3750,540 +3823,10 @@
         ]
     },
     {
-        "id": "bc6d729fb34951ad",
-        "type": "http in",
-        "z": "6d691e6d89cccf80",
-        "name": "",
-        "url": "/liqpay",
-        "method": "post",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 210,
-        "y": 2660,
-        "wires": [
-            [
-                "6c4c939eafb8cbb3"
-            ]
-        ]
-    },
-    {
-        "id": "e55ce08ec0f6967f",
-        "type": "debug",
-        "z": "6d691e6d89cccf80",
-        "name": "debug 242",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 610,
-        "y": 2620,
-        "wires": []
-    },
-    {
-        "id": "12518de2dc64b7f7",
-        "type": "inject",
-        "z": "6d691e6d89cccf80",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 160,
-        "y": 2820,
-        "wires": [
-            [
-                "3db5291c.e27a0e"
-            ]
-        ]
-    },
-    {
-        "id": "d18b6a3a.371bb8",
-        "type": "http request",
-        "z": "6d691e6d89cccf80",
-        "name": "",
-        "method": "POST",
-        "ret": "txt",
-        "paytoqs": "ignore",
-        "url": "https://www.liqpay.ua/api/request",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 510,
-        "y": 2820,
-        "wires": [
-            [
-                "1ccf0fd63be1039b"
-            ]
-        ]
-    },
-    {
-        "id": "ea8a6b4f.0f78d8",
-        "type": "debug",
-        "z": "6d691e6d89cccf80",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "x": 870,
-        "y": 2820,
-        "wires": []
-    },
-    {
-        "id": "3db5291c.e27a0e",
-        "type": "function",
-        "z": "6d691e6d89cccf80",
-        "name": "Create Request",
-        "func": "const public_key = 'sandbox_i84915551152';\nconst private_key = 'sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I';\nconst payload = {\n    action: 'status',\n    version: '3',\n    public_key: 'sandbox_i84915551152',\n    // email: 'fen9206@gmail.com',\n    // amount: 1,\n    // currency: 'USD',\n    order_id: '1684412581169',\n    // server_url:\"http://127.0.0.1:1880/getstatus\",\n    // goods: [{\n    //     amount: 100,\n    //     count: 2,\n    //     unit: 'шт.',\n    //     name: 'USB',\n    // }]\n};\n\nconst data = Buffer.from(JSON.stringify(payload)).toString('base64');\nconst signature = crypto.createHash('sha1').update('sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I' + data + 'sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I').digest('base64');\n\nmsg.headers = {\n    'Content-Type': 'application/x-www-form-urlencoded',\n    'Accept': 'application/json',\n};\nmsg.payload = `data=${encodeURIComponent(data)}&signature=${encodeURIComponent(signature)}`;\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "crypto",
-                "module": "crypto"
-            }
-        ],
-        "x": 320,
-        "y": 2820,
-        "wires": [
-            [
-                "d18b6a3a.371bb8"
-            ]
-        ]
-    },
-    {
-        "id": "f75afd01a070ae10",
-        "type": "debug",
-        "z": "6d691e6d89cccf80",
-        "name": "debug 4",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 560,
-        "y": 3340,
-        "wires": []
-    },
-    {
-        "id": "2cabe9d8e0dbc5dd",
-        "type": "function",
-        "z": "6d691e6d89cccf80",
-        "name": "function 2",
-        "func": "let data = 'eyJhY3Rpb24iOiJwYXkiLCJhbW91bnQiOjI0Ny41LCJjdXJyZW5jeSI6IlVBSCIsImRlc2NyaXB0aW9uIjoiUGF5bWVudCBmb3Igc2VydmljZXMiLCJvcmRlcl9pZCI6MTY4NDIzNjUwNDQwOCwidmVyc2lvbiI6IjMiLCJwdWJsaWNfa2V5Ijoic2FuZGJveF9pODQ5MTU1NTExNTIiLCJzYW5kYm94IjoiMSIsInNlcnZlcl91cmwiOiJodHRwOi8vMTI3LjAuMC4xOjE4ODAvZ2V0c3RhdHVzIn0='\n// let data = msg.payload;\n\nfunction base64ToJson(base64String) {\n    const json = Buffer.from(base64String, \"base64\").toString();\n    return JSON.parse(json);\n}\nmsg.payload = base64ToJson(data)\nreturn msg",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 400,
-        "y": 3340,
-        "wires": [
-            [
-                "f75afd01a070ae10"
-            ]
-        ]
-    },
-    {
-        "id": "6a464c11e34c2480",
-        "type": "inject",
-        "z": "6d691e6d89cccf80",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 240,
-        "y": 3380,
-        "wires": [
-            [
-                "2cabe9d8e0dbc5dd"
-            ]
-        ]
-    },
-    {
-        "id": "5ce1819dbd8d0e0c",
-        "type": "http in",
-        "z": "6d691e6d89cccf80",
-        "name": "",
-        "url": "/order",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 140,
-        "y": 3060,
-        "wires": [
-            [
-                "f9a9e9f85ea1eda0"
-            ]
-        ]
-    },
-    {
-        "id": "f9a9e9f85ea1eda0",
-        "type": "function",
-        "z": "6d691e6d89cccf80",
-        "name": "createPayment()",
-        "func": "// const { totalPrice } = msg.req.body;\n\nconst public_key = 'sandbox_i84915551152';\nconst private_key = 'sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I';\n\nconst liqpay = new LiqPay(public_key, private_key);\nconst order_id = Date.now();\n\nconst payment_data = {\n    'public_key': public_key,\n    'version': 3,\n    'action': 'pay',\n    'amount': 245,\n    'currency': 'UAH',\n    'description': 'Payment for services',\n    // 'order_id': \"12345\",\n     'order_id': order_id.toString(),\n    'server_url': \"https://backend-645910bea77995110000001a.ubos.tech/getstatus\"\n};\n\n\nconst encodedString = Buffer.from(JSON.stringify(payment_data)).toString('base64');\nconst signString = 'sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I' + encodedString + 'sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I'\nnode.warn(signString)\n\n\nconst signature = crypto.createHash('sha1').update(signString).digest('base64');\n\nnode.warn(signature)\n\n\n\nconst payload = {\n    data: encodedString,\n    signature\n};\n\nmsg.payload = payload;\n\nreturn msg;\n\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "crypto",
-                "module": "crypto"
-            },
-            {
-                "var": "LiqPay",
-                "module": "liqpay"
-            }
-        ],
-        "x": 360,
-        "y": 3060,
-        "wires": [
-            [
-                "f0c3841ae009dfe6",
-                "a44edb2a01c54e58"
-            ]
-        ]
-    },
-    {
-        "id": "11a87865015261c3",
-        "type": "http response",
-        "z": "6d691e6d89cccf80",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 850,
-        "y": 3060,
-        "wires": []
-    },
-    {
-        "id": "f0c3841ae009dfe6",
-        "type": "debug",
-        "z": "6d691e6d89cccf80",
-        "name": "debug 241",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 730,
-        "y": 2980,
-        "wires": []
-    },
-    {
-        "id": "7acfca21069880d9",
-        "type": "inject",
-        "z": "6d691e6d89cccf80",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 400,
-        "y": 2940,
-        "wires": [
-            [
-                "f9a9e9f85ea1eda0"
-            ]
-        ]
-    },
-    {
-        "id": "a44edb2a01c54e58",
-        "type": "template",
-        "z": "6d691e6d89cccf80",
-        "name": "HTML Form Template",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "<form method=\"POST\" action=\"https://www.liqpay.ua/api/3/checkout\" accept-charset=\"utf-8\">\n  <input type=\"hidden\" name=\"data\" value={{{payload.data}}}>\n  <input type=\"hidden\" name=\"signature\" value={{{payload.signature}}}>\n  <input type=\"image\" src=\"//static.liqpay.ua/buttons/p1ru.radius.png\">\n</form>",
-        "output": "str",
-        "x": 620,
-        "y": 3060,
-        "wires": [
-            [
-                "11a87865015261c3",
-                "f0c3841ae009dfe6"
-            ]
-        ]
-    },
-    {
-        "id": "7bf5718727b0b85b",
-        "type": "debug",
-        "z": "6d691e6d89cccf80",
-        "name": "debug 4",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 540,
-        "y": 3180,
-        "wires": []
-    },
-    {
-        "id": "0b399ec8acbf9c00",
-        "type": "function",
-        "z": "6d691e6d89cccf80",
-        "name": "function 2",
-        "func": "// = 'eyJwYXltZW50X2lkIjoyMzA0Mzg5Nzg0LCJhY3Rpb24iOiJwYXkiLCJzdGF0dXMiOiJzdWNjZXNzIiwidmVyc2lvbiI6MywidHlwZSI6ImJ1eSIsInBheXR5cGUiOiJjYXJkIiwicHVibGljX2tleSI6InNhbmRib3hfaTg0OTE1NTUxMTUyIiwiYWNxX2lkIjo0MTQ5NjMsIm9yZGVyX2lkIjoib3JkZXJfaWRfMyIsImxpcXBheV9vcmRlcl9pZCI6Ik81WDhaVEJCMTY4MzY1NTg4NjEyNzAwMSIsImRlc2NyaXB0aW9uIjoiSW52b2ljZSA2NjExMDcyIiwic2VuZGVyX2NhcmRfbWFzazIiOiI0MjQyNDIqNDIiLCJzZW5kZXJfY2FyZF9iYW5rIjoiVGVzdCIsInNlbmRlcl9jYXJkX3R5cGUiOiJ2aXNhIiwic2VuZGVyX2NhcmRfY291bnRyeSI6ODA0LCJpcCI6IjIxMi45MC42MS4xMDEiLCJhbW91bnQiOjEuMCwiY3VycmVuY3kiOiJVU0QiLCJzZW5kZXJfY29tbWlzc2lvbiI6MC4wLCJyZWNlaXZlcl9jb21taXNzaW9uIjowLjAyLCJhZ2VudF9jb21taXNzaW9uIjowLjAsImFtb3VudF9kZWJpdCI6MzcuNDUsImFtb3VudF9jcmVkaXQiOjM3LjQ1LCJjb21taXNzaW9uX2RlYml0IjowLjAsImNvbW1pc3Npb25fY3JlZGl0IjowLjU2LCJjdXJyZW5jeV9kZWJpdCI6IlVBSCIsImN1cnJlbmN5X2NyZWRpdCI6IlVBSCIsInNlbmRlcl9ib251cyI6MC4wLCJhbW91bnRfYm9udXMiOjAuMCwibXBpX2VjaSI6IjciLCJpc18zZHMiOmZhbHNlLCJsYW5ndWFnZSI6InVrIiwiY3JlYXRlX2RhdGUiOjE2ODM2NTU4ODYxMjksImVuZF9kYXRlIjoxNjgzNjU1ODg2MTk2LCJ0cmFuc2FjdGlvbl9pZCI6MjMwNDM4OTc4NH0='\nlet data1 ='eyJwYXltZW50X2lkIjoyMzEwNjk5MjIxLCJhY3Rpb24iOiJwYXkiLCJzdGF0dXMiOiJmYWlsdXJlIiwiZXJyX2NvZGUiOiJlcnJfbWlzc2luZyIsImVycl9kZXNjcmlwdGlvbiI6IlJlcXVpcmVkIHBhcmFtZXRlciBub3QgcGFzc2VkIGNhcmQiLCJ2ZXJzaW9uIjozLCJ0eXBlIjoiYnV5IiwicHVibGljX2tleSI6InNhbmRib3hfaTg0OTE1NTUxMTUyIiwiYWNxX2lkIjo0MTQ5NjMsIm9yZGVyX2lkIjoiMTY4NDI0MTkxNjUzOSIsImxpcXBheV9vcmRlcl9pZCI6IkNQVllSTlFNMTY4NDI0MTkxNjY1MTMwOCIsImRlc2NyaXB0aW9uIjoiUGF5bWVudCBmb3Igc2VydmljZXMiLCJhbW91bnQiOjI0NS4wLCJjdXJyZW5jeSI6IlVBSCIsInNlbmRlcl9jb21taXNzaW9uIjowLjAsInJlY2VpdmVyX2NvbW1pc3Npb24iOjAuMCwiYWdlbnRfY29tbWlzc2lvbiI6MC4wLCJtcGlfZWNpIjoiNyIsImlzXzNkcyI6ZmFsc2UsImNyZWF0ZV9kYXRlIjoxNjg0MjQxOTE2NjUyLCJlbmRfZGF0ZSI6MTY4NDI0MTkxNjY1NiwidHJhbnNhY3Rpb25faWQiOjIzMTA2OTkyMjEsImNvZGUiOiJlcnJfbWlzc2luZyJ9'\nlet data = msg.payload.data\nfunction base64ToJson(base64String) {\n    const json = Buffer.from(base64String, \"base64\").toString();\n    return JSON.parse(json);\n}\nmsg.payload = base64ToJson(data)\nreturn msg",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 360,
-        "y": 3140,
-        "wires": [
-            [
-                "7bf5718727b0b85b"
-            ]
-        ]
-    },
-    {
-        "id": "99f9465edc5ce018",
-        "type": "inject",
-        "z": "6d691e6d89cccf80",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 220,
-        "y": 3280,
-        "wires": [
-            [
-                "0b399ec8acbf9c00"
-            ]
-        ]
-    },
-    {
-        "id": "290f17b7da3dba3e",
-        "type": "function",
-        "z": "6d691e6d89cccf80",
-        "name": "function 324",
-        "func": "const PUBLIC_KEY  = 'sandbox_i84915551152';\nconst PRIVATE_KEY= 'sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I';\n\nconst POST_DATA = msg.payload.data;\nconst POST_SIGNATURE = msg.payload.signature;\n\n// Create the signature by concatenating the private key, post data, and private key again,\n// then hash it with SHA1 and encode the result in base64\nconst SIGNATURE = crypto\n    .createHash('sha1')\n    .update(`${PRIVATE_KEY}${POST_DATA}${PRIVATE_KEY}`)\n    .digest('base64');\n\nif (POST_SIGNATURE === SIGNATURE) {\n    msg.payload ={\n        status:'ok'\n    }\n\n} else {\n   msg.payload = {status:(`invalid signature: ${POST_SIGNATURE} !== ${SIGNATURE}`)};\n}\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "crypto",
-                "module": "crypto"
-            }
-        ],
-        "x": 450,
-        "y": 3280,
-        "wires": [
-            [
-                "7bf5718727b0b85b"
-            ]
-        ]
-    },
-    {
-        "id": "c498139304ce925b",
-        "type": "http in",
-        "z": "6d691e6d89cccf80",
-        "name": "",
-        "url": "/getstatus",
-        "method": "post",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 180,
-        "y": 2780,
-        "wires": [
-            [
-                "b0cce36d3c83883e",
-                "3c25b29b2b569e7e"
-            ]
-        ]
-    },
-    {
-        "id": "917291dee97e4ab8",
-        "type": "debug",
-        "z": "6d691e6d89cccf80",
-        "name": "debug 4",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 600,
-        "y": 2780,
-        "wires": []
-    },
-    {
-        "id": "3c25b29b2b569e7e",
-        "type": "function",
-        "z": "6d691e6d89cccf80",
-        "name": "function 324",
-        "func": "const PUBLIC_KEY = 'sandbox_i84915551152';\nconst PRIVATE_KEY = 'sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I';\n\nconst POST_DATA = msg.payload.data;\nconst POST_SIGNATURE = msg.payload.signature;\n\n\n\n// Create the signature by concatenating the private key, post data, and private key again,\n// then hash it with SHA1 and encode the result in base64\nconst SIGNATURE = crypto\n    .createHash('sha1')\n    .update(`${PRIVATE_KEY}${POST_DATA}${PRIVATE_KEY}`)\n    .digest('base64');\n \nlet data = msg.payload.data\nfunction base64ToJson(base64String) {\n    const json = Buffer.from(base64String, \"base64\").toString();\n    return JSON.parse(json);\n}\nmsg.old= base64ToJson(data)\nif (POST_SIGNATURE === SIGNATURE) {\n\n    msg.payload ={\n        status:'ok',\n        statusPay: msg.old.status,\n        data: msg.old\n    }\n\n} else {\n   msg.payload = {status:(`invalid signature: ${POST_SIGNATURE} !== ${SIGNATURE}`)};\n}\ndelete msg.old\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "crypto",
-                "module": "crypto"
-            }
-        ],
-        "x": 430,
-        "y": 2780,
-        "wires": [
-            [
-                "917291dee97e4ab8",
-                "04ab4d8916d18951"
-            ]
-        ]
-    },
-    {
-        "id": "04ab4d8916d18951",
-        "type": "http response",
-        "z": "6d691e6d89cccf80",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 590,
-        "y": 2720,
-        "wires": []
-    },
-    {
-        "id": "b0cce36d3c83883e",
-        "type": "debug",
-        "z": "6d691e6d89cccf80",
-        "name": "debug 245",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 390,
-        "y": 2720,
-        "wires": []
-    },
-    {
-        "id": "6c4c939eafb8cbb3",
-        "type": "function",
-        "z": "6d691e6d89cccf80",
-        "name": "createPayment()",
-        "func": "const { totalPrice } = msg.req.body;\n\n// const public_key = 'sandbox_i84915551152';\n// const private_key = 'sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I';\n\n// const liqpay = new LiqPay(public_key, private_key);\n// const order_id = Date.now();\n\n// const payment_data = {\n//     'action': 'pay',\n//     'amount': totalPrice,\n//     'currency': 'UAH',\n//     'description': 'Payment for services',\n//     'order_id': order_id,\n//     'version': '3',\n//     'public_key': public_key,\n//     'sandbox': '1',\n//     'server_url': \"http://127.0.0.1:1880/getstatus\",\n// };\n\n// const encoded_payment_data = Buffer.from(JSON.stringify(payment_data)).toString('base64');\n\n// const str_to_sign = private_key + encoded_payment_data + private_key;\n// const signature = crypto.createHash('sha1').update(str_to_sign).digest('base64');\n\n// msg.details = {\n//     'data': encoded_payment_data,\n//     'signature': signature,\n//     'order_id': order_id\n// };\n\n// return msg;\n\nconst public_key = 'sandbox_i84915551152';\nconst private_key = 'sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I';\n\nconst liqpay = new LiqPay(public_key, private_key);\nconst order_id = Date.now();\n\nconst payment_data = {\n    'public_key': public_key,\n    'version': 3,\n    'action': 'pay',\n    'amount': totalPrice,\n    'currency': 'UAH',\n    'description': 'Payment for services',\n    'order_id': order_id.toString(),\n    'server_url': \"http://127.0.0.1:1880/getstatus\"\n};\n\n\nconst encodedString = Buffer.from(JSON.stringify(payment_data)).toString('base64');\nconst signString = 'sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I' + encodedString + 'sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I'\n// node.warn(signString)\n\n\nconst signature = crypto.createHash('sha1').update(signString).digest('base64');\n\n// node.warn(signature)\n\n\n\nconst payload = {\n    data: encodedString,\n    signature\n};\n\nmsg.details = {\n    'data': encodedString,\n    'signature': signature,\n    'order_id': order_id\n};\n\nmsg.payload = payload;\n\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "crypto",
-                "module": "crypto"
-            },
-            {
-                "var": "LiqPay",
-                "module": "liqpay"
-            }
-        ],
-        "x": 400,
-        "y": 2660,
-        "wires": [
-            [
-                "e55ce08ec0f6967f",
-                "2c16b6211d836027"
-            ]
-        ]
-    },
-    {
-        "id": "2c16b6211d836027",
-        "type": "http response",
-        "z": "6d691e6d89cccf80",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 610,
-        "y": 2660,
-        "wires": []
-    },
-    {
         "id": "0407f636237c52d1",
         "type": "switch",
         "z": "6d691e6d89cccf80",
+        "g": "164c465466b25c64",
         "name": "",
         "property": "req.body.contacts.payment",
         "propertyType": "msg",
@@ -4305,8 +3848,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 3,
-        "x": 250,
-        "y": 2460,
+        "x": 270,
+        "y": 2480,
         "wires": [
             [
                 "429013cfcc1d8e25"
@@ -4318,130 +3861,6 @@
         ]
     },
     {
-        "id": "76171a5dc731934a",
-        "type": "inject",
-        "z": "6d691e6d89cccf80",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 140,
-        "y": 2880,
-        "wires": [
-            [
-                "7990eb3728f10f15"
-            ]
-        ]
-    },
-    {
-        "id": "7667aec3ce623ea1",
-        "type": "http request",
-        "z": "6d691e6d89cccf80",
-        "name": "",
-        "method": "POST",
-        "ret": "txt",
-        "paytoqs": "ignore",
-        "url": "https://www.liqpay.ua/api/request",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 490,
-        "y": 2880,
-        "wires": [
-            [
-                "3cf6ff0c4c4b5a18"
-            ]
-        ]
-    },
-    {
-        "id": "3cf6ff0c4c4b5a18",
-        "type": "debug",
-        "z": "6d691e6d89cccf80",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "x": 650,
-        "y": 2880,
-        "wires": []
-    },
-    {
-        "id": "7990eb3728f10f15",
-        "type": "function",
-        "z": "6d691e6d89cccf80",
-        "name": "Create Request",
-        "func": "const public_key = 'sandbox_i84915551152';\nconst private_key = 'sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I';\nconst payload = {\n    action: 'invoice_send',\n    version: '3',\n    public_key: 'sandbox_i84915551152',\n    email: 'fen9206@gmail.com',\n    amount: 1,\n    currency: 'USD',\n    order_id: 'order_id_4',\n    server_url:\"https://backend-645910bea77995110000001a.ubos.tech/getstatus\",\n    goods: [{\n        amount: 100,\n        count: 2,\n        unit: 'шт.',\n        name: 'USB',\n    }]\n};\n\nconst data = Buffer.from(JSON.stringify(payload)).toString('base64');\nconst signature = crypto.createHash('sha1').update('sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I' + data + 'sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I').digest('base64');\n\nmsg.headers = {\n    'Content-Type': 'application/x-www-form-urlencoded',\n    'Accept': 'application/json',\n};\nmsg.payload = `data=${encodeURIComponent(data)}&signature=${encodeURIComponent(signature)}`;\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "crypto",
-                "module": "crypto"
-            }
-        ],
-        "x": 300,
-        "y": 2880,
-        "wires": [
-            [
-                "7667aec3ce623ea1"
-            ]
-        ]
-    },
-    {
-        "id": "1ccf0fd63be1039b",
-        "type": "json",
-        "z": "6d691e6d89cccf80",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 690,
-        "y": 2820,
-        "wires": [
-            [
-                "ea8a6b4f.0f78d8"
-            ]
-        ]
-    },
-    {
-        "id": "db45ea64cc9e6dee",
-        "type": "debug",
-        "z": "6d691e6d89cccf80",
-        "name": "debug 246",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 470,
-        "y": 3500,
-        "wires": []
-    },
-    {
         "id": "989bc6bb7cc17469",
         "type": "http in",
         "z": "6d691e6d89cccf80",
@@ -4451,8 +3870,8 @@
         "method": "post",
         "upload": false,
         "swaggerDoc": "",
-        "x": 140,
-        "y": 3800,
+        "x": 120,
+        "y": 2700,
         "wires": [
             [
                 "d766c42b947a45bb"
@@ -4467,8 +3886,8 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 690,
-        "y": 3800,
+        "x": 670,
+        "y": 2700,
         "wires": []
     },
     {
@@ -4480,8 +3899,8 @@
         "bot": "de2491755e237598",
         "haserroroutput": false,
         "outputs": 1,
-        "x": 530,
-        "y": 3800,
+        "x": 510,
+        "y": 2700,
         "wires": [
             [
                 "f140cbd22b1ccccf"
@@ -4500,8 +3919,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 330,
-        "y": 3800,
+        "x": 310,
+        "y": 2700,
         "wires": [
             [
                 "12ea0af63521e16b"
@@ -4515,30 +3934,116 @@
         "g": "e7409da3baec4840",
         "name": "Feedback",
         "info": "",
-        "x": 120,
-        "y": 3740,
+        "x": 100,
+        "y": 2640,
         "wires": []
     },
     {
-        "id": "c6d88f402d9da423",
+        "id": "607607576c724afa",
+        "type": "function",
+        "z": "6d691e6d89cccf80",
+        "g": "164c465466b25c64",
+        "name": "createShortInformation()",
+        "func": "const { code, totalPrice } = msg.payload;\n\nmsg.payload = {\n    chatId: 842951901,\n    type: \"message\",\n    content: \"🟢НОВЕ ЗАМОВЛЕННЯ🟢\\n\\n*Код замовлення:*  \" + code + \"\\n*Ціна:*  \" + totalPrice,\n    options: {\n        parse_mode: \"Markdown\"\n    }\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 930,
+        "y": 2360,
+        "wires": [
+            [
+                "ec80a72d5acb944c"
+            ]
+        ]
+    },
+    {
+        "id": "ec80a72d5acb944c",
+        "type": "telegram sender",
+        "z": "6d691e6d89cccf80",
+        "g": "164c465466b25c64",
+        "name": "",
+        "bot": "de2491755e237598",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 1170,
+        "y": 2360,
+        "wires": [
+            [
+                "23a66c4f0a1ee112"
+            ]
+        ]
+    },
+    {
+        "id": "99dec14673644968",
+        "type": "function",
+        "z": "6d691e6d89cccf80",
+        "g": "164c465466b25c64",
+        "name": "sendEmail()",
+        "func": "const { code } = msg.payload;\nconst userEmail = msg.req.body.contacts.email;\n\nconst result = dotenv.config();\nconst { META_PASSWORD } = result.parsed;\n\nconst nodemailerConfig = {\n    host: \"smtp.meta.ua\",\n    port: 465,\n    auth: {\n        user: \"master.kava@meta.ua\",\n        pass: META_PASSWORD\n    }\n};\n\nconst transport = nodemailer.createTransport(nodemailerConfig);\n\nconst email = {\n    to: userEmail,\n    from: \"master.kava@meta.ua\",\n    subject: \"Master Kava. Замовлення товарів\",\n    html: `\n    <!DOCTYPE html>\n    <html lang=\"en\">\n      <head>\n        <meta charset=\"UTF-8\" />\n        <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n      </head>\n      <style>\n        body {\n          margin: 0;\n          padding: 15px;\n          height: 100%;\n          width: 100%;\n          background: #f1f1f1;\n        }\n      </style>\n      <body>\n        <h1>Ваше замовлення успішно оформлене!</h1>\n        <p>Номер замовлення: <b>${code}</b></p>\n        <p>Виникли якісь запитання? Будь ласка, зв'яжіться з нами!</p>\n        <ul>\n          <li><a href=\"tel:+380671429022\">+380671429022</a></li>\n          <li><a href=\"mailto:master_kava@gmail.com\">master_kava@gmail.com</a></li>\n        </ul>\n        <p>Дякуємо, що обрали нас❤️</p>\n      </body>\n    </html>\n  `\n};\n\ntransport.sendMail(email)\n    .then(()=> node.warn(\"Email send success\"))\n    .catch(err => node.warn(err));\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "dotenv",
+                "module": "dotenv"
+            },
+            {
+                "var": "nodemailer",
+                "module": "nodemailer"
+            }
+        ],
+        "x": 890,
+        "y": 2300,
+        "wires": [
+            [
+                "b0402bfb7ef53494"
+            ]
+        ]
+    },
+    {
+        "id": "b0402bfb7ef53494",
         "type": "debug",
         "z": "6d691e6d89cccf80",
-        "name": "debug 250",
+        "g": "164c465466b25c64",
+        "name": "debug 256",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 670,
-        "y": 2200,
+        "x": 1050,
+        "y": 2300,
         "wires": []
     },
     {
-        "id": "07b435c2feba8851",
-        "type": "inject",
+        "id": "d9ecc8815083ddd7",
+        "type": "debug",
         "z": "6d691e6d89cccf80",
+        "g": "164c465466b25c64",
+        "name": "debug 257",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 870,
+        "y": 2280,
+        "wires": []
+    },
+    {
+        "id": "6bdc9d632264c2a8",
+        "type": "inject",
+        "z": "572dfaa9458e5333",
         "name": "",
         "props": [
             {
@@ -4557,96 +4062,546 @@
         "payload": "",
         "payloadType": "date",
         "x": 140,
-        "y": 4000,
+        "y": 160,
         "wires": [
             [
-                "98c6122bc84c35b0"
+                "703d51b4ef6127ce"
             ]
         ]
     },
     {
-        "id": "d53236d83403bcbf",
+        "id": "0592a1c24f4326cd",
+        "type": "http request",
+        "z": "572dfaa9458e5333",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://www.liqpay.ua/api/request",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 490,
+        "y": 160,
+        "wires": [
+            [
+                "38f280073d035402"
+            ]
+        ]
+    },
+    {
+        "id": "2b501838e298107a",
         "type": "debug",
-        "z": "6d691e6d89cccf80",
+        "z": "572dfaa9458e5333",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 850,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "703d51b4ef6127ce",
+        "type": "function",
+        "z": "572dfaa9458e5333",
+        "name": "Create Request",
+        "func": "const public_key = 'sandbox_i84915551152';\nconst private_key = 'sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I';\nconst payload = {\n    action: 'status',\n    version: '3',\n    public_key: 'sandbox_i84915551152',\n    // email: 'fen9206@gmail.com',\n    // amount: 1,\n    // currency: 'USD',\n    order_id: '1684412581169',\n    // server_url:\"http://127.0.0.1:1880/getstatus\",\n    // goods: [{\n    //     amount: 100,\n    //     count: 2,\n    //     unit: 'шт.',\n    //     name: 'USB',\n    // }]\n};\n\nconst data = Buffer.from(JSON.stringify(payload)).toString('base64');\nconst signature = crypto.createHash('sha1').update('sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I' + data + 'sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I').digest('base64');\n\nmsg.headers = {\n    'Content-Type': 'application/x-www-form-urlencoded',\n    'Accept': 'application/json',\n};\nmsg.payload = `data=${encodeURIComponent(data)}&signature=${encodeURIComponent(signature)}`;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "crypto",
+                "module": "crypto"
+            }
+        ],
+        "x": 300,
+        "y": 160,
+        "wires": [
+            [
+                "0592a1c24f4326cd"
+            ]
+        ]
+    },
+    {
+        "id": "a18adf1560a90217",
+        "type": "debug",
+        "z": "572dfaa9458e5333",
+        "name": "debug 249",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "f6635242d2a5e078",
+        "type": "function",
+        "z": "572dfaa9458e5333",
+        "name": "function 325",
+        "func": "let data = 'eyJhY3Rpb24iOiJwYXkiLCJhbW91bnQiOjI0Ny41LCJjdXJyZW5jeSI6IlVBSCIsImRlc2NyaXB0aW9uIjoiUGF5bWVudCBmb3Igc2VydmljZXMiLCJvcmRlcl9pZCI6MTY4NDIzNjUwNDQwOCwidmVyc2lvbiI6IjMiLCJwdWJsaWNfa2V5Ijoic2FuZGJveF9pODQ5MTU1NTExNTIiLCJzYW5kYm94IjoiMSIsInNlcnZlcl91cmwiOiJodHRwOi8vMTI3LjAuMC4xOjE4ODAvZ2V0c3RhdHVzIn0='\n// let data = msg.payload;\n\nfunction base64ToJson(base64String) {\n    const json = Buffer.from(base64String, \"base64\").toString();\n    return JSON.parse(json);\n}\nmsg.payload = base64ToJson(data)\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 680,
+        "wires": [
+            [
+                "a18adf1560a90217"
+            ]
+        ]
+    },
+    {
+        "id": "f627feb7f768e25a",
+        "type": "inject",
+        "z": "572dfaa9458e5333",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 720,
+        "wires": [
+            [
+                "f6635242d2a5e078"
+            ]
+        ]
+    },
+    {
+        "id": "64b93230eaf5f490",
+        "type": "http in",
+        "z": "572dfaa9458e5333",
+        "name": "",
+        "url": "/order",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 400,
+        "wires": [
+            [
+                "3e52aadf6ea04233"
+            ]
+        ]
+    },
+    {
+        "id": "3e52aadf6ea04233",
+        "type": "function",
+        "z": "572dfaa9458e5333",
+        "name": "createPayment()",
+        "func": "// const { totalPrice } = msg.req.body;\n\nconst public_key = 'sandbox_i84915551152';\nconst private_key = 'sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I';\n\nconst liqpay = new LiqPay(public_key, private_key);\nconst order_id = Date.now();\n\nconst payment_data = {\n    'public_key': public_key,\n    'version': 3,\n    'action': 'pay',\n    'amount': 245,\n    'currency': 'UAH',\n    'description': 'Payment for services',\n    // 'order_id': \"12345\",\n     'order_id': order_id.toString(),\n    'server_url': \"https://backend-645910bea77995110000001a.ubos.tech/getstatus\"\n};\n\n\nconst encodedString = Buffer.from(JSON.stringify(payment_data)).toString('base64');\nconst signString = 'sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I' + encodedString + 'sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I'\nnode.warn(signString)\n\n\nconst signature = crypto.createHash('sha1').update(signString).digest('base64');\n\nnode.warn(signature)\n\n\n\nconst payload = {\n    data: encodedString,\n    signature\n};\n\nmsg.payload = payload;\n\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "crypto",
+                "module": "crypto"
+            },
+            {
+                "var": "LiqPay",
+                "module": "liqpay"
+            }
+        ],
+        "x": 340,
+        "y": 400,
+        "wires": [
+            [
+                "437af2416fe5bd4d",
+                "a3c3c0e18640201e"
+            ]
+        ]
+    },
+    {
+        "id": "faf0894ff9d81770",
+        "type": "http response",
+        "z": "572dfaa9458e5333",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 830,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "437af2416fe5bd4d",
+        "type": "debug",
+        "z": "572dfaa9458e5333",
+        "name": "debug 250",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "b915abbfc9d3deda",
+        "type": "inject",
+        "z": "572dfaa9458e5333",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 380,
+        "y": 280,
+        "wires": [
+            [
+                "3e52aadf6ea04233"
+            ]
+        ]
+    },
+    {
+        "id": "a3c3c0e18640201e",
+        "type": "template",
+        "z": "572dfaa9458e5333",
+        "name": "HTML Form Template",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<form method=\"POST\" action=\"https://www.liqpay.ua/api/3/checkout\" accept-charset=\"utf-8\">\n  <input type=\"hidden\" name=\"data\" value={{{payload.data}}}>\n  <input type=\"hidden\" name=\"signature\" value={{{payload.signature}}}>\n  <input type=\"image\" src=\"//static.liqpay.ua/buttons/p1ru.radius.png\">\n</form>",
+        "output": "str",
+        "x": 600,
+        "y": 400,
+        "wires": [
+            [
+                "faf0894ff9d81770",
+                "437af2416fe5bd4d"
+            ]
+        ]
+    },
+    {
+        "id": "b0f5eda92b58850a",
+        "type": "debug",
+        "z": "572dfaa9458e5333",
         "name": "debug 251",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 730,
-        "y": 4000,
+        "x": 520,
+        "y": 520,
         "wires": []
     },
     {
-        "id": "50ba19dacf4f210d",
-        "type": "telegram sender",
-        "z": "6d691e6d89cccf80",
-        "name": "",
-        "bot": "de2491755e237598",
-        "haserroroutput": false,
-        "outputs": 1,
-        "x": 490,
-        "y": 4000,
-        "wires": [
-            [
-                "d53236d83403bcbf"
-            ]
-        ]
-    },
-    {
-        "id": "98c6122bc84c35b0",
+        "id": "9a20dd523e3aa572",
         "type": "function",
-        "z": "6d691e6d89cccf80",
-        "name": "function 325",
-        "func": "// msg.payload = {\n//     chatId: 842951901,\n//     type: \"message\",\n//     content: `*Order Details*\n// ID: ${order._id}\n// Code: ${order.code}\n\n// Contact Information:\n// Name: ${order.contacts.firstName} ${order.contacts.lastName}\n// Phone: ${order.contacts.phone}\n\n// Order Description:\n// Payment: ${order.orderDesc.payment}\n// Delivery Type: ${order.orderDesc.deliveryType}\n// City: ${order.orderDesc.city}\n// Department: ${order.orderDesc.department}\n// Address: ${order.orderDesc.address}\n\n// Products:\n// ${formatProducts(order.products)}\n\n// Total Price: ${order.totalPrice}\n// Date: ${order.date}`,\n//     options: {\n//         parse_mode: \"Markdown\"\n//     }\n// }\n\n// function formatProducts(products) {\n//     let result = \"\";\n//     for (const product of products) {\n//         result += `- ${product._id}\n//   Name: ${product.name}\n//   Price: ${product.price}\n//   Grind: ${product.grind}\n//   Weight: ${product.weight}\n//   Quantity: ${product.quantity}\\n`;\n//     }\n//     return result;\n// }\n\n\n\n\n\n\n\n\nreturn msg;",
+        "z": "572dfaa9458e5333",
+        "name": "function 326",
+        "func": "// = 'eyJwYXltZW50X2lkIjoyMzA0Mzg5Nzg0LCJhY3Rpb24iOiJwYXkiLCJzdGF0dXMiOiJzdWNjZXNzIiwidmVyc2lvbiI6MywidHlwZSI6ImJ1eSIsInBheXR5cGUiOiJjYXJkIiwicHVibGljX2tleSI6InNhbmRib3hfaTg0OTE1NTUxMTUyIiwiYWNxX2lkIjo0MTQ5NjMsIm9yZGVyX2lkIjoib3JkZXJfaWRfMyIsImxpcXBheV9vcmRlcl9pZCI6Ik81WDhaVEJCMTY4MzY1NTg4NjEyNzAwMSIsImRlc2NyaXB0aW9uIjoiSW52b2ljZSA2NjExMDcyIiwic2VuZGVyX2NhcmRfbWFzazIiOiI0MjQyNDIqNDIiLCJzZW5kZXJfY2FyZF9iYW5rIjoiVGVzdCIsInNlbmRlcl9jYXJkX3R5cGUiOiJ2aXNhIiwic2VuZGVyX2NhcmRfY291bnRyeSI6ODA0LCJpcCI6IjIxMi45MC42MS4xMDEiLCJhbW91bnQiOjEuMCwiY3VycmVuY3kiOiJVU0QiLCJzZW5kZXJfY29tbWlzc2lvbiI6MC4wLCJyZWNlaXZlcl9jb21taXNzaW9uIjowLjAyLCJhZ2VudF9jb21taXNzaW9uIjowLjAsImFtb3VudF9kZWJpdCI6MzcuNDUsImFtb3VudF9jcmVkaXQiOjM3LjQ1LCJjb21taXNzaW9uX2RlYml0IjowLjAsImNvbW1pc3Npb25fY3JlZGl0IjowLjU2LCJjdXJyZW5jeV9kZWJpdCI6IlVBSCIsImN1cnJlbmN5X2NyZWRpdCI6IlVBSCIsInNlbmRlcl9ib251cyI6MC4wLCJhbW91bnRfYm9udXMiOjAuMCwibXBpX2VjaSI6IjciLCJpc18zZHMiOmZhbHNlLCJsYW5ndWFnZSI6InVrIiwiY3JlYXRlX2RhdGUiOjE2ODM2NTU4ODYxMjksImVuZF9kYXRlIjoxNjgzNjU1ODg2MTk2LCJ0cmFuc2FjdGlvbl9pZCI6MjMwNDM4OTc4NH0='\nlet data1 ='eyJwYXltZW50X2lkIjoyMzEwNjk5MjIxLCJhY3Rpb24iOiJwYXkiLCJzdGF0dXMiOiJmYWlsdXJlIiwiZXJyX2NvZGUiOiJlcnJfbWlzc2luZyIsImVycl9kZXNjcmlwdGlvbiI6IlJlcXVpcmVkIHBhcmFtZXRlciBub3QgcGFzc2VkIGNhcmQiLCJ2ZXJzaW9uIjozLCJ0eXBlIjoiYnV5IiwicHVibGljX2tleSI6InNhbmRib3hfaTg0OTE1NTUxMTUyIiwiYWNxX2lkIjo0MTQ5NjMsIm9yZGVyX2lkIjoiMTY4NDI0MTkxNjUzOSIsImxpcXBheV9vcmRlcl9pZCI6IkNQVllSTlFNMTY4NDI0MTkxNjY1MTMwOCIsImRlc2NyaXB0aW9uIjoiUGF5bWVudCBmb3Igc2VydmljZXMiLCJhbW91bnQiOjI0NS4wLCJjdXJyZW5jeSI6IlVBSCIsInNlbmRlcl9jb21taXNzaW9uIjowLjAsInJlY2VpdmVyX2NvbW1pc3Npb24iOjAuMCwiYWdlbnRfY29tbWlzc2lvbiI6MC4wLCJtcGlfZWNpIjoiNyIsImlzXzNkcyI6ZmFsc2UsImNyZWF0ZV9kYXRlIjoxNjg0MjQxOTE2NjUyLCJlbmRfZGF0ZSI6MTY4NDI0MTkxNjY1NiwidHJhbnNhY3Rpb25faWQiOjIzMTA2OTkyMjEsImNvZGUiOiJlcnJfbWlzc2luZyJ9'\nlet data = msg.payload.data\nfunction base64ToJson(base64String) {\n    const json = Buffer.from(base64String, \"base64\").toString();\n    return JSON.parse(json);\n}\nmsg.payload = base64ToJson(data)\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 290,
-        "y": 4000,
+        "x": 340,
+        "y": 480,
         "wires": [
             [
-                "50ba19dacf4f210d"
+                "b0f5eda92b58850a"
             ]
         ]
     },
     {
-        "id": "607607576c724afa",
+        "id": "6706639dd0a320a7",
+        "type": "inject",
+        "z": "572dfaa9458e5333",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 620,
+        "wires": [
+            [
+                "9a20dd523e3aa572"
+            ]
+        ]
+    },
+    {
+        "id": "062b6609909b2443",
         "type": "function",
-        "z": "6d691e6d89cccf80",
-        "name": "createShortInformation()",
-        "func": "const { code, totalPrice } = msg.payload;\n\nmsg.payload = {\n    chatId: 842951901,\n    type: \"message\",\n    content: \"🟢НОВЕ ЗАМОВЛЕННЯ🟢\\n\\n*Код замовлення:*  \" + code + \"\\n*Ціна:*  \" + totalPrice,\n    options: {\n        parse_mode: \"Markdown\"\n    }\n}\n\nreturn msg;",
+        "z": "572dfaa9458e5333",
+        "name": "function 327",
+        "func": "const PUBLIC_KEY  = 'sandbox_i84915551152';\nconst PRIVATE_KEY= 'sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I';\n\nconst POST_DATA = msg.payload.data;\nconst POST_SIGNATURE = msg.payload.signature;\n\n// Create the signature by concatenating the private key, post data, and private key again,\n// then hash it with SHA1 and encode the result in base64\nconst SIGNATURE = crypto\n    .createHash('sha1')\n    .update(`${PRIVATE_KEY}${POST_DATA}${PRIVATE_KEY}`)\n    .digest('base64');\n\nif (POST_SIGNATURE === SIGNATURE) {\n    msg.payload ={\n        status:'ok'\n    }\n\n} else {\n   msg.payload = {status:(`invalid signature: ${POST_SIGNATURE} !== ${SIGNATURE}`)};\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "libs": [],
-        "x": 910,
-        "y": 2340,
+        "libs": [
+            {
+                "var": "crypto",
+                "module": "crypto"
+            }
+        ],
+        "x": 430,
+        "y": 620,
         "wires": [
             [
-                "ec80a72d5acb944c"
+                "b0f5eda92b58850a"
             ]
         ]
     },
     {
-        "id": "ec80a72d5acb944c",
-        "type": "telegram sender",
-        "z": "6d691e6d89cccf80",
+        "id": "7ce92e2b834cbffc",
+        "type": "http in",
+        "z": "572dfaa9458e5333",
         "name": "",
-        "bot": "de2491755e237598",
-        "haserroroutput": false,
-        "outputs": 1,
-        "x": 1150,
-        "y": 2340,
+        "url": "/getstatus",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 120,
         "wires": [
             [
-                "23a66c4f0a1ee112"
+                "e2a05f553d62805a",
+                "c50ba1ad5fbee346"
+            ]
+        ]
+    },
+    {
+        "id": "c7702ac412d2e7d0",
+        "type": "debug",
+        "z": "572dfaa9458e5333",
+        "name": "debug 252",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "c50ba1ad5fbee346",
+        "type": "function",
+        "z": "572dfaa9458e5333",
+        "name": "function 328",
+        "func": "const PUBLIC_KEY = 'sandbox_i84915551152';\nconst PRIVATE_KEY = 'sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I';\n\nconst POST_DATA = msg.payload.data;\nconst POST_SIGNATURE = msg.payload.signature;\n\n\n\n// Create the signature by concatenating the private key, post data, and private key again,\n// then hash it with SHA1 and encode the result in base64\nconst SIGNATURE = crypto\n    .createHash('sha1')\n    .update(`${PRIVATE_KEY}${POST_DATA}${PRIVATE_KEY}`)\n    .digest('base64');\n \nlet data = msg.payload.data\nfunction base64ToJson(base64String) {\n    const json = Buffer.from(base64String, \"base64\").toString();\n    return JSON.parse(json);\n}\nmsg.old= base64ToJson(data)\nif (POST_SIGNATURE === SIGNATURE) {\n\n    msg.payload ={\n        status:'ok',\n        statusPay: msg.old.status,\n        data: msg.old\n    }\n\n} else {\n   msg.payload = {status:(`invalid signature: ${POST_SIGNATURE} !== ${SIGNATURE}`)};\n}\ndelete msg.old\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "crypto",
+                "module": "crypto"
+            }
+        ],
+        "x": 410,
+        "y": 120,
+        "wires": [
+            [
+                "c7702ac412d2e7d0",
+                "6608a356c3c54e67"
+            ]
+        ]
+    },
+    {
+        "id": "6608a356c3c54e67",
+        "type": "http response",
+        "z": "572dfaa9458e5333",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 570,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "e2a05f553d62805a",
+        "type": "debug",
+        "z": "572dfaa9458e5333",
+        "name": "debug 253",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 370,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "e303994b0b8ec3bc",
+        "type": "inject",
+        "z": "572dfaa9458e5333",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 220,
+        "wires": [
+            [
+                "7cde33b101026f0c"
+            ]
+        ]
+    },
+    {
+        "id": "94fbbac84280cee2",
+        "type": "http request",
+        "z": "572dfaa9458e5333",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://www.liqpay.ua/api/request",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 470,
+        "y": 220,
+        "wires": [
+            [
+                "c3c255cbca05afd4"
+            ]
+        ]
+    },
+    {
+        "id": "c3c255cbca05afd4",
+        "type": "debug",
+        "z": "572dfaa9458e5333",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 630,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "7cde33b101026f0c",
+        "type": "function",
+        "z": "572dfaa9458e5333",
+        "name": "Create Request",
+        "func": "const public_key = 'sandbox_i84915551152';\nconst private_key = 'sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I';\nconst payload = {\n    action: 'invoice_send',\n    version: '3',\n    public_key: 'sandbox_i84915551152',\n    email: 'fen9206@gmail.com',\n    amount: 1,\n    currency: 'USD',\n    order_id: 'order_id_4',\n    server_url:\"https://backend-645910bea77995110000001a.ubos.tech/getstatus\",\n    goods: [{\n        amount: 100,\n        count: 2,\n        unit: 'шт.',\n        name: 'USB',\n    }]\n};\n\nconst data = Buffer.from(JSON.stringify(payload)).toString('base64');\nconst signature = crypto.createHash('sha1').update('sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I' + data + 'sandbox_lixXdjBXphEfcWIsSx07Ed5getyKGA15iXzncE1I').digest('base64');\n\nmsg.headers = {\n    'Content-Type': 'application/x-www-form-urlencoded',\n    'Accept': 'application/json',\n};\nmsg.payload = `data=${encodeURIComponent(data)}&signature=${encodeURIComponent(signature)}`;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "crypto",
+                "module": "crypto"
+            }
+        ],
+        "x": 280,
+        "y": 220,
+        "wires": [
+            [
+                "94fbbac84280cee2"
+            ]
+        ]
+    },
+    {
+        "id": "38f280073d035402",
+        "type": "json",
+        "z": "572dfaa9458e5333",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 670,
+        "y": 160,
+        "wires": [
+            [
+                "2b501838e298107a"
             ]
         ]
     },
@@ -5726,6 +5681,94 @@
         "statusType": "auto",
         "x": 350,
         "y": 1880,
+        "wires": []
+    },
+    {
+        "id": "57e89652256d736c",
+        "type": "function",
+        "z": "27e958a26f8b472d",
+        "g": "0f11e1d7596ca61a",
+        "name": "sendEmail()",
+        "func": "const result = dotenv.config();\nconst { META_PASSWORD } = result.parsed;\n\nconst nodemailerConfig = {\n    host: \"smtp.meta.ua\",\n    port: 465,\n    auth: {\n        user: \"master.kava@meta.ua\",\n        pass: META_PASSWORD\n    }\n};\n\nconst transport = nodemailer.createTransport(nodemailerConfig);\n\nconst email = {\n    to: \"miklukha.anna@ukr.net\",\n    from: \"master.kava@meta.ua\",\n    subject: \"Master Kava. Замовлення товарів\",\n    html: `\n    <!DOCTYPE html>\n    <html lang=\"en\">\n      <head>\n        <meta charset=\"UTF-8\" />\n        <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n      </head>\n      <style>\n        body {\n          margin: 0;\n          padding: 15px;\n          height: 100%;\n          width: 100%;\n          background: #f1f1f1;\n        }\n      </style>\n      <body>\n        <h1>Ваше замовлення успішно оформлене!</h1>\n        <p>Номер замовлення: <b>12345678</b></p>\n        <p>Виникли якісь запитання? Будь ласка, зв'яжіться з нами!</p>\n        <ul>\n          <li><a href=\"tel:+380671429022\">+380671429022</a></li>\n          <li><a href=\"mailto:master_kava@gmail.com\">master_kava@gmail.com</a></li>\n        </ul>\n        <p>Дякуємо, що обрали нас❤️</p>\n      </body>\n    </html>\n  `\n};\n\ntransport.sendMail(email)\n    .then(()=> node.warn(\"Email send success\"))\n    .catch(err => node.warn(err));\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "dotenv",
+                "module": "dotenv"
+            },
+            {
+                "var": "nodemailer",
+                "module": "nodemailer"
+            }
+        ],
+        "x": 290,
+        "y": 2120,
+        "wires": [
+            [
+                "662a1d346546f75b"
+            ]
+        ]
+    },
+    {
+        "id": "74a7d01094705169",
+        "type": "inject",
+        "z": "27e958a26f8b472d",
+        "g": "0f11e1d7596ca61a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 2120,
+        "wires": [
+            [
+                "57e89652256d736c"
+            ]
+        ]
+    },
+    {
+        "id": "662a1d346546f75b",
+        "type": "debug",
+        "z": "27e958a26f8b472d",
+        "g": "0f11e1d7596ca61a",
+        "name": "debug 255",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 450,
+        "y": 2120,
+        "wires": []
+    },
+    {
+        "id": "c0da3c0c0218380c",
+        "type": "comment",
+        "z": "27e958a26f8b472d",
+        "g": "0f11e1d7596ca61a",
+        "name": "sendEmail()",
+        "info": "",
+        "x": 130,
+        "y": 2060,
         "wires": []
     },
     {

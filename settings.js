@@ -465,6 +465,7 @@ module.exports = {
     dotenv: require('dotenv'),
     liqpay: require('liqpay'),
     crypto: require('crypto'),
+    nodemailer: require('nodemailer'),
     // env: require(env),
     // os:require('os'),
   },
